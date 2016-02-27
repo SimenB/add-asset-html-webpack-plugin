@@ -1,0 +1,5 @@
+index.js
+
+node_modules/
+.idea/
+*.log

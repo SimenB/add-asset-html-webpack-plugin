@@ -71,13 +71,14 @@ Type: `string`, default: `js`
 Can be set to `css` to create a `link`-tag instead of a `script`-tag.
 
 ## Examples
-### Add a DLL file from webpack.DllPlugin
+### Add a DLL file from `webpack.DllPlugin`
 Note: Remember to build the DLL file in a separate build.
 
 When adding assets, it's added to the start of the array, so when
 `html-webpack-plugin` injects the assets, it's before other assets. If you
-depend on some order for the assets beyond that, you'll have to create some
-sort of intermediate file in the given order.
+depend on some order for the assets beyond that, and ordering the plugins
+doesn't cut it, you'll have to create a custom template and add the tags
+yourself.
 
 #### Webpack config
 ```js

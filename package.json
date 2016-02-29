@@ -25,7 +25,7 @@
   "homepage": "https://github.com/SimenB/add-asset-html-webpack-plugin#readme",
   "dependencies": {},
   "devDependencies": {
-    "babel-cli": "^6.4.5",
+    "babel-cli": "^6.5.1",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-preset-es2015": "^6.3.13",
     "in-publish": "^2.0.0",

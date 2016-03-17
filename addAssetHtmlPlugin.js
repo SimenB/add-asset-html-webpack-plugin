@@ -29,7 +29,7 @@ export default class AddAssetHtmlPlugin {
 
       const publicPath = resolvePublicPath(compilation, this.filename)
 
-      compilation.plugin('html-webpack-plugin-before-html-processing', (htmlPluginData, callback) => {
+      compilation.plugin('html-webpack-plugin-before-html-generation', (htmlPluginData, callback) => {
         htmlPluginData.plugin.addFileToAssets(this.filename, compilation)
           .then((filename) => htmlPluginData.assets[this.typeOfAsset].unshift(`${publicPath}${filename}`))
           .then(() => {

@@ -37,7 +37,7 @@ export default class AddAssetHtmlPlugin {
               return htmlPluginData.plugin.addFileToAssets(`${this.filename}.map`, compilation)
             }
           })
-          .then(() => callback())
+          .then(() => callback(null, htmlPluginData))
       })
     })
   }

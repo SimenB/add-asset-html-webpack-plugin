@@ -1,4 +1,5 @@
 import path from 'path'
+import Promise from 'bluebird'
 
 // Copied from html-webpack-plugin
 function resolvePublicPath (compilation, filename) {
@@ -12,31 +13,28 @@ function resolvePublicPath (compilation, filename) {
   return publicPath
 }
 
+function addFileToAssets (htmlPluginData, compilation, { filename, typeOfAsset = 'js', includeSourcemap = true } = {}) {
+  if (!filename) return compilation.errors.push(new Error('No filename defined'))
+
+  return htmlPluginData.plugin.addFileToAssets(filename, compilation)
+    .then((filename) => htmlPluginData.assets[typeOfAsset].unshift(`${resolvePublicPath(compilation, filename)}${filename}`))
+    .then(() => {
+      if (includeSourcemap) {
+        return htmlPluginData.plugin.addFileToAssets(`${filename}.map`, compilation)
+      }
+      return null
+    })
+}
+
 export default class AddAssetHtmlPlugin {
-  constructor ({
-    filename,
-    includeSourcemap = false,
-    typeOfAsset = 'js'
-  } = {}) {
-    this.filename = filename
-    this.includeSourcemap = includeSourcemap
-    this.typeOfAsset = typeOfAsset
+  constructor (assets = []) {
+    this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets]
   }
 
   apply (compiler) {
     compiler.plugin('compilation', (compilation) => {
-      if (!this.filename) return compilation.errors.push(new Error('No filename defined'))
-
-      const publicPath = resolvePublicPath(compilation, this.filename)
-
       compilation.plugin('html-webpack-plugin-before-html-generation', (htmlPluginData, callback) => {
-        htmlPluginData.plugin.addFileToAssets(this.filename, compilation)
-          .then((filename) => htmlPluginData.assets[this.typeOfAsset].unshift(`${publicPath}${filename}`))
-          .then(() => {
-            if (this.includeSourcemap) {
-              return htmlPluginData.plugin.addFileToAssets(`${this.filename}.map`, compilation)
-            }
-          })
+        Promise.mapSeries(this.assets, asset => addFileToAssets(htmlPluginData, compilation, asset))
           .then(() => callback(null, htmlPluginData))
       })
     })

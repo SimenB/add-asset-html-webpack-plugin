@@ -13,6 +13,8 @@ Install the plugin with `npm`:
 $ npm i add-asset-html-webpack-plugin -D
 ```
 
+NOTE: This plugin requires `html-webpack-plugin@^2.10.0`.
+
 ## Basic Usage
 The plugin will add the given JS or CSS file to the files Webpack knows about, and put it into the
 list of assets `html-webpack-plugin` injects into the generated html. Add the plugin the your

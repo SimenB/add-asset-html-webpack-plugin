@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "compile": "babel addAssetHtmlPlugin.js -o index.js",
-    "lint": "standard",
+    "lint": "node-version-gte-4 && eslint . || node-version-lt-4",
     "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
     "test": "npm run lint"
@@ -31,9 +31,12 @@
     "babel-cli": "^6.9.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.9.0",
+    "eslint": "^3.0.1",
+    "eslint-config-airbnb-base": "^4.0.0",
+    "eslint-plugin-import": "^1.10.2",
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
-    "standard": "^7.1.1"
+    "node-version-check": "^1.0.1"
   },
   "peerDependencies": {
     "html-webpack-plugin": "^2.10.0"

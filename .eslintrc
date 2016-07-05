@@ -1,3 +1,6 @@
 {
-  "extends": "standard"
+  "extends": "airbnb-base",
+  "rules": {
+    "max-len": ["error", 140]
+  }
 }

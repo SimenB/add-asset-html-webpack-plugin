@@ -73,6 +73,11 @@ Type: `string`, mandatory
 
 The absolute path of the file you want to add to the compilation, and resulting HTML file.
 
+#### `hash`
+Type: `boolean`, default: `false`
+
+If `true`, will append a unique hash of the file to the filename. This is useful for cache busting.
+
 #### `includeSourcemap`
 Type: `boolean`, default: `false`
 

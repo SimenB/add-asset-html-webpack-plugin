@@ -1,4 +1,5 @@
 import path from 'path';
+import crypto from 'crypto';
 import Promise from 'bluebird';
 
 // Copied from html-webpack-plugin
@@ -13,11 +14,19 @@ function resolvePublicPath(compilation, filename) {
   return publicPath;
 }
 
-function addFileToAssets(htmlPluginData, compilation, { filename, typeOfAsset = 'js', includeSourcemap = true } = {}) {
+function addFileToAssets(htmlPluginData, compilation, { filename, typeOfAsset = 'js', includeSourcemap = true, hash = false } = {}) {
   if (!filename) return compilation.errors.push(new Error('No filename defined'));
 
   return htmlPluginData.plugin.addFileToAssets(filename, compilation)
-    .then(addedFilename => htmlPluginData.assets[typeOfAsset].unshift(`${resolvePublicPath(compilation, addedFilename)}${addedFilename}`))
+    .then(addedFilename => {
+      let suffix = '';
+      if (hash) {
+        const md5 = crypto.createHash('md5');
+        md5.update(compilation.assets[addedFilename].source());
+        suffix = `?${md5.digest('hex').substr(0, 20)}`;
+      }
+      return htmlPluginData.assets[typeOfAsset].unshift(`${resolvePublicPath(compilation, addedFilename)}${addedFilename}${suffix}`);
+    })
     .then(() => {
       if (includeSourcemap) {
         return htmlPluginData.plugin.addFileToAssets(`${filename}.map`, compilation);

@@ -10,7 +10,8 @@
     "lint": "node-version-gte-4 && eslint . || node-version-lt-4",
     "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
-    "test": "npm run lint"
+    "pretest": "npm run lint",
+    "test": "echo No tests defined"
   },
   "repository": "SimenB/add-asset-html-webpack-plugin",
   "keywords": [

@@ -3,18 +3,24 @@ import crypto from 'crypto';
 import Promise from 'bluebird';
 
 // Copied from html-webpack-plugin
-function resolvePublicPath(compilation, filename) {
-  let publicPath = typeof compilation.options.output.publicPath !== 'undefined'
-    ? compilation.options.output.publicPath
-    : path.relative(path.dirname(filename), '.');
-
-  if (publicPath.length && publicPath.substr(-1, 1) !== '/') {
-    publicPath += '/';
+function resolvePublicPath(compilation, filename, publicPath) {
+  let resolvedPublicPath;
+  if (typeof publicPath === 'undefined') {
+    resolvedPublicPath = typeof compilation.options.output.publicPath !== 'undefined'
+      ? compilation.options.output.publicPath
+      : path.relative(path.dirname(filename), '.');
+  } else {
+    resolvedPublicPath = publicPath;
   }
-  return publicPath;
+
+  if (resolvedPublicPath.length && resolvedPublicPath.substr(-1, 1) !== '/') {
+    resolvedPublicPath += '/';
+  }
+  return resolvedPublicPath;
 }
 
-function addFileToAssets(htmlPluginData, compilation, { filename, typeOfAsset = 'js', includeSourcemap = true, hash = false } = {}) {
+function addFileToAssets(htmlPluginData, compilation,
+  { filename, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath } = {}) {
   if (!filename) return compilation.errors.push(new Error('No filename defined'));
 
   return htmlPluginData.plugin.addFileToAssets(filename, compilation)
@@ -25,7 +31,8 @@ function addFileToAssets(htmlPluginData, compilation, { filename, typeOfAsset = 
         md5.update(compilation.assets[addedFilename].source());
         suffix = `?${md5.digest('hex').substr(0, 20)}`;
       }
-      return htmlPluginData.assets[typeOfAsset].unshift(`${resolvePublicPath(compilation, addedFilename)}${addedFilename}${suffix}`);
+      return htmlPluginData.assets[typeOfAsset]
+        .unshift(`${resolvePublicPath(compilation, addedFilename, publicPath)}${addedFilename}${suffix}`);
     })
     .then(() => {
       if (includeSourcemap) {

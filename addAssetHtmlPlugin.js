@@ -14,7 +14,7 @@ function resolvePublicPath(compilation, filename, publicPath) {
   }
 
   if (resolvedPublicPath.length && resolvedPublicPath.substr(-1, 1) !== '/') {
-    resolvedPublicPath += '/';
+    resolvedPublicPath = `${resolvedPublicPath}/`;
   }
   return resolvedPublicPath;
 }

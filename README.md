@@ -84,6 +84,11 @@ Type: `boolean`, default: `false`
 
 If `true`, will add `filename + '.map'` to the compilation as well.
 
+#### `publicPath`
+Type: `string`
+
+If set, will be used as the public path of the script or link tag.
+
 #### `typeOfAsset`
 Type: `string`, default: `js`
 

@@ -1,6 +1,3 @@
 {
-  "extends": "airbnb-base",
-  "rules": {
-    "max-len": ["error", 140]
-  }
+  "extends": "simenb-base"
 }

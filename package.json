@@ -33,9 +33,7 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.9.0",
     "eslint": "^3.1.1",
-    "eslint-config-airbnb-base": "^5.0.0",
-    "eslint-config-simenb-base": "^1.0.1",
-    "eslint-plugin-import": "^1.11.1",
+    "eslint-config-simenb-base": "^1.3.0",
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
     "node-version-check": "^2.0.2"

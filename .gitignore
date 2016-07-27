@@ -2,4 +2,5 @@ index.js
 
 node_modules/
 .idea/
+typings/
 *.log

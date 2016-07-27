@@ -80,7 +80,7 @@ Type: `boolean`, default: `false`
 If `true`, will append a unique hash of the file to the filename. This is useful for cache busting.
 
 #### `includeSourcemap`
-Type: `boolean`, default: `false`
+Type: `boolean`, default: `true`
 
 If `true`, will add `filename + '.map'` to the compilation as well.
 

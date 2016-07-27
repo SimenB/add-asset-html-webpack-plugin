@@ -1,0 +1,33 @@
+init:
+  - git config --global core.autocrlf true
+
+environment:
+  matrix:
+  - nodejs_version: "0.10"
+  - nodejs_version: "0.12"
+  - nodejs_version: 4
+  - nodejs_version: 5
+  - nodejs_version: 6
+
+# Install scripts. (runs after repo cloning)
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - ps: >-
+      if ($env:nodejs_version -eq "0.10" -or $env:nodejs_version -eq "0.12" -or $env:nodejs_version -eq "4") {
+        npm -g install npm@3
+        $env:PATH="$env:APPDATA\npm;$env:PATH"
+      }
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version && npm --version
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off
+
+matrix:
+  fast_finish: true

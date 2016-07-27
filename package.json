@@ -7,12 +7,17 @@
     "index.d.ts"
   ],
   "scripts": {
+    "clean": "del index.js coverage/ .nyc_output/",
     "compile": "babel addAssetHtmlPlugin.js -o index.js",
+    "cover": "nyc ava",
     "lint": "node-version-gte-4 && eslint . || node-version-lt-4",
     "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
-    "test": "echo No tests defined"
+    "test": "ava",
+    "pretravis": "npm run lint && npm run clean",
+    "travis": "nyc --check-coverage --lines 100 --functions 100 --branches 100 --statements 100 ava",
+    "posttravis": "nyc report --reporter=lcov"
   },
   "repository": "SimenB/add-asset-html-webpack-plugin",
   "keywords": [
@@ -30,16 +35,27 @@
     "bluebird": "^3.3.5"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
+    "ava": "^0.15.2",
+    "babel-cli": "^6.11.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.11.6",
+    "del-cli": "^0.2.0",
     "eslint": "^3.1.1",
+    "eslint-config-simenb-ava": "^1.1.1",
     "eslint-config-simenb-base": "^2.0.0",
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
-    "node-version-check": "^2.0.2"
+    "node-version-check": "^2.0.2",
+    "nyc": "^7.1.0",
+    "sinon": "^1.17.5"
   },
   "peerDependencies": {
     "html-webpack-plugin": "^2.10.0"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
   }
 }

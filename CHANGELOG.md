@@ -8,6 +8,7 @@ Latest version of this document will always be available on https://github.com/S
 ### Added
 - A Changelog!
 - A first attempt to add typings
+- Tests for 100% coverage (#17)
 
 ### Fixes
 - Fix wrong documentation

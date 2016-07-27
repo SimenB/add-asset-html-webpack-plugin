@@ -3,6 +3,7 @@
     "node": "registry:env/node#6.0.0+20160723033700"
   },
   "dependencies": {
-    "bluebird": "registry:npm/bluebird#3.3.4+20160723033700"
+    "bluebird": "registry:npm/bluebird#3.3.4+20160723033700",
+    "sinon": "registry:npm/sinon#1.16.0+20160723033700"
   }
 }

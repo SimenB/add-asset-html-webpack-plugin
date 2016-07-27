@@ -1,2 +1,15 @@
 language: node_js
-node_js: node
+node_js:
+  - node
+  - 5
+  - 4
+  - 0.12
+  - '0.10'
+os:
+  - linux
+  - osx
+before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+script: npm run travis
+after_success:
+  - npm install -g codecov
+  - codecov

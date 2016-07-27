@@ -2,22 +2,22 @@ import path from 'path';
 import crypto from 'crypto';
 import Promise from 'bluebird';
 
-// Copied from html-webpack-plugin
-function resolvePublicPath(compilation, filename, publicPath) {
-  let resolvedPublicPath;
-  if (typeof publicPath === 'undefined') {
-    /* istanbul ignore else */
-    resolvedPublicPath = typeof compilation.options.output.publicPath !== 'undefined'
-      ? compilation.options.output.publicPath
-      : path.relative(path.dirname(filename), '.'); // TODO: How to test this? I haven't written this logic, unsure what it does
-  } else {
-    resolvedPublicPath = publicPath;
+function ensureTrailingSlash(string) {
+  if (string.length && string.substr(-1, 1) !== '/') {
+    return `${string}/`;
   }
 
-  if (resolvedPublicPath.length && resolvedPublicPath.substr(-1, 1) !== '/') {
-    resolvedPublicPath = `${resolvedPublicPath}/`;
-  }
-  return resolvedPublicPath;
+  return string;
+}
+
+// Copied from html-webpack-plugin
+function resolvePublicPath(compilation, filename) {
+  /* istanbul ignore else */
+  const publicPath = typeof compilation.options.output.publicPath !== 'undefined'
+      ? compilation.options.output.publicPath
+      : path.relative(path.dirname(filename), '.'); // TODO: How to test this? I haven't written this logic, unsure what it does
+
+  return ensureTrailingSlash(publicPath);
 }
 
 function addFileToAssets(compilation, htmlPluginData, { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath }) {
@@ -36,8 +36,9 @@ function addFileToAssets(compilation, htmlPluginData, { filepath, typeOfAsset = 
         suffix = `?${md5.digest('hex').substr(0, 20)}`;
       }
 
-      // TODO: No need to call this if `publicPath` is provided
-      const resolvedPublicPath = resolvePublicPath(compilation, addedFilename, publicPath);
+      const resolvedPublicPath = typeof publicPath === 'undefined' ?
+        resolvePublicPath(compilation, addedFilename) :
+        ensureTrailingSlash(publicPath);
       const resolvedPath = `${resolvedPublicPath}${addedFilename}${suffix}`;
 
       htmlPluginData.assets[typeOfAsset].unshift(resolvedPath);

@@ -49,7 +49,7 @@ test("should add file using compilation's publicPath", async t => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
-  await addAllAssetsToCompilation([{ filename: path.join(__dirname, 'my-file.js') }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation([{ filepath: path.join(__dirname, 'my-file.js') }], compilation, pluginData, callback);
 
   t.deepEqual(pluginData.assets.css, []);
   t.deepEqual(pluginData.assets.js, ['vendor/my-file.js']);
@@ -63,7 +63,7 @@ test('should used passed in publicPath', async t => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
-  await addAllAssetsToCompilation([{ filename: 'my-file.js', publicPath: 'pp' }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation([{ filepath: 'my-file.js', publicPath: 'pp' }], compilation, pluginData, callback);
 
   t.deepEqual(pluginData.assets.css, []);
   t.deepEqual(pluginData.assets.js, ['pp/my-file.js']);
@@ -80,7 +80,7 @@ test('should add file missing "/" to public path', async t => {
   const compilation = { options: { output: { publicPath: 'vendor' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
-  await addAllAssetsToCompilation([{ filename: 'my-file.js' }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation([{ filepath: 'my-file.js' }], compilation, pluginData, callback);
 
   t.deepEqual(pluginData.assets.css, []);
   t.deepEqual(pluginData.assets.js, ['vendor/my-file.js']);
@@ -96,7 +96,7 @@ test('should add sourcemap to compilation', async t => {
   const pluginData = { assets: { js: [], css: [] }, plugin: { addFileToAssets: addFileToAssetsStub } };
   addFileToAssetsStub.returns(Promise.resolve('my-file.js'));
 
-  await addAllAssetsToCompilation([{ filename: 'my-file.js' }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation([{ filepath: 'my-file.js' }], compilation, pluginData, callback);
 
   t.deepEqual(pluginData.assets.css, []);
   t.deepEqual(pluginData.assets.js, ['my-file.js']);
@@ -116,7 +116,7 @@ test('should skip adding sourcemap to compilation if set to false', async t => {
   const pluginData = { assets: { js: [], css: [] }, plugin: { addFileToAssets: addFileToAssetsStub } };
   addFileToAssetsStub.returns(Promise.resolve('my-file.js'));
 
-  await addAllAssetsToCompilation([{ filename: 'my-file.js', includeSourcemap: false }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation([{ filepath: 'my-file.js', includeSourcemap: false }], compilation, pluginData, callback);
 
   t.deepEqual(pluginData.assets.css, []);
   t.deepEqual(pluginData.assets.js, ['my-file.js']);
@@ -136,7 +136,7 @@ test('should include hash of file content if option is set', async t => {
   };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
-  await addAllAssetsToCompilation([{ filename: 'my-file.js', hash: true }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation([{ filepath: 'my-file.js', hash: true }], compilation, pluginData, callback);
 
   t.deepEqual(pluginData.assets.css, []);
   t.deepEqual(pluginData.assets.js, ['my-file.js?5329c141291f07ab06c6']);
@@ -153,7 +153,7 @@ test('should add to css if `typeOfAsset` is css', async t => {
   };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
-  await addAllAssetsToCompilation([{ filename: 'my-file.css', typeOfAsset: 'css' }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation([{ filepath: 'my-file.css', typeOfAsset: 'css' }], compilation, pluginData, callback);
 
   t.deepEqual(pluginData.assets.css, ['my-file.css']);
   t.deepEqual(pluginData.assets.js, []);

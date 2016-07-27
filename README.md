@@ -21,7 +21,7 @@ NOTE: This plugin requires `html-webpack-plugin@^2.10.0`.
 ## Basic Usage
 The plugin will add the given JS or CSS file to the files Webpack knows about, and put it into the
 list of assets `html-webpack-plugin` injects into the generated html. Add the plugin the your
-config, providing it a filename:
+config, providing it a filepath:
 
 ```js
 var HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -34,7 +34,7 @@ var webpackConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
-    new AddAssetHtmlPlugin({ filename: require.resolve('./some-file') })
+    new AddAssetHtmlPlugin({ filepath: require.resolve('./some-file') })
   ]
 }
 ```
@@ -59,8 +59,8 @@ multiple objects as an array.
 
 ```js
 new AddAssetHtmlPlugin([
-  { filename: require.resolve('./some-file') }, 
-  { filename: require.resolve('./some-other-file') }
+  { filepath: require.resolve('./some-file') }, 
+  { filepath: require.resolve('./some-other-file') }
 ])
 ```
 
@@ -68,10 +68,10 @@ new AddAssetHtmlPlugin([
 Options are passed to the plugin during instantiation.
 
 ```js
-new AddAssetHtmlPlugin({ filename: require.resolve('./some-file') })
+new AddAssetHtmlPlugin({ filepath: require.resolve('./some-file') })
 ```
 
-#### `filename`
+#### `filepath`
 Type: `string`, mandatory
 
 The absolute path of the file you want to add to the compilation, and resulting HTML file.
@@ -84,7 +84,7 @@ If `true`, will append a unique hash of the file to the filename. This is useful
 #### `includeSourcemap`
 Type: `boolean`, default: `true`
 
-If `true`, will add `filename + '.map'` to the compilation as well.
+If `true`, will add `filepath + '.map'` to the compilation as well.
 
 #### `publicPath`
 Type: `string`
@@ -117,7 +117,7 @@ var webpackConfig = {
   devtool: '#source-map',
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].dll.js',
+    filepath: '[name].dll.js',
     library: '[name]_[hash]'
   },
   plugins: [
@@ -139,7 +139,7 @@ var webpackConfig = {
   entry: 'index.js',
   output: {
     path: 'dist',
-    filename: 'index_bundle.js'
+    filepath: 'index_bundle.js'
   },
   plugins: [
     new webpack.DllReferencePlugin({
@@ -148,7 +148,7 @@ var webpackConfig = {
     }),
     new HtmlWebpackPlugin(),
     new AddAssetHtmlPlugin({
-      filename: require.resolve('./build/vendor.dll.js'),
+      filepath: require.resolve('./build/vendor.dll.js'),
       includeSourcemap: true
     })
   ]

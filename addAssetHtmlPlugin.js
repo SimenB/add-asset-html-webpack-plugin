@@ -20,14 +20,14 @@ function resolvePublicPath(compilation, filename, publicPath) {
   return resolvedPublicPath;
 }
 
-function addFileToAssets(compilation, htmlPluginData, { filename, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath }) {
-  if (!filename) {
+function addFileToAssets(compilation, htmlPluginData, { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath }) {
+  if (!filepath) {
     const error = new Error('No filename defined');
     compilation.errors.push(error);
     return Promise.reject(error);
   }
 
-  return htmlPluginData.plugin.addFileToAssets(filename, compilation)
+  return htmlPluginData.plugin.addFileToAssets(filepath, compilation)
     .then(addedFilename => {
       let suffix = '';
       if (hash) {
@@ -46,7 +46,7 @@ function addFileToAssets(compilation, htmlPluginData, { filename, typeOfAsset = 
     })
     .then(() => {
       if (includeSourcemap) {
-        return htmlPluginData.plugin.addFileToAssets(`${filename}.map`, compilation);
+        return htmlPluginData.plugin.addFileToAssets(`${filepath}.map`, compilation);
       }
       return null;
     });

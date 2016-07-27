@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
+### Breaking
+- Rename `filname` to `filepath`, which makes much more sense
+
 ### Added
 - A Changelog!
 - A first attempt to add typings

@@ -38,7 +38,7 @@ test('should invoke callback on error', async t => {
   await addAllAssetsToCompilation([{}], compilation, pluginMock, callback);
 
   t.true(compilation.errors.length === 1);
-  t.true(compilation.errors[0].message === 'No filename defined');
+  t.true(compilation.errors[0].message === 'No filepath defined');
 
   t.true(callback.calledOnce);
   t.true(callback.calledWithExactly(compilation.errors[0], pluginMock));

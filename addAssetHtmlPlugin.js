@@ -22,7 +22,7 @@ function resolvePublicPath(compilation, filename) {
 
 function addFileToAssets(compilation, htmlPluginData, { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath }) {
   if (!filepath) {
-    const error = new Error('No filename defined');
+    const error = new Error('No filepath defined');
     compilation.errors.push(error);
     return Promise.reject(error);
   }

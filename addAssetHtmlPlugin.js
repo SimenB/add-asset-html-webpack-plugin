@@ -20,7 +20,15 @@ function resolvePublicPath(compilation, filename) {
   return ensureTrailingSlash(publicPath);
 }
 
-function addFileToAssets(compilation, htmlPluginData, { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath }) {
+function resolveOutput(compilation, addedFilename, outputPath) {
+  if (outputPath && outputPath.length) {
+    compilation.assets[`${outputPath}/${addedFilename}`] = compilation.assets[addedFilename]; // eslint-disable-line no-param-reassign
+    delete compilation.assets[addedFilename]; // eslint-disable-line no-param-reassign
+  }
+}
+
+function addFileToAssets(compilation, htmlPluginData,
+  { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath, outputPath }) {
   if (!filepath) {
     const error = new Error('No filepath defined');
     compilation.errors.push(error);
@@ -43,11 +51,17 @@ function addFileToAssets(compilation, htmlPluginData, { filepath, typeOfAsset = 
 
       htmlPluginData.assets[typeOfAsset].unshift(resolvedPath);
 
+      resolveOutput(compilation, addedFilename, outputPath);
+
       return resolvedPath;
     })
     .then(() => {
       if (includeSourcemap) {
-        return htmlPluginData.plugin.addFileToAssets(`${filepath}.map`, compilation);
+        return htmlPluginData.plugin.addFileToAssets(`${filepath}.map`, compilation)
+          .then(addedFilename => {
+            resolveOutput(compilation, addedFilename, outputPath);
+            return null;
+          });
       }
       return null;
     });

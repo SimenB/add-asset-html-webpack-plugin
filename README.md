@@ -88,6 +88,11 @@ Type: `boolean`, default: `true`
 
 If `true`, will add `filepath + '.map'` to the compilation as well.
 
+#### `outputPath`
+Type: `string`
+
+If set, will be used as the output directory of the file.
+
 #### `publicPath`
 Type: `string`
 

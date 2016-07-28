@@ -5,6 +5,7 @@ interface PluginOptions {
   typeOfAsset?: string;
   includeSourcemap?: boolean;
   hash?: boolean;
+  outputPath?: string;
   publicPath?: string;
 }
 

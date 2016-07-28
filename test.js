@@ -161,3 +161,28 @@ test('should add to css if `typeOfAsset` is css', async t => {
   t.true(callback.calledOnce);
   t.true(callback.calledWithExactly(null, pluginData));
 });
+
+test('should replace compilation assets key if `outputPath` is set', async t => {
+  const callback = sinon.stub();
+  const source = { source: () => 'test' };
+  const addFileToAssetsMock = (filename, compilation) => {
+    const name = path.basename(filename);
+    compilation.assets[name] = source; // eslint-disable-line no-param-reassign
+    return Promise.resolve(name);
+  };
+  const compilation = {
+    options: { output: {} },
+    assets: {},
+  };
+  const pluginData = { assets: { js: [], css: [] }, plugin: { addFileToAssets: addFileToAssetsMock } };
+
+  await addAllAssetsToCompilation([{ filepath: 'my-file.js', outputPath: 'assets' }], compilation, pluginData, callback);
+
+  t.deepEqual(pluginData.assets.css, []);
+  t.deepEqual(pluginData.assets.js, ['my-file.js']);
+
+  t.is(compilation.assets['my-file.js'], undefined);
+  t.deepEqual(compilation.assets['assets/my-file.js'], source);
+  t.is(compilation.assets['my-file.js.map'], undefined);
+  t.deepEqual(compilation.assets['assets/my-file.js.map'], source);
+});

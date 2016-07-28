@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
+Nothing!
+
+## [1.0.0] - 2016-07-29
 ### Breaking
 - Rename `filname` to `filepath`, which makes much more sense
 
@@ -61,7 +64,8 @@ Latest version of this document will always be available on https://github.com/S
 Initial release
 
 
-[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.4.0...v1.0.0
 [0.4.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.1.0...v0.2.0

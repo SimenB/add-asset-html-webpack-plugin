@@ -12,6 +12,7 @@ Latest version of this document will always be available on https://github.com/S
 - A Changelog!
 - A first attempt to add typings
 - Tests for 100% coverage (#17)
+- `outputPath` option (#16, thanks @wadahiro)
 
 ### Fixes
 - Fix wrong documentation

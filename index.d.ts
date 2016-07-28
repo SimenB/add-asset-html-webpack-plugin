@@ -1,7 +1,7 @@
 // TODO: I don't know if it's possible to document default values...
 
 interface PluginOptions {
-  filename: string;
+  filepath: string;
   typeOfAsset?: string;
   includeSourcemap?: boolean;
   hash?: boolean;

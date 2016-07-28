@@ -23,6 +23,8 @@ The plugin will add the given JS or CSS file to the files Webpack knows about, a
 list of assets `html-webpack-plugin` injects into the generated html. Add the plugin the your
 config, providing it a filepath:
 
+> Note that the option `filename` was renamed to `filepath` in preparation for the, as of yet, unreleased 1.0.0. Current release uses `filename` (as per the included README in the package).
+
 ```js
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')

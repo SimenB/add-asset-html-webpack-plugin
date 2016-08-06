@@ -4,7 +4,8 @@ import path from 'path';
 import test from 'ava';
 import sinon from 'sinon';
 import Promise from 'bluebird';
-import AddAssetHtmlPlugin, { addAllAssetsToCompilation } from './addAssetHtmlPlugin';
+import AddAssetHtmlPlugin from './src/index';
+import addAllAssetsToCompilation from './src/addAllAssetsToCompilation';
 
 const pluginMock = {
   plugin: {

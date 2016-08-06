@@ -68,23 +68,8 @@ function addFileToAssets(compilation, htmlPluginData,
 }
 
 // Visible for testing
-export function addAllAssetsToCompilation(assets, compilation, htmlPluginData, callback) {
+export default function (assets, compilation, htmlPluginData, callback) {
   return Promise.mapSeries(assets, asset => addFileToAssets(compilation, htmlPluginData, asset))
     .then(() => callback(null, htmlPluginData))
     .catch(e => callback(e, htmlPluginData));
-}
-
-export default class AddAssetHtmlPlugin {
-  constructor(assets = []) {
-    this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets];
-  }
-
-  /* istanbul ignore next: this would be integration tests */
-  apply(compiler) {
-    compiler.plugin('compilation', compilation => {
-      compilation.plugin('html-webpack-plugin-before-html-generation', (htmlPluginData, callback) => {
-        addAllAssetsToCompilation(this.assets, compilation, htmlPluginData, callback);
-      });
-    });
-  }
 }

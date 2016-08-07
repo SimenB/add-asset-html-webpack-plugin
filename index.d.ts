@@ -1,16 +1,44 @@
-// TODO: I don't know if it's possible to document default values...
+declare namespace AddAssetHtmlPlugin {
+  interface Options {
+    /**
+    * The absolute path of the file you want to add to the compilation, and resulting HTML file.
+    * Mandatory.
+    */
+    filepath: string;
 
-interface PluginOptions {
-  filepath: string;
-  typeOfAsset?: string;
-  includeSourcemap?: boolean;
-  hash?: boolean;
-  outputPath?: string;
-  publicPath?: string;
+    /**
+    * If true, will append a unique hash of the file to the filename. This is useful for cache busting.
+    * Default false.
+    */
+    hash?: boolean;
+
+    /**
+    * If true, will add filepath + '.map' to the compilation as well.
+    * Default true.
+    */
+    includeSourcemap?: boolean;
+
+    /**
+    * If set, will be used as the output directory of the file.
+    */
+    outputPath?: string;
+
+    /**
+    * If set, will be used as the public path of the script or link tag.
+    */
+    publicPath?: string;
+
+    /**
+    * Can be set to css to create a link-tag instead of a script-tag.
+    * Default 'js'
+    */
+    typeOfAsset?: string;
+  }
 }
 
-export class AddAssetHtmlPlugin {
-  constructor(options: PluginOptions);
-
-  apply(compiler): void;
+declare class AddAssetHtmlPlugin {
+  constructor(options: AddAssetHtmlPlugin.Options);
+  apply(compiler: any): void;
 }
+
+export = AddAssetHtmlPlugin;

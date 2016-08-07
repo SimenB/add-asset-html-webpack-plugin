@@ -7,6 +7,10 @@ Latest version of this document will always be available on https://github.com/S
 ## [Unreleased]
 Nothing!
 
+## [1.0.2] - 2016-08-07
+### Fixes
+- Fix TypeScript definition file (#22, thanks @hh10k)
+
 ## [1.0.1] - 2016-08-06
 ### Fixes
 - Make `require` work without `.default` again (Fixes #20)
@@ -68,7 +72,8 @@ Nothing!
 Initial release
 
 
-[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.2...HEAD
+[1.0.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.4.0...v1.0.0
 [0.4.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.3.0...v0.4.0

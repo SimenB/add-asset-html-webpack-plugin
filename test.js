@@ -182,8 +182,8 @@ test('should replace compilation assets key if `outputPath` is set', async t => 
   t.deepEqual(pluginData.assets.css, []);
   t.deepEqual(pluginData.assets.js, ['my-file.js']);
 
-  t.is(compilation.assets['my-file.js'], undefined);
+  t.true(compilation.assets['my-file.js'] === undefined);
   t.deepEqual(compilation.assets['assets/my-file.js'], source);
-  t.is(compilation.assets['my-file.js.map'], undefined);
+  t.true(compilation.assets['my-file.js.map'] === undefined);
   t.deepEqual(compilation.assets['assets/my-file.js.map'], source);
 });

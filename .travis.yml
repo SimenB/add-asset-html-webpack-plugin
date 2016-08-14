@@ -8,6 +8,7 @@ node_js:
 os:
   - linux
   - osx
+osx_image: xcode7.3
 before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 script: npm run travis
 after_success:

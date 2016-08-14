@@ -73,7 +73,7 @@ Initial release
 
 
 [Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.2...HEAD
-[1.0.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.1...v1.0.2
+[1.0.2]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.4.0...v1.0.0
 [0.4.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.3.0...v0.4.0

@@ -11,7 +11,7 @@ environment:
 
 # Install scripts. (runs after repo cloning)
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version x64
   - ps: >-
       if ($env:nodejs_version -eq "0.10" -or $env:nodejs_version -eq "0.12" -or $env:nodejs_version -eq "4") {
         npm -g install npm@3

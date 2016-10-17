@@ -44,7 +44,7 @@
     "del-cli": "^0.2.0",
     "eslint": "^3.7.1",
     "eslint-config-simenb-ava": "^3.0.1",
-    "eslint-config-simenb-base": "^5.0.0",
+    "eslint-config-simenb-base": "^7.0.0",
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
     "node-version-check": "^2.1.1",

@@ -10,19 +10,16 @@ environment:
 # Install scripts. (runs after repo cloning)
 install:
   - ps: Install-Product node $env:nodejs_version x64
-  - ps: >-
-      if ($env:nodejs_version -eq "4") {
-        npm -g install npm@3
-        $env:PATH="$env:APPDATA\npm;$env:PATH"
-      }
-  - npm install
+  - npm install -g yarn
+  - set PATH=%APPDATA%\npm;%PATH%
+  - yarn install
 
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging.
-  - node --version && npm --version
+  - node --version && yarn --version
   # run tests
-  - npm test
+  - yarn test
 
 # Don't actually build.
 build: off

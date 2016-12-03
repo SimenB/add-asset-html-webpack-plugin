@@ -1,8 +1,8 @@
 {
   "presets": [
-    "es2015"
+    "es2015-node4"
   ],
   "plugins": [
-    "babel-plugin-add-module-exports"
+    "add-module-exports"
   ]
 }

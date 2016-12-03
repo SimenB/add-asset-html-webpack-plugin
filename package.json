@@ -8,9 +8,11 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "clean": "del lib/ coverage/ .nyc_output/",
+    "clean": "del lib/ coverage/ .nyc_output/ example/build example/dist",
     "compile": "babel src/ --out-dir lib/",
     "cover": "nyc ava",
+    "preexample": "npm run clean && npm run compile",
+    "example": "webpack --config example/webpack.config.dll.js && webpack --config example/webpack.config.js",
     "lint": "eslint .",
     "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
@@ -42,6 +44,7 @@
     "babel-plugin-transform-async-to-module-method": "^6.16.0",
     "babel-preset-es2015-node4": "^2.1.0",
     "babel-register": "^6.18.0",
+    "classnames": "^2.2.5",
     "del-cli": "^0.2.0",
     "eslint": "^3.9.1",
     "eslint-config-simenb-ava": "^6.0.0",
@@ -49,7 +52,8 @@
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
     "nyc": "^10.0.0",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "webpack": "^1.13.3"
   },
   "peerDependencies": {
     "html-webpack-plugin": "^2.10.0"

@@ -105,7 +105,8 @@ Can be set to `css` to create a `link`-tag instead of a `script`-tag.
 ### Add a DLL file from `webpack.DllPlugin`
 Note: Remember to build the DLL file in a separate build.
 
-See [example](example/) for an example of how to set it up.
+See [example](example/) for an example of how to set it up. You can run it by
+cloning this repo, running `yarn` followed by `yarn run example`.
 
 When adding assets, it's added to the start of the array, so when
 `html-webpack-plugin` injects the assets, it's before other assets. If you

@@ -3,6 +3,10 @@
     "es2015-node4"
   ],
   "plugins": [
+    ["transform-async-to-module-method", {
+      "module": "bluebird",
+      "method": "coroutine"
+    }],
     "add-module-exports"
   ]
 }

@@ -3,6 +3,8 @@
     "node": true
   },
   "rules": {
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    // Off becuase stuff is generated later
+    "import/no-unresolved": "off"
   }
 }

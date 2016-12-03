@@ -39,6 +39,7 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-espower": "^2.3.1",
     "babel-plugin-transform-async-to-module-method": "^6.16.0",
     "babel-preset-es2015-node4": "^2.1.0",
     "babel-register": "^6.18.0",

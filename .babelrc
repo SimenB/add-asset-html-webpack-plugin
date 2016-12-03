@@ -8,5 +8,12 @@
       "method": "coroutine"
     }],
     "add-module-exports"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        ["espower", { "embedAst": true }]
+      ]
+    }
+  }
 }

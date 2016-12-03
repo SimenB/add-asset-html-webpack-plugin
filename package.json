@@ -10,17 +10,16 @@
   "scripts": {
     "clean": "del lib/ coverage/ .nyc_output/ example/build example/dist",
     "compile": "babel src/ --out-dir lib/",
-    "cover": "nyc ava",
+    "cover": "jest --coverage",
     "preexample": "npm run clean && npm run compile",
     "example": "webpack --config example/webpack.config.dll.js && webpack --config example/webpack.config.js",
     "lint": "eslint .",
     "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
-    "test": "ava",
+    "test": "jest",
     "pretravis": "npm run lint && npm run clean",
-    "travis": "nyc --check-coverage --lines 100 --functions 100 --branches 100 --statements 100 ava",
-    "posttravis": "nyc report --reporter=lcov"
+    "travis": "npm run cover"
   },
   "repository": "SimenB/add-asset-html-webpack-plugin",
   "keywords": [
@@ -38,7 +37,6 @@
     "bluebird": "^3.4.6"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
     "babel-cli": "^6.18.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-async-to-module-method": "^6.16.0",
@@ -47,11 +45,12 @@
     "classnames": "^2.2.5",
     "del-cli": "^0.2.0",
     "eslint": "^3.9.1",
-    "eslint-config-simenb-ava": "^6.0.0",
     "eslint-config-simenb-base": "^8.0.0",
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
+    "jest": "^17.0.3",
     "nyc": "^10.0.0",
+    "power-assert": "^1.4.2",
     "sinon": "^1.17.6",
     "webpack": "^1.13.3"
   },
@@ -61,10 +60,15 @@
   "engines": {
     "node": ">=4"
   },
-  "ava": {
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
+  "jest": {
+    "testRegex": "test.js",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }

@@ -3,7 +3,6 @@ lib/
 node_modules/
 .idea/
 typings/
-.nyc_output/
 coverage/
 *.log
 build/

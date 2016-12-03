@@ -7,8 +7,6 @@ os:
   - linux
   - osx
 osx_image: xcode7.3
-before_install: npm i -g yarn
-install: yarn install
 script: yarn run travis
 after_success:
   - npm install -g codecov

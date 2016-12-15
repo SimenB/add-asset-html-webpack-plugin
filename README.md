@@ -173,7 +173,7 @@ const webpackConfig = {
 [codecov-image]: https://img.shields.io/codecov/c/github/SimenB/add-asset-html-webpack-plugin/master.svg
 [david-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin
 [david-image]: https://img.shields.io/david/SimenB/add-asset-html-webpack-plugin.svg
-[david-dev-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin#info=devDependencies
+[david-dev-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=dev
 [david-dev-image]: https://img.shields.io/david/dev/SimenB/add-asset-html-webpack-plugin.svg
-[david-peer-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin#info=peerDependencies
+[david-peer-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=peer
 [david-peer-image]: https://img.shields.io/david/peer/SimenB/add-asset-html-webpack-plugin.svg

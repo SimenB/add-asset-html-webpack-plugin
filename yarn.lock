@@ -90,6 +90,10 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
+apache-2.0@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/apache-2.0/-/apache-2.0-1.0.7.tgz#7ac2f64da506b841f28a9d0acfcfaea4c15622a7"
+
 append-transform@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-0.3.0.tgz#d6933ce4a85f09445d9ccc4cc119051b7381a813"
@@ -1660,6 +1664,16 @@ glob@5.x, glob@^5.0.5:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+glob@^6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
+  dependencies:
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "2 || 3"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.0.6:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
@@ -1705,6 +1719,10 @@ got@^5.0.0:
     timed-out "^3.0.0"
     unzip-response "^1.0.2"
     url-parse-lax "^1.0.0"
+
+gpl-3.0@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gpl-3.0/-/gpl-3.0-1.0.1.tgz#178b1c10ee578ef417fa426ac443913d8962f915"
 
 graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
   version "4.1.11"
@@ -2394,6 +2412,34 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
 
+jslicense-0bsd@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/jslicense-0bsd/-/jslicense-0bsd-0.1.0.tgz#5b7c19105890b7b97c649738fd9f49b7b6f137fd"
+
+jslicense-bsd-2-clause@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/jslicense-bsd-2-clause/-/jslicense-bsd-2-clause-0.1.1.tgz#fea32628f8525d8d2590ac4def9efffbb58589c5"
+
+jslicense-bsd-3-clause@^0.1.0:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/jslicense-bsd-3-clause/-/jslicense-bsd-3-clause-0.1.3.tgz#a7dcbabbe3a539689019ed4ecfe53cd1e6ab34c2"
+
+jslicense-isc@^0.1.0:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/jslicense-isc/-/jslicense-isc-0.1.2.tgz#215531a0aff10650610f5c81e470827bcdbd7c21"
+
+jslicense-mit@^0.1.0:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/jslicense-mit/-/jslicense-mit-0.1.2.tgz#29cc1ed96fb11ac1afd329c85cdc067a6c067010"
+
+jslicense-upl-1.0@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/jslicense-upl-1.0/-/jslicense-upl-1.0-1.0.2.tgz#a15e359cf9346313a175637a84797f34f30b09a1"
+
+jslicense-wtfpl@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/jslicense-wtfpl/-/jslicense-wtfpl-0.1.1.tgz#f158736b9a462aa31502d8e34c06b031e9ba5ba3"
+
 json-schema@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
@@ -2460,6 +2506,24 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+licensor@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/licensor/-/licensor-3.1.0.tgz#8b3da3771603e937ee2ae3365e233fb91bb19731"
+  dependencies:
+    apache-2.0 "^1.0.7"
+    glob "^6.0.4"
+    gpl-3.0 "^1.0.1"
+    jslicense-0bsd "^0.1.0"
+    jslicense-bsd-2-clause "^0.1.0"
+    jslicense-bsd-3-clause "^0.1.0"
+    jslicense-isc "^0.1.0"
+    jslicense-mit "^0.1.0"
+    jslicense-upl-1.0 "^1.0.2"
+    jslicense-wtfpl "^0.1.0"
+    nopt "^3.0.6"
+    normalize-package-data "^2.1.0"
+    word-wrap "^1.1.0"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -2826,13 +2890,13 @@ node-status-codes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-status-codes/-/node-status-codes-1.0.0.tgz#5ae5541d024645d32a58fcddc9ceecea7ae3ac2f"
 
-nopt@~3.0.6:
+nopt@^3.0.6, nopt@~3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"
   dependencies:
     abbrev "1"
 
-normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
+normalize-package-data@^2.1.0, normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.3.5.tgz#8d924f142960e1777e7ffe170543631cc7cb02df"
   dependencies:
@@ -4126,6 +4190,10 @@ window-size@0.1.0:
 window-size@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.2.0.tgz#b4315bb4214a3d7058ebeee892e13fa24d98b075"
+
+word-wrap@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.1.0.tgz#356153d61d10610d600785c5d701288e0ae764a6"
 
 wordwrap@0.0.2:
   version "0.0.2"

@@ -49,7 +49,7 @@
     "classnames": "^2.2.5",
     "del-cli": "^0.2.0",
     "eslint": "^3.9.1",
-    "eslint-config-simenb-base": "^8.0.0",
+    "eslint-config-simenb-base": "^9.0.0",
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
     "jest": "^18.0.0",

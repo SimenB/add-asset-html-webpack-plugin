@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies: ["error", { "devDependencies": true }] */
 /* eslint-env jest */
 
 import path from 'path';

@@ -10,8 +10,6 @@ environment:
 # Install scripts. (runs after repo cloning)
 install:
   - ps: Install-Product node $env:nodejs_version x64
-  - npm install -g yarn
-  - set PATH=%APPDATA%\npm;%PATH%
   - yarn install
 
 # Post-install test scripts.
@@ -26,3 +24,6 @@ build: off
 
 matrix:
   fast_finish: true
+
+cache:
+  - "%LOCALAPPDATA%\\Yarn"

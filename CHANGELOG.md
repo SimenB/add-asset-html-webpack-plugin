@@ -5,7 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
-Nothing!
+### Breaking
+- Drop support for `node<4`
 
 ## [1.0.2] - 2016-08-07
 ### Fixes

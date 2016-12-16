@@ -15,7 +15,7 @@
     "example": "webpack --config example/webpack.config.dll.js && webpack --config example/webpack.config.js",
     "lint": "eslint .",
     "update-license": "licensor --width 72",
-    "compile-and-update-license": "npm run compile && update-license",
+    "compile-and-update-license": "npm run compile && npm run update-license",
     "preversion": "npm run update-license",
     "prepublish": "not-in-install && npm run compile-and-update-license || in-install",
     "postpublish": "git push --follow-tags",

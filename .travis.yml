@@ -12,6 +12,4 @@ after_success:
   - npm install -g codecov
   - codecov
 cache:
-  npm: true
-  directories:
-  - node_modules
+  yarn: true

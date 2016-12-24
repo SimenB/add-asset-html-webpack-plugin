@@ -1,9 +1,11 @@
 {
   "globalDependencies": {
-    "node": "registry:env/node#6.0.0+20160723033700"
+    "classnames": "registry:dt/classnames#0.0.0+20161113184211",
+    "jest": "registry:dt/jest#16.0.0+20161220121457",
+    "node": "registry:env/node#6.0.0+20161223222858"
   },
   "dependencies": {
-    "bluebird": "registry:npm/bluebird#3.3.4+20160723033700",
-    "sinon": "registry:npm/sinon#1.16.0+20160723033700"
+    "bluebird": "registry:npm/bluebird#3.4.1+20160909132857",
+    "webpack": "registry:dt/webpack#1.12.9+20161119044246"
   }
 }

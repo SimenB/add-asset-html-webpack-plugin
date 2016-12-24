@@ -8,7 +8,7 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "clean": "del lib/ coverage/ .nyc_output/ example/build example/dist",
+    "clean": "del lib/ coverage/ example/build example/dist",
     "compile": "babel src/ --out-dir lib/",
     "cover": "jest --coverage",
     "preexample": "npm run clean && npm run compile",
@@ -42,10 +42,8 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-espower": "^2.3.1",
     "babel-plugin-transform-async-to-module-method": "^6.16.0",
     "babel-preset-es2015-node4": "^2.1.0",
-    "babel-register": "^6.18.0",
     "classnames": "^2.2.5",
     "del-cli": "^0.2.0",
     "eslint": "^3.9.1",
@@ -54,9 +52,6 @@
     "in-publish": "^2.0.0",
     "jest": "^18.0.0",
     "licensor": "^3.1.0",
-    "nyc": "^10.0.0",
-    "power-assert": "^1.4.2",
-    "sinon": "^1.17.6",
     "webpack": "^1.13.3"
   },
   "peerDependencies": {

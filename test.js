@@ -1,8 +1,6 @@
 /* eslint-env jest */
 
 import path from 'path';
-import assert from 'power-assert';
-import sinon from 'sinon';
 import Promise from 'bluebird';
 import AddAssetHtmlPlugin from './src/index';
 import addAllAssetsToCompilation from './src/addAllAssetsToCompilation';
@@ -14,123 +12,123 @@ const pluginMock = {
 };
 
 test('assets should always be an array', () => {
-  assert(Array.isArray(new AddAssetHtmlPlugin({}).assets));
-  assert(Array.isArray(new AddAssetHtmlPlugin([]).assets));
-  assert(Array.isArray(new AddAssetHtmlPlugin().assets));
+  expect(new AddAssetHtmlPlugin({}).assets).toBeInstanceOf(Array);
+  expect(new AddAssetHtmlPlugin([]).assets).toBeInstanceOf(Array);
+  expect(new AddAssetHtmlPlugin().assets).toBeInstanceOf(Array);
 });
 
 test('assets should should be reversed', () => {
-  assert.deepEqual(new AddAssetHtmlPlugin(['a', 'b']).assets, ['b', 'a']);
+  expect(new AddAssetHtmlPlugin(['a', 'b']).assets).toEqual(['b', 'a']);
 });
 
 test.concurrent('should invoke callback on success', async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
 
   await addAllAssetsToCompilation([], {}, pluginMock, callback);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginMock));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginMock);
 });
 
 test.concurrent('should invoke callback on error', async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
   const compilation = { errors: [] };
 
   await addAllAssetsToCompilation([{}], compilation, pluginMock, callback);
 
-  assert(compilation.errors.length === 1);
-  assert(compilation.errors[0].message === 'No filepath defined');
+  expect(compilation.errors).toHaveLength(1);
+  expect(compilation.errors[0].message).toBe('No filepath defined');
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(compilation.errors[0], pluginMock));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(compilation.errors[0], pluginMock);
 });
 
 test.concurrent("should add file using compilation's publicPath", async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
   await addAllAssetsToCompilation([{ filepath: path.join(__dirname, 'my-file.js') }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, []);
-  assert.deepEqual(pluginData.assets.js, ['vendor/my-file.js']);
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['vendor/my-file.js']);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginData));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test.concurrent('should used passed in publicPath', async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
   await addAllAssetsToCompilation([{ filepath: 'my-file.js', publicPath: 'pp' }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, []);
-  assert.deepEqual(pluginData.assets.js, ['pp/my-file.js']);
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['pp/my-file.js']);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginData));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 // No idea what this does, actually... Coverage currently hits it, but the logic is untested.
 test('should handle missing `publicPath`');
 
 test.concurrent('should add file missing "/" to public path', async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
   await addAllAssetsToCompilation([{ filepath: 'my-file.js' }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, []);
-  assert.deepEqual(pluginData.assets.js, ['vendor/my-file.js']);
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['vendor/my-file.js']);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginData));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test.concurrent('should add sourcemap to compilation', async () => {
-  const callback = sinon.stub();
-  const addFileToAssetsStub = sinon.stub();
+  const callback = jest.fn();
+  const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = { assets: { js: [], css: [] }, plugin: { addFileToAssets: addFileToAssetsStub } };
-  addFileToAssetsStub.returns(Promise.resolve('my-file.js'));
+  addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
   await addAllAssetsToCompilation([{ filepath: 'my-file.js' }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, []);
-  assert.deepEqual(pluginData.assets.js, ['my-file.js']);
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['my-file.js']);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginData));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 
-  assert(addFileToAssetsStub.calledTwice);
-  assert(addFileToAssetsStub.getCall(0).args[0] === 'my-file.js');
-  assert(addFileToAssetsStub.getCall(1).args[0] === 'my-file.js.map');
+  expect(addFileToAssetsStub).toHaveBeenCalledTimes(2);
+  expect(addFileToAssetsStub.mock.calls[0]).toEqual(['my-file.js', compilation]);
+  expect(addFileToAssetsStub.mock.calls[1]).toEqual(['my-file.js.map', compilation]);
 });
 
 test.concurrent('should skip adding sourcemap to compilation if set to false', async () => {
-  const callback = sinon.stub();
-  const addFileToAssetsStub = sinon.stub();
+  const callback = jest.fn();
+  const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = { assets: { js: [], css: [] }, plugin: { addFileToAssets: addFileToAssetsStub } };
-  addFileToAssetsStub.returns(Promise.resolve('my-file.js'));
+  addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
   await addAllAssetsToCompilation([{ filepath: 'my-file.js', includeSourcemap: false }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, []);
-  assert.deepEqual(pluginData.assets.js, ['my-file.js']);
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['my-file.js']);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginData));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 
-  assert(addFileToAssetsStub.calledOnce);
-  assert(addFileToAssetsStub.getCall(0).args[0] === 'my-file.js');
+  expect(addFileToAssetsStub).toHaveBeenCalledTimes(1);
+  expect(addFileToAssetsStub).toHaveBeenCalledWith('my-file.js', compilation);
 });
 
 test.concurrent('should include hash of file content if option is set', async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
   const compilation = {
     options: { output: {} },
     assets: { 'my-file.js': { source: () => 'some source code is cool to have;' } },
@@ -139,15 +137,15 @@ test.concurrent('should include hash of file content if option is set', async ()
 
   await addAllAssetsToCompilation([{ filepath: 'my-file.js', hash: true }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, []);
-  assert.deepEqual(pluginData.assets.js, ['my-file.js?5329c141291f07ab06c6']);
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['my-file.js?5329c141291f07ab06c6']);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginData));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test.concurrent('should add to css if `typeOfAsset` is css', async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
   const compilation = {
     options: { output: {} },
     assets: { 'my-file.js': { source: () => 'some source code is cool to have;' } },
@@ -156,15 +154,15 @@ test.concurrent('should add to css if `typeOfAsset` is css', async () => {
 
   await addAllAssetsToCompilation([{ filepath: 'my-file.css', typeOfAsset: 'css' }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, ['my-file.css']);
-  assert.deepEqual(pluginData.assets.js, []);
+  expect(pluginData.assets.css).toEqual(['my-file.css']);
+  expect(pluginData.assets.js).toEqual([]);
 
-  assert(callback.calledOnce);
-  assert(callback.calledWithExactly(null, pluginData));
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test.concurrent('should replace compilation assets key if `outputPath` is set', async () => {
-  const callback = sinon.stub();
+  const callback = jest.fn();
   const source = { source: () => 'test' };
   const addFileToAssetsMock = (filename, compilation) => {
     const name = path.basename(filename);
@@ -179,11 +177,11 @@ test.concurrent('should replace compilation assets key if `outputPath` is set', 
 
   await addAllAssetsToCompilation([{ filepath: 'my-file.js', outputPath: 'assets' }], compilation, pluginData, callback);
 
-  assert.deepEqual(pluginData.assets.css, []);
-  assert.deepEqual(pluginData.assets.js, ['my-file.js']);
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['my-file.js']);
 
-  assert(compilation.assets['my-file.js'] === undefined);
-  assert.deepEqual(compilation.assets['assets/my-file.js'], source);
-  assert(compilation.assets['my-file.js.map'] === undefined);
-  assert.deepEqual(compilation.assets['assets/my-file.js.map'], source);
+  expect(compilation.assets['my-file.js']).toBeUndefined();
+  expect(compilation.assets['assets/my-file.js']).toEqual(source);
+  expect(compilation.assets['my-file.js.map']).toBeUndefined();
+  expect(compilation.assets['assets/my-file.js.map']).toEqual(source);
 });

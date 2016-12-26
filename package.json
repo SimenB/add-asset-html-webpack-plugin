@@ -61,6 +61,7 @@
     "node": ">=4"
   },
   "jest": {
+    "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
         "branches": 100,

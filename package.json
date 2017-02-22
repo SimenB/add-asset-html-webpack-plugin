@@ -50,7 +50,7 @@
     "eslint-config-simenb-base": "^9.0.0",
     "html-webpack-plugin": "^2.10.0",
     "in-publish": "^2.0.0",
-    "jest": "^18.0.0",
+    "jest": "^19.0.0",
     "licensor": "^3.1.0",
     "webpack": "^2.2.1"
   },

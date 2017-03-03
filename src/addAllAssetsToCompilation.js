@@ -13,9 +13,9 @@ function ensureTrailingSlash(string) {
 // Copied from html-webpack-plugin
 function resolvePublicPath(compilation, filename) {
   /* istanbul ignore else */
-  const publicPath = typeof compilation.options.output.publicPath !== 'undefined' ?
-    compilation.options.output.publicPath :
-    path.relative(path.dirname(filename), '.'); // TODO: How to test this? I haven't written this logic, unsure what it does
+  const publicPath = typeof compilation.options.output.publicPath !== 'undefined'
+    ? compilation.options.output.publicPath
+    : path.relative(path.dirname(filename), '.'); // TODO: How to test this? I haven't written this logic, unsure what it does
 
   return ensureTrailingSlash(publicPath);
 }
@@ -27,8 +27,11 @@ function resolveOutput(compilation, addedFilename, outputPath) {
   }
 }
 
-async function addFileToAssets(compilation, htmlPluginData,
-  { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath, outputPath }) {
+async function addFileToAssets(
+  compilation,
+  htmlPluginData,
+  { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath, outputPath }
+) {
   if (!filepath) {
     const error = new Error('No filepath defined');
     compilation.errors.push(error);
@@ -44,9 +47,9 @@ async function addFileToAssets(compilation, htmlPluginData,
     suffix = `?${md5.digest('hex').substr(0, 20)}`;
   }
 
-  const resolvedPublicPath = typeof publicPath === 'undefined' ?
-    resolvePublicPath(compilation, addedFilename) :
-    ensureTrailingSlash(publicPath);
+  const resolvedPublicPath = typeof publicPath === 'undefined'
+    ? resolvePublicPath(compilation, addedFilename)
+    : ensureTrailingSlash(publicPath);
   const resolvedPath = `${resolvedPublicPath}${addedFilename}${suffix}`;
 
   htmlPluginData.assets[typeOfAsset].unshift(resolvedPath);
@@ -62,7 +65,7 @@ async function addFileToAssets(compilation, htmlPluginData,
 }
 
 // Visible for testing
-export default async function (assets, compilation, htmlPluginData, callback) {
+export default (async function(assets, compilation, htmlPluginData, callback) {
   try {
     await Promise.mapSeries(assets, asset => addFileToAssets(compilation, htmlPluginData, asset));
 
@@ -70,4 +73,4 @@ export default async function (assets, compilation, htmlPluginData, callback) {
   } catch (e) {
     callback(e, htmlPluginData);
   }
-}
+});

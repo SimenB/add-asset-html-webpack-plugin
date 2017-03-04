@@ -48,7 +48,12 @@ test.concurrent("should add file using compilation's publicPath", async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
-  await addAllAssetsToCompilation([{ filepath: path.join(__dirname, 'my-file.js') }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation(
+    [{ filepath: path.join(__dirname, 'my-file.js') }],
+    compilation,
+    pluginData,
+    callback
+  );
 
   expect(pluginData.assets.css).toEqual([]);
   expect(pluginData.assets.js).toEqual(['vendor/my-file.js']);
@@ -115,7 +120,12 @@ test.concurrent('should skip adding sourcemap to compilation if set to false', a
   const pluginData = { assets: { js: [], css: [] }, plugin: { addFileToAssets: addFileToAssetsStub } };
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
-  await addAllAssetsToCompilation([{ filepath: 'my-file.js', includeSourcemap: false }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation(
+    [{ filepath: 'my-file.js', includeSourcemap: false }],
+    compilation,
+    pluginData,
+    callback
+  );
 
   expect(pluginData.assets.css).toEqual([]);
   expect(pluginData.assets.js).toEqual(['my-file.js']);
@@ -175,7 +185,12 @@ test.concurrent('should replace compilation assets key if `outputPath` is set', 
   };
   const pluginData = { assets: { js: [], css: [] }, plugin: { addFileToAssets: addFileToAssetsMock } };
 
-  await addAllAssetsToCompilation([{ filepath: 'my-file.js', outputPath: 'assets' }], compilation, pluginData, callback);
+  await addAllAssetsToCompilation(
+    [{ filepath: 'my-file.js', outputPath: 'assets' }],
+    compilation,
+    pluginData,
+    callback
+  );
 
   expect(pluginData.assets.css).toEqual([]);
   expect(pluginData.assets.js).toEqual(['my-file.js']);

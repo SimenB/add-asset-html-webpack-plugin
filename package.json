@@ -52,7 +52,7 @@
     "in-publish": "^2.0.0",
     "jest": "^19.0.0",
     "licensor": "^3.1.0",
-    "prettier": "^1.0.0",
+    "prettier": "^1.0.1",
     "webpack": "^2.2.1"
   },
   "peerDependencies": {

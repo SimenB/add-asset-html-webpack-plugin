@@ -1,8 +1,9 @@
 import addAllAssetsToCompilation from './addAllAssetsToCompilation';
+import handleUrl from './handleUrl';
 
 export default class AddAssetHtmlPlugin {
   constructor(assets = []) {
-    this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets];
+    this.assets = handleUrl(Array.isArray(assets) ? assets.slice().reverse() : [assets]);
   }
 
   /* istanbul ignore next: this would be integration tests */

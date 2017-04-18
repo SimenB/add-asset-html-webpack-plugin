@@ -65,7 +65,7 @@ async function addFileToAssets(
 }
 
 // Visible for testing
-export default (async function(assets, compilation, htmlPluginData, callback) {
+export default async function(assets, compilation, htmlPluginData, callback) {
   try {
     await Promise.mapSeries(assets, asset => addFileToAssets(compilation, htmlPluginData, asset));
 
@@ -73,4 +73,4 @@ export default (async function(assets, compilation, htmlPluginData, callback) {
   } catch (e) {
     callback(e, htmlPluginData);
   }
-});
+}

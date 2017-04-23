@@ -5,8 +5,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
+Nothing
+
+## [2.0.0] - 2017-04-23
 ### Breaking
 - Drop support for `node<4`
+
+### Added
+- Add `files` option
+  - Allows you to only include a given asset in certain html files
+  - Ported from https://npm.im/html-webpack-include-assets-plugin
 
 ## [1.0.2] - 2016-08-07
 ### Fixes
@@ -73,7 +81,8 @@ Latest version of this document will always be available on https://github.com/S
 Initial release
 
 
-[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.2...v2.0.0
 [1.0.2]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v0.4.0...v1.0.0

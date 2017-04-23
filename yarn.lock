@@ -625,13 +625,20 @@ babel-plugin-transform-exponentiation-operator@^6.22.0:
     babel-plugin-syntax-exponentiation-operator "^6.8.0"
     babel-runtime "^6.22.0"
 
+babel-plugin-transform-inline-imports-commonjs@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-inline-imports-commonjs/-/babel-plugin-transform-inline-imports-commonjs-1.2.0.tgz#20c7d192bafc54c8727386e3387d8ee4ef19e6a5"
+  dependencies:
+    babel-plugin-transform-strict-mode "^6.8.0"
+    builtin-modules "^1.1.1"
+
 babel-plugin-transform-regenerator@^6.22.0:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-regenerator/-/babel-plugin-transform-regenerator-6.24.1.tgz#b8da305ad43c3c99b4848e4fe4037b770d23c418"
   dependencies:
     regenerator-transform "0.9.11"
 
-babel-plugin-transform-strict-mode@^6.24.1:
+babel-plugin-transform-strict-mode@^6.24.1, babel-plugin-transform-strict-mode@^6.8.0:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-strict-mode/-/babel-plugin-transform-strict-mode-6.24.1.tgz#d5faf7aa578a65bbe591cf5edae04a0c67020758"
   dependencies:

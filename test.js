@@ -228,3 +228,21 @@ test('filter option should include some files', async () => {
   expect(callback).toHaveBeenCalledTimes(1);
   expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
+
+test('filter option should include some files with string option', async () => {
+  const callback = jest.fn();
+  const compilation = { options: { output: { publicPath: 'vendor/' } } };
+  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+
+  await addAllAssetsToCompilation(
+    [{ filepath: path.join(__dirname, 'my-file.js'), files: 'index.*' }],
+    compilation,
+    pluginData,
+    callback
+  );
+
+  expect(pluginData.assets).toMatchSnapshot();
+
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
+});

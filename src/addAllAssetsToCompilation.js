@@ -39,10 +39,10 @@ async function addFileToAssets(
     return Promise.reject(error);
   }
 
-  const filters = Array.isArray(files) ? files : [files];
+  const fileFilters = Array.isArray(files) ? files : [files];
 
-  if (filters.length > 0) {
-    const shouldSkip = !files.some(file => minimatch(htmlPluginData.outputName, file));
+  if (fileFilters.length > 0) {
+    const shouldSkip = !fileFilters.some(file => minimatch(htmlPluginData.outputName, file));
 
     if (shouldSkip) {
       return Promise.resolve(null);

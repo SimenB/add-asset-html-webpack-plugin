@@ -16,6 +16,15 @@ Object {
 }
 `;
 
+exports[`filter option should include some files with string option 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "vendor/my-file.js",
+  ],
+}
+`;
+
 exports[`should add file missing "/" to public path 1`] = `
 Object {
   "css": Array [],

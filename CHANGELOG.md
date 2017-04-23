@@ -7,6 +7,10 @@ Latest version of this document will always be available on https://github.com/S
 ## [Unreleased]
 Nothing
 
+## [2.0.1] - 2017-04-23
+### Fixes
+- Support only string as option to files
+
 ## [2.0.0] - 2017-04-23
 ### Breaking
 - Drop support for `node<4`

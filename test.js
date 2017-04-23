@@ -9,6 +9,7 @@ const pluginMock = {
   plugin: {
     addFileToAssets: filename => Promise.resolve(path.basename(filename)),
   },
+  outputName: 'index.html',
 };
 
 test('assets should always be an array', () => {
@@ -76,7 +77,7 @@ test.concurrent('should used passed in publicPath', async () => {
   expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
-// No idea what this does, actually... Coverage currently hits it, but the logic is untested.
+// TODO: No idea what this does, actually... Coverage currently hits it, but the logic is untested.
 test('should handle missing `publicPath`');
 
 test.concurrent('should add file missing "/" to public path', async () => {
@@ -199,4 +200,42 @@ test.concurrent('should replace compilation assets key if `outputPath` is set', 
   expect(compilation.assets['assets/my-file.js']).toEqual(source);
   expect(compilation.assets['my-file.js.map']).toBeUndefined();
   expect(compilation.assets['assets/my-file.js.map']).toEqual(source);
+});
+
+test.concurrent('filter option should exclude some files', async () => {
+  const callback = jest.fn();
+  const compilation = { options: { output: { publicPath: 'vendor/' } } };
+  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+
+  await addAllAssetsToCompilation(
+    [{ filepath: path.join(__dirname, 'my-file.js'), files: ['something-weird'] }],
+    compilation,
+    pluginData,
+    callback
+  );
+
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual([]);
+
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
+});
+
+test.concurrent('filter option should include some files', async () => {
+  const callback = jest.fn();
+  const compilation = { options: { output: { publicPath: 'vendor/' } } };
+  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+
+  await addAllAssetsToCompilation(
+    [{ filepath: path.join(__dirname, 'my-file.js'), files: ['index.*'] }],
+    compilation,
+    pluginData,
+    callback
+  );
+
+  expect(pluginData.assets.css).toEqual([]);
+  expect(pluginData.assets.js).toEqual(['vendor/my-file.js']);
+
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });

@@ -1,6 +1,7 @@
 import path from 'path';
 import crypto from 'crypto';
 import Promise from 'bluebird';
+import minimatch from 'minimatch';
 
 function ensureTrailingSlash(string) {
   if (string.length && string.substr(-1, 1) !== '/') {
@@ -30,12 +31,22 @@ function resolveOutput(compilation, addedFilename, outputPath) {
 async function addFileToAssets(
   compilation,
   htmlPluginData,
-  { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath, outputPath }
+  { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath, outputPath, files = [] }
 ) {
   if (!filepath) {
     const error = new Error('No filepath defined');
     compilation.errors.push(error);
     return Promise.reject(error);
+  }
+
+  const filters = Array.isArray(files) ? files : [files];
+
+  if (filters.length > 0) {
+    const shouldSkip = !files.some(file => minimatch(htmlPluginData.outputName, file));
+
+    if (shouldSkip) {
+      return Promise.resolve(null);
+    }
   }
 
   const addedFilename = await htmlPluginData.plugin.addFileToAssets(filepath, compilation);

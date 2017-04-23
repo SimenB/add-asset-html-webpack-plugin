@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`filter option should exclude some files 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [],
+}
+`;
+
+exports[`filter option should include some files 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "vendor/my-file.js",
+  ],
+}
+`;
+
+exports[`should add file missing "/" to public path 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "vendor/my-file.js",
+  ],
+}
+`;
+
+exports[`should add file using compilation's publicPath 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "vendor/my-file.js",
+  ],
+}
+`;
+
+exports[`should add sourcemap to compilation 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "my-file.js",
+  ],
+}
+`;
+
+exports[`should add to css if \`typeOfAsset\` is css 1`] = `
+Object {
+  "css": Array [
+    "my-file.css",
+  ],
+  "js": Array [],
+}
+`;
+
+exports[`should include hash of file content if option is set 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "my-file.js?5329c141291f07ab06c6",
+  ],
+}
+`;
+
+exports[`should invoke callback on error 1`] = `
+Array [
+  [Error: No filepath defined],
+]
+`;
+
+exports[`should replace compilation assets key if \`outputPath\` is set 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "my-file.js",
+  ],
+}
+`;
+
+exports[`should skip adding sourcemap to compilation if set to false 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "my-file.js",
+  ],
+}
+`;
+
+exports[`should used passed in publicPath 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "pp/my-file.js",
+  ],
+}
+`;

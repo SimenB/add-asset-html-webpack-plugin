@@ -40,6 +40,7 @@ async function addFileToAssets(
     filepath,
     typeOfAsset = 'js',
     includeSourcemap = true,
+    includeGzipped = true,
     hash = false,
     publicPath,
     outputPath,
@@ -92,6 +93,10 @@ async function addFileToAssets(
       compilation,
     );
     resolveOutput(compilation, addedMapFilename, outputPath);
+  }
+  if (includeGzipped) {
+    const addedGzippedFilename = await htmlPluginData.plugin.addFileToAssets(`${filepath}.gz`, compilation);
+    resolveOutput(compilation, addedGzippedFilename, outputPath);
   }
 
   return Promise.resolve(null);

@@ -90,7 +90,7 @@ test('should add file missing "/" to public path', async () => {
   expect(pluginData.assets).toMatchSnapshot();
 });
 
-test('should add sourcemap to compilation', async () => {
+test('should add sourcemap and gzipped files to compilation', async () => {
   const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = {
@@ -107,7 +107,7 @@ test('should add sourcemap to compilation', async () => {
 
   expect(pluginData.assets).toMatchSnapshot();
 
-  expect(addFileToAssetsStub).toHaveBeenCalledTimes(2);
+  expect(addFileToAssetsStub).toHaveBeenCalledTimes(3);
   expect(addFileToAssetsStub.mock.calls[0]).toEqual([
     'my-file.js',
     compilation,
@@ -116,9 +116,10 @@ test('should add sourcemap to compilation', async () => {
     'my-file.js.map',
     compilation,
   ]);
+  expect(addFileToAssetsStub.mock.calls[2]).toEqual(['my-file.js.gz', compilation]);
 });
 
-test('should skip adding sourcemap to compilation if set to false', async () => {
+test('should skip adding sourcemap and gzipped files to compilation if set to false', async () => {
   const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = {
@@ -128,7 +129,7 @@ test('should skip adding sourcemap to compilation if set to false', async () => 
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
   await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', includeSourcemap: false }],
+    [{ filepath: 'my-file.js', includeSourcemap: false, includeGzipped: false }],
     compilation,
     pluginData,
   );

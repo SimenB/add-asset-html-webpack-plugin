@@ -26,6 +26,12 @@ declare namespace AddAssetHtmlPlugin {
     includeSourcemap?: boolean;
 
     /**
+    * If true, will add filepath + '.gz' to the compilation as well.
+    * Default true.
+    */
+    includeGzipped?: boolean;
+
+    /**
     * If set, will be used as the output directory of the file.
     */
     outputPath?: string;

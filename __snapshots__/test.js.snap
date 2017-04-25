@@ -43,7 +43,7 @@ Object {
 }
 `;
 
-exports[`should add sourcemap to compilation 1`] = `
+exports[`should add sourcemap and gzipped files to compilation 1`] = `
 Object {
   "css": Array [],
   "js": Array [
@@ -91,7 +91,7 @@ Object {
 }
 `;
 
-exports[`should skip adding sourcemap to compilation if set to false 1`] = `
+exports[`should skip adding sourcemap and gzipped files to compilation if set to false 1`] = `
 Object {
   "css": Array [],
   "js": Array [

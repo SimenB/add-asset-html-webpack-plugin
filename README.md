@@ -110,6 +110,11 @@ Type: `boolean`, default: `true`
 
 If `true`, will add `filepath + '.map'` to the compilation as well.
 
+#### `includeGzipped`
+Type: `boolean`, default: `true`
+
+If `true`, will add `filepath + '.gz'` to the compilation as well.
+
 #### `outputPath`
 
 Type: `string`

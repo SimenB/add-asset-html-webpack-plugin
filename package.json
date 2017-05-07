@@ -9,7 +9,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "del-cli lib/ coverage/ example/build example/dist",
-    "compile": "babel src/ --out-dir lib/",
+    "compile": "babel --retain-lines src/ --out-dir lib/",
     "cover": "jest --coverage",
     "preexample": "npm run clean && npm run compile",
     "example": "webpack --config example/webpack.config.dll.js && webpack --config example/webpack.config.js",

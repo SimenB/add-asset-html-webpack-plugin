@@ -21,5 +21,6 @@
     }],
     "add-module-exports",
     "transform-inline-imports-commonjs"
-  ]
+  ],
+  "retainLines": true
 }

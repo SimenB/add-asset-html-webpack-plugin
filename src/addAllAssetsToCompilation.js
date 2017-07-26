@@ -14,24 +14,36 @@ function ensureTrailingSlash(string) {
 // Copied from html-webpack-plugin
 function resolvePublicPath(compilation, filename) {
   /* istanbul ignore else */
-  const publicPath = typeof compilation.options.output.publicPath !== 'undefined'
-    ? compilation.options.output.publicPath
-    : path.relative(path.dirname(filename), '.'); // TODO: How to test this? I haven't written this logic, unsure what it does
+  const publicPath =
+    typeof compilation.options.output.publicPath !== 'undefined'
+      ? compilation.options.output.publicPath
+      : path.relative(path.dirname(filename), '.'); // TODO: How to test this? I haven't written this logic, unsure what it does
 
   return ensureTrailingSlash(publicPath);
 }
 
 function resolveOutput(compilation, addedFilename, outputPath) {
   if (outputPath && outputPath.length) {
-    compilation.assets[`${outputPath}/${addedFilename}`] = compilation.assets[addedFilename]; // eslint-disable-line no-param-reassign
-    delete compilation.assets[addedFilename]; // eslint-disable-line no-param-reassign
+    /* eslint-disable no-param-reassign */
+    compilation.assets[`${outputPath}/${addedFilename}`] =
+      compilation.assets[addedFilename];
+    delete compilation.assets[addedFilename];
+    /* eslint-enable */
   }
 }
 
 async function addFileToAssets(
   compilation,
   htmlPluginData,
-  { filepath, typeOfAsset = 'js', includeSourcemap = true, hash = false, publicPath, outputPath, files = [] }
+  {
+    filepath,
+    typeOfAsset = 'js',
+    includeSourcemap = true,
+    hash = false,
+    publicPath,
+    outputPath,
+    files = [],
+  }
 ) {
   if (!filepath) {
     const error = new Error('No filepath defined');
@@ -42,14 +54,19 @@ async function addFileToAssets(
   const fileFilters = Array.isArray(files) ? files : [files];
 
   if (fileFilters.length > 0) {
-    const shouldSkip = !fileFilters.some(file => minimatch(htmlPluginData.outputName, file));
+    const shouldSkip = !fileFilters.some(file =>
+      minimatch(htmlPluginData.outputName, file)
+    );
 
     if (shouldSkip) {
       return Promise.resolve(null);
     }
   }
 
-  const addedFilename = await htmlPluginData.plugin.addFileToAssets(filepath, compilation);
+  const addedFilename = await htmlPluginData.plugin.addFileToAssets(
+    filepath,
+    compilation
+  );
 
   let suffix = '';
   if (hash) {
@@ -58,9 +75,10 @@ async function addFileToAssets(
     suffix = `?${md5.digest('hex').substr(0, 20)}`;
   }
 
-  const resolvedPublicPath = typeof publicPath === 'undefined'
-    ? resolvePublicPath(compilation, addedFilename)
-    : ensureTrailingSlash(publicPath);
+  const resolvedPublicPath =
+    typeof publicPath === 'undefined'
+      ? resolvePublicPath(compilation, addedFilename)
+      : ensureTrailingSlash(publicPath);
   const resolvedPath = `${resolvedPublicPath}${addedFilename}${suffix}`;
 
   htmlPluginData.assets[typeOfAsset].unshift(resolvedPath);
@@ -68,7 +86,10 @@ async function addFileToAssets(
   resolveOutput(compilation, addedFilename, outputPath);
 
   if (includeSourcemap) {
-    const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(`${filepath}.map`, compilation);
+    const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(
+      `${filepath}.map`,
+      compilation
+    );
     resolveOutput(compilation, addedMapFilename, outputPath);
   }
 
@@ -78,7 +99,9 @@ async function addFileToAssets(
 // Visible for testing
 export default async function(assets, compilation, htmlPluginData, callback) {
   try {
-    await Promise.mapSeries(assets, asset => addFileToAssets(compilation, htmlPluginData, asset));
+    await Promise.mapSeries(assets, asset =>
+      addFileToAssets(compilation, htmlPluginData, asset)
+    );
 
     callback(null, htmlPluginData);
   } catch (e) {

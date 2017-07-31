@@ -2,6 +2,7 @@ import path from 'path';
 import crypto from 'crypto';
 import Promise from 'bluebird';
 import minimatch from 'minimatch';
+import handleUrl from './handleUrl';
 
 function ensureTrailingSlash(string) {
   if (string.length && string.substr(-1, 1) !== '/') {
@@ -99,7 +100,8 @@ async function addFileToAssets(
 // Visible for testing
 export default async function(assets, compilation, htmlPluginData, callback) {
   try {
-    await Promise.mapSeries(assets, asset =>
+    const handledAssets = await handleUrl(assets);
+    await Promise.mapSeries(handledAssets, asset =>
       addFileToAssets(compilation, htmlPluginData, asset)
     );
 

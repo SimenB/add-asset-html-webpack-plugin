@@ -49,7 +49,7 @@
     "babel-preset-env": "^1.4.0",
     "classnames": "^2.2.5",
     "del-cli": "^1.0.0",
-    "eslint": "^4.3.0",
+    "eslint": "^4.4.0",
     "eslint-config-simenb-base": "^13.0.0",
     "eslint_d": "^5.0.0",
     "html-webpack-plugin": "^2.10.0",

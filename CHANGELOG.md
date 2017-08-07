@@ -5,9 +5,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
-Nothing
-
-## [2.0.2] - 2017-08-08
 ### Added
 - Support globby string as filepath option
 

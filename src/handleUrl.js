@@ -1,22 +1,26 @@
 import globby from 'globby';
 
+/**
+ * handle globby filepath and return an array with all matched assets.
+ * 
+ * @export
+ * @param {Array} assets 
+ * @returns 
+ */
 export default async function(assets) {
   const globbyAssets = [];
   const normalAssets = [];
-  try {
-    assets.forEach(
-      asset =>
-        globby.hasMagic(asset.filepath)
-          ? globbyAssets.push(asset)
-          : normalAssets.push(asset)
-    );
-  } catch (e) {
-    return assets;
-  }
+  // if filepath is null or undefined, just bubble up.
+  assets.forEach(
+    asset =>
+      asset.filepath && globby.hasMagic(asset.filepath)
+        ? globbyAssets.push(asset)
+        : normalAssets.push(asset)
+  );
   const ret = [];
   const promises = [];
-  for (let i = 0; i < globbyAssets.length; i++) {
-    const current = globbyAssets[i];
+  globbyAssets.forEach(asset => {
+    const current = asset;
     promises.push(
       globby(current.filepath).then(paths => {
         paths.forEach(path => {
@@ -28,7 +32,7 @@ export default async function(assets) {
         });
       })
     );
-  }
+  });
 
   await Promise.all(promises);
   return ret.concat(normalAssets);

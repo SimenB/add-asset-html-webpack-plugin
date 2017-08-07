@@ -9,7 +9,7 @@ Nothing
 
 ## [2.1.0] - 2017-08-07
 ### Added
-- Support globby string as filepath option
+- Support globby string as filepath option (#78, thanks @Genuifx and @NumerHero)
 
 ## [2.0.1] - 2017-04-23
 ### Fixes

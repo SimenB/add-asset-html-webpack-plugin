@@ -13,3 +13,6 @@ after_success:
   - codecov
 cache:
   yarn: true
+branches:
+   only:
+   - master

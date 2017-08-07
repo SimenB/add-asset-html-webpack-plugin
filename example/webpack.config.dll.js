@@ -6,11 +6,12 @@ module.exports = {
   context: __dirname,
   entry: {
     vendor: ['classnames'],
+    lib: ['classnames'],
   },
   devtool: '#source-map',
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].dll.js',
+    filename: '[name].[hash:4].dll.js',
     library: '[name]_[hash]',
   },
   plugins: [

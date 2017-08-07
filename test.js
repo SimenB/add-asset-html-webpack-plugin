@@ -4,6 +4,7 @@ import path from 'path';
 import Promise from 'bluebird';
 import AddAssetHtmlPlugin from './src/index';
 import addAllAssetsToCompilation from './src/addAllAssetsToCompilation';
+import handleUrl from './src/handleUrl';
 
 const pluginMock = {
   plugin: {
@@ -294,4 +295,16 @@ test('filter option should include some files with string option', async () => {
 
   expect(callback).toHaveBeenCalledTimes(1);
   expect(callback).toHaveBeenCalledWith(null, pluginData);
+});
+
+test('use globby to find multi file', async () => {
+  const assets = [{ filepath: './src/*.js' }];
+  const ret = await handleUrl(assets);
+  expect(ret).toHaveLength(3);
+});
+
+test('filepath without globbyMagic should just return', async () => {
+  const assets = [{ filepath: path.join(__dirname, 'my-file.js') }];
+  const ret = await handleUrl(assets);
+  expect(ret).toHaveLength(1);
 });

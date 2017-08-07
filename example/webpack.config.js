@@ -20,7 +20,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin(),
     new AddAssetHtmlPlugin({
-      filepath: require.resolve('./build/vendor.dll.js'),
+      filepath: path.resolve(__dirname, './build/*.dll.js'),
     }),
   ],
 };

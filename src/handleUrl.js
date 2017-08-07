@@ -20,12 +20,11 @@ export default async function(assets) {
   const ret = [];
   const promises = [];
   globbyAssets.forEach(asset => {
-    const current = asset;
     promises.push(
-      globby(current.filepath).then(paths => {
+      globby(asset.filepath).then(paths => {
         paths.forEach(path => {
           ret.push(
-            Object.assign({}, current, {
+            Object.assign({}, asset, {
               filepath: path,
             })
           );

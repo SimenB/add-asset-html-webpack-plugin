@@ -7,6 +7,10 @@ Latest version of this document will always be available on https://github.com/S
 ## [Unreleased]
 Nothing
 
+## [2.0.2] - 2017-08-08
+### Added
+- Support globby string as filepath option
+
 ## [2.0.1] - 2017-04-23
 ### Fixes
 - Support only string as option to files

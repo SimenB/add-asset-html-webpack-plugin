@@ -64,6 +64,8 @@ below, just pass multiple objects as an array.
 new AddAssetHtmlPlugin([
   { filepath: require.resolve('./some-file') }, 
   { filepath: require.resolve('./some-other-file') },
+  // Glob to match all of the dll file
+  { filepath: require.resolve('./**/*.dll.js') },
 ]);
 ```
 
@@ -75,10 +77,10 @@ new AddAssetHtmlPlugin({ filepath: require.resolve('./some-file') });
 ```
 
 #### `filepath`
-Type: `string`, mandatory
+Type: `string|Glob`, mandatory
 
 The absolute path of the file you want to add to the compilation, and resulting
-HTML file.
+HTML file. Also support globby string.
 
 #### `filter`
 Type: `string|Array<string>`, default `[]
@@ -169,7 +171,7 @@ const webpackConfig = {
     }),
     new HtmlWebpackPlugin(),
     new AddAssetHtmlPlugin({
-      filepath: require.resolve('./build/vendor.dll.js'),
+      filepath: path.resolve(__dirname,'./build/*.dll.js'),
     }),
   ],
 };

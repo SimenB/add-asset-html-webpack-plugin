@@ -39,8 +39,8 @@
   "homepage": "https://github.com/SimenB/add-asset-html-webpack-plugin#readme",
   "dependencies": {
     "bluebird": "^3.4.6",
-    "minimatch": "^3.0.3",
-    "globby": "^6.1.0"
+    "globby": "^6.1.0",
+    "minimatch": "^3.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

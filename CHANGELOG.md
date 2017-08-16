@@ -7,6 +7,10 @@ Latest version of this document will always be available on https://github.com/S
 ## [Unreleased]
 Nothing
 
+## [2.1.1] - 2017-08-16
+### Fixes
+- Fix typo in readme (`filter` -> `files`)
+
 ## [2.1.0] - 2017-08-07
 ### Added
 - Support globby string as filepath option (#78, thanks @Genuifx and @NumerHero)
@@ -89,8 +93,9 @@ Nothing
 Initial release
 
 
-[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.0...HEAD
-[2.1.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.0...v2.1.0
+[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.1...HEAD
+[2.1.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.0...v2.1.1
+[2.1.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.2...v2.0.0
 [1.0.2]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v1.0.1...v1.0.2

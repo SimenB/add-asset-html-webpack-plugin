@@ -82,7 +82,7 @@ Type: `string|Glob`, mandatory
 The absolute path of the file you want to add to the compilation, and resulting
 HTML file. Also support globby string.
 
-#### `filter`
+#### `files`
 Type: `string|Array<string>`, default `[]
 
 Files that the assets will be added to.

@@ -7,6 +7,13 @@ declare namespace AddAssetHtmlPlugin {
     filepath: string;
 
     /**
+    * Files that the assets will be added to.
+    * By default the assets will be included in all files. If files are defined, the
+    * assets will only be included in specified file globs.
+    */
+    files?: string | string[];
+
+    /**
     * If true, will append a unique hash of the file to the filename. This is useful for cache busting.
     * Default false.
     */

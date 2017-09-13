@@ -44,7 +44,7 @@ declare namespace AddAssetHtmlPlugin {
 }
 
 declare class AddAssetHtmlPlugin {
-  constructor(options: AddAssetHtmlPlugin.Options);
+  constructor(options: AddAssetHtmlPlugin.Options | AddAssetHtmlPlugin.Options[]);
   apply(compiler: any): void;
 }
 

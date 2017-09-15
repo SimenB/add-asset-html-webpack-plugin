@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
+Nothing
+
+## [2.1.2] - 2017-09-15
+### Fixes
 - Fix TypeScript definition file
   - Allows an array of options in the plugin constructor
   - Added `files` property to options
@@ -95,7 +99,8 @@ Latest version of this document will always be available on https://github.com/S
 Initial release
 
 
-[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.2...HEAD
+[2.1.2]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.0.0...v2.0.1

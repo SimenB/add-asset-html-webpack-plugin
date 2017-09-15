@@ -5,7 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
-Nothing
+- Fix TypeScript definition file
+  - Allows an array of options in the plugin constructor
+  - Added `files` property to options
 
 ## [2.1.1] - 2017-08-16
 ### Fixes

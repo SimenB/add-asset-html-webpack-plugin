@@ -1,6 +1,6 @@
 {
   "name": "add-asset-html-webpack-plugin",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Add a JS or CSS assets to a generated HTML file",
   "files": [
     "lib/",

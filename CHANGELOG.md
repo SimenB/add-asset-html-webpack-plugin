@@ -7,6 +7,7 @@ Latest version of this document will always be available on https://github.com/S
 ## [Unreleased]
 ### Changed
 - Replace Bluebird with `p-each-series`
+- Replace `minimatch` with `micromatch`
 
 ## [2.1.2] - 2017-09-15
 ### Fixes

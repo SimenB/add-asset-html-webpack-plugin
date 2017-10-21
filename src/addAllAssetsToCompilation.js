@@ -1,7 +1,7 @@
 import path from 'path';
 import crypto from 'crypto';
 import pEachSeries from 'p-each-series';
-import minimatch from 'minimatch';
+import micromatch from 'micromatch';
 import handleUrl from './handleUrl';
 
 function ensureTrailingSlash(string) {
@@ -56,7 +56,7 @@ async function addFileToAssets(
 
   if (fileFilters.length > 0) {
     const shouldSkip = !fileFilters.some(file =>
-      minimatch(htmlPluginData.outputName, file)
+      micromatch.isMatch(htmlPluginData.outputName, file)
     );
 
     if (shouldSkip) {

@@ -38,14 +38,13 @@
   },
   "homepage": "https://github.com/SimenB/add-asset-html-webpack-plugin#readme",
   "dependencies": {
-    "bluebird": "^3.5.0",
     "globby": "^6.1.0",
-    "minimatch": "^3.0.4"
+    "minimatch": "^3.0.4",
+    "p-each-series": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-async-to-module-method": "^6.24.1",
     "babel-plugin-transform-inline-imports-commonjs": "^1.2.0",
     "babel-preset-env": "^1.6.0",
     "classnames": "^2.2.5",

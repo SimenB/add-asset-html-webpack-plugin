@@ -5,7 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Latest version of this document will always be available on https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ## [Unreleased]
-Nothing
+### Changed
+- Replace Bluebird with `p-each-series`
 
 ## [2.1.2] - 2017-09-15
 ### Fixes

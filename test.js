@@ -1,7 +1,4 @@
-/* eslint-env jest */
-
 import path from 'path';
-import Promise from 'bluebird';
 import AddAssetHtmlPlugin from './src/index';
 import addAllAssetsToCompilation from './src/addAllAssetsToCompilation';
 import handleUrl from './src/handleUrl';

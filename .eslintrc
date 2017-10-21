@@ -1,4 +1,10 @@
 {
   "root": true,
-  "extends": "simenb-base"
+  "extends": "simenb-base",
+  "overrides": [{
+    "files": "test.js",
+    "env": {
+      "jest": true
+    }
+  }]
 }

@@ -1,6 +1,6 @@
 import path from 'path';
 import crypto from 'crypto';
-import Promise from 'bluebird';
+import pEachSeries from 'p-each-series';
 import minimatch from 'minimatch';
 import handleUrl from './handleUrl';
 
@@ -101,7 +101,7 @@ async function addFileToAssets(
 export default async function(assets, compilation, htmlPluginData, callback) {
   try {
     const handledAssets = await handleUrl(assets);
-    await Promise.mapSeries(handledAssets, asset =>
+    await pEachSeries(handledAssets, asset =>
       addFileToAssets(compilation, htmlPluginData, asset)
     );
 

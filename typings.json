@@ -5,7 +5,6 @@
     "node": "registry:env/node#6.0.0+20161223222858"
   },
   "dependencies": {
-    "bluebird": "registry:npm/bluebird#3.4.1+20160909132857",
     "webpack": "registry:dt/webpack#1.12.9+20161119044246"
   }
 }

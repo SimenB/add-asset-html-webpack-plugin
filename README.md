@@ -65,7 +65,7 @@ new AddAssetHtmlPlugin([
   { filepath: require.resolve('./some-file') }, 
   { filepath: require.resolve('./some-other-file') },
   // Glob to match all of the dll file
-  { filepath: require.resolve('./**/*.dll.js') },
+  { filepath: './**/*.dll.js' },
 ]);
 ```
 

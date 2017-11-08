@@ -8,6 +8,7 @@ Latest version of this document will always be available on https://github.com/S
 ### Changed
 - Replace Bluebird with `p-each-series`
 - Replace `minimatch` with `micromatch`
+- Globby Mode auto add typeOfAsset
 
 ## [2.1.2] - 2017-09-15
 ### Fixes

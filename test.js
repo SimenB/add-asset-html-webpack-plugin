@@ -305,3 +305,10 @@ test('filepath without globbyMagic should just return', async () => {
   const ret = await handleUrl(assets);
   expect(ret).toHaveLength(1);
 });
+
+test('globby mode should add typeOfAsset', async () => {
+  const assets = { filepath: './src/*.*' };
+  const ret = await handleUrl([assets]);
+  const types = ret.filter(asset => asset.typeOfAsset);
+  expect(types).toHaveLength(4);
+});

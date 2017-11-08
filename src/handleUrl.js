@@ -1,4 +1,5 @@
 import globby from 'globby';
+import pathModule from 'path';
 
 /**
  * handle globby filepath and return an array with all matched assets.
@@ -21,9 +22,12 @@ export default async function(assets) {
   await Promise.all(
     globbyAssets.map(asset =>
       globby(asset.filepath).then(paths =>
-        paths.forEach(path =>
-          ret.push(Object.assign({}, asset, { filepath: path }))
-        )
+        paths.forEach(path => {
+          const type = pathModule.extname(path) === '.css' ? 'css' : 'js';
+          ret.push(
+            Object.assign({}, asset, { filepath: path, typeOfAsset: type })
+          );
+        })
       )
     )
   );

@@ -15,9 +15,9 @@ export default class AddAssetHtmlPlugin {
             this.assets,
             compilation,
             htmlPluginData,
-            callback
+            callback,
           );
-        }
+        },
       );
     });
   }

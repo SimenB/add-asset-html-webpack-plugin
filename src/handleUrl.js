@@ -15,17 +15,17 @@ export default async function(assets) {
     asset =>
       asset.filepath && globby.hasMagic(asset.filepath)
         ? globbyAssets.push(asset)
-        : normalAssets.push(asset)
+        : normalAssets.push(asset),
   );
   const ret = [];
   await Promise.all(
     globbyAssets.map(asset =>
       globby(asset.filepath).then(paths =>
         paths.forEach(path =>
-          ret.push(Object.assign({}, asset, { filepath: path }))
-        )
-      )
-    )
+          ret.push(Object.assign({}, asset, { filepath: path })),
+        ),
+      ),
+    ),
   );
 
   return ret.concat(normalAssets);

@@ -44,7 +44,7 @@ async function addFileToAssets(
     publicPath,
     outputPath,
     files = [],
-  }
+  },
 ) {
   if (!filepath) {
     const error = new Error('No filepath defined');
@@ -56,7 +56,7 @@ async function addFileToAssets(
 
   if (fileFilters.length > 0) {
     const shouldSkip = !fileFilters.some(file =>
-      micromatch.isMatch(htmlPluginData.outputName, file)
+      micromatch.isMatch(htmlPluginData.outputName, file),
     );
 
     if (shouldSkip) {
@@ -66,7 +66,7 @@ async function addFileToAssets(
 
   const addedFilename = await htmlPluginData.plugin.addFileToAssets(
     filepath,
-    compilation
+    compilation,
   );
 
   let suffix = '';
@@ -89,7 +89,7 @@ async function addFileToAssets(
   if (includeSourcemap) {
     const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(
       `${filepath}.map`,
-      compilation
+      compilation,
     );
     resolveOutput(compilation, addedMapFilename, outputPath);
   }
@@ -102,7 +102,7 @@ export default async function(assets, compilation, htmlPluginData, callback) {
   try {
     const handledAssets = await handleUrl(assets);
     await pEachSeries(handledAssets, asset =>
-      addFileToAssets(compilation, htmlPluginData, asset)
+      addFileToAssets(compilation, htmlPluginData, asset),
     );
 
     callback(null, htmlPluginData);

@@ -50,7 +50,7 @@ test("should add file using compilation's publicPath", async () => {
     [{ filepath: path.join(__dirname, 'my-file.js') }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -68,7 +68,7 @@ test('should used passed in publicPath', async () => {
     [{ filepath: 'my-file.js', publicPath: 'pp' }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -89,7 +89,7 @@ test('should add file missing "/" to public path', async () => {
     [{ filepath: 'my-file.js' }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -112,7 +112,7 @@ test('should add sourcemap to compilation', async () => {
     [{ filepath: 'my-file.js' }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -145,7 +145,7 @@ test('should skip adding sourcemap to compilation if set to false', async () => 
     [{ filepath: 'my-file.js', includeSourcemap: false }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -171,7 +171,7 @@ test('should include hash of file content if option is set', async () => {
     [{ filepath: 'my-file.js', hash: true }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -194,7 +194,7 @@ test('should add to css if `typeOfAsset` is css', async () => {
     [{ filepath: 'my-file.css', typeOfAsset: 'css' }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -224,7 +224,7 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
     [{ filepath: 'my-file.js', outputPath: 'assets' }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -249,7 +249,7 @@ test('filter option should exclude some files', async () => {
     ],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -267,7 +267,7 @@ test('filter option should include some files', async () => {
     [{ filepath: path.join(__dirname, 'my-file.js'), files: ['index.*'] }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -285,7 +285,7 @@ test('filter option should include some files with string option', async () => {
     [{ filepath: path.join(__dirname, 'my-file.js'), files: 'index.*' }],
     compilation,
     pluginData,
-    callback
+    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();

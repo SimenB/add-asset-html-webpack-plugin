@@ -2,22 +2,21 @@
   "name": "add-asset-html-webpack-plugin",
   "version": "2.1.2",
   "description": "Add a JS or CSS assets to a generated HTML file",
-  "files": [
-    "lib/",
-    "index.d.ts"
-  ],
+  "files": ["lib/", "index.d.ts"],
   "main": "lib/index.js",
   "scripts": {
     "clean": "del-cli lib/ coverage/ example/build example/dist",
     "compile": "babel src/ --out-dir lib/",
     "cover": "jest --coverage",
     "preexample": "npm run clean && npm run compile",
-    "example": "webpack --config example/webpack.config.dll.js && webpack --config example/webpack.config.js",
+    "example":
+      "webpack --config example/webpack.config.dll.js && webpack --config example/webpack.config.js",
     "lint": "eslint .",
     "update-license": "licensor --width 72",
     "compile-and-update-license": "npm run compile && npm run update-license",
     "preversion": "npm run travis && npm run update-license",
-    "prepublish": "not-in-install && npm run compile-and-update-license || in-install",
+    "prepublish":
+      "not-in-install && npm run compile-and-update-license || in-install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
     "test": "jest",
@@ -26,11 +25,7 @@
     "precommit": "lint-staged"
   },
   "repository": "SimenB/add-asset-html-webpack-plugin",
-  "keywords": [
-    "dll",
-    "html-webpack-plugin",
-    "webpack"
-  ],
+  "keywords": ["dll", "html-webpack-plugin", "webpack"],
   "author": "Simen Bekkhus <sbekkhus91@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -58,7 +53,7 @@
     "jest": "^21.1.0",
     "licensor": "^4.0.0",
     "lint-staged": "^5.0.0",
-    "prettier": "^1.7.0",
+    "prettier": "^1.8.2",
     "webpack": "^3.5.6"
   },
   "peerDependencies": {
@@ -79,9 +74,20 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint_d --fix",
-      "git add"
+    "*.js": ["eslint --fix", "git add"],
+    "*.{md,json}": ["prettier --write", "git add"],
+    ".eslintrc": ["prettier --write", "git add"]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": ".eslintrc",
+        "options": {
+          "parser": "json"
+        }
+      }
     ]
   }
 }

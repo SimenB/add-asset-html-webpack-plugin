@@ -2280,17 +2280,6 @@ globals@^9.17.0, globals@^9.18.0:
   version "9.18.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
 
-globby@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/globby/-/globby-7.0.0.tgz#eceef117ab948f394e85a0729bf5b96348958a84"
-  dependencies:
-    array-union "^1.0.1"
-    dir-glob "^2.0.0"
-    glob "^7.1.2"
-    ignore "^3.3.5"
-    pify "^3.0.0"
-    slash "^1.0.0"
-
 globby@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/globby/-/globby-5.0.0.tgz#ebd84667ca0dbb330b99bcfc68eac2bc54370e0d"
@@ -2311,6 +2300,17 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+globby@^7.0.0:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-7.1.1.tgz#fb2ccff9401f8600945dfada97440cca972b8680"
+  dependencies:
+    array-union "^1.0.1"
+    dir-glob "^2.0.0"
+    glob "^7.1.2"
+    ignore "^3.3.5"
+    pify "^3.0.0"
+    slash "^1.0.0"
 
 got@^6.7.1:
   version "6.7.1"
@@ -3375,14 +3375,15 @@ licensor@^4.0.0:
     normalize-package-data "^2.4.0"
     word-wrap "^1.1.0"
 
-lint-staged@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-5.0.0.tgz#f1c670e03e2fdf3f3d0eb81f72d3bcf658770e54"
+lint-staged@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-6.0.0.tgz#7ab7d345f2fe302ff196f1de6a005594ace03210"
   dependencies:
     app-root-path "^2.0.0"
     chalk "^2.1.0"
     commander "^2.11.0"
     cosmiconfig "^3.1.0"
+    debug "^3.1.0"
     dedent "^0.7.0"
     execa "^0.8.0"
     find-parent-dir "^0.3.0"

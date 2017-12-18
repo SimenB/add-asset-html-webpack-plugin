@@ -12,6 +12,7 @@ https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 * Replace Bluebird with `p-each-series`
 * Replace `minimatch` with `micromatch`
+* Drop support for Node 4
 
 ## [2.1.2] - 2017-09-15
 

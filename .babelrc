@@ -3,20 +3,15 @@
     ["env", {
       "modules": false,
       "targets": {
-        "node": 4
+        "node": 6
       },
       "exclude": [
-        "transform-regenerator",
-        // These are not _really_ needed for node@4
-        "transform-es2015-classes",
-        "transform-es2015-block-scoping",
-        "transform-es2015-arrow-functions"
+        "transform-regenerator"
       ]
     }]
   ],
   "plugins": [
     "add-module-exports",
     "transform-inline-imports-commonjs"
-  ],
-  "retainLines": true
+  ]
 }

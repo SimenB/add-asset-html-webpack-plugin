@@ -96,7 +96,7 @@ test('should used passed in publicPath', async () => {
 });
 
 // TODO: No idea what this does, actually... Coverage currently hits it, but the logic is untested.
-test('should handle missing `publicPath`');
+test.skip('should handle missing `publicPath`', () => {});
 
 test('should add file missing "/" to public path', async () => {
   const callback = jest.fn();

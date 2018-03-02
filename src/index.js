@@ -10,8 +10,8 @@ export default class AddAssetHtmlPlugin {
     compiler.plugin('compilation', compilation => {
       compilation.plugin(
         'html-webpack-plugin-before-html-generation',
-        (htmlPluginData, callback) => {
-          addAllAssetsToCompilation(
+        async (htmlPluginData, callback) => {
+          await addAllAssetsToCompilation(
             this.assets,
             compilation,
             htmlPluginData,

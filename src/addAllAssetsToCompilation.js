@@ -112,6 +112,6 @@ export default async function(assets, compilation, htmlPluginData, callback) {
     if (callback) {
       return callback(e, htmlPluginData);
     }
-    throw e;
+    throw new Error(e);
   }
 }

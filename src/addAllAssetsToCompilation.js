@@ -104,9 +104,14 @@ export default async function(assets, compilation, htmlPluginData, callback) {
     await pEachSeries(handledAssets, asset =>
       addFileToAssets(compilation, htmlPluginData, asset),
     );
-
-    callback(null, htmlPluginData);
+    if (callback) {
+      return callback(null, htmlPluginData);
+    }
+    return htmlPluginData;
   } catch (e) {
-    callback(e, htmlPluginData);
+    if (callback) {
+      return callback(e, htmlPluginData);
+    }
+    throw e;
   }
 }

@@ -10,14 +10,13 @@ export default class AddAssetHtmlPlugin {
     compiler.plugin('compilation', compilation => {
       compilation.plugin(
         'html-webpack-plugin-before-html-generation',
-        (htmlPluginData, callback) => {
+        (htmlPluginData, callback) =>
           addAllAssetsToCompilation(
             this.assets,
             compilation,
             htmlPluginData,
             callback,
-          );
-        },
+          ),
       );
     });
   }

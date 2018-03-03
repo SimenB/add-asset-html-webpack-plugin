@@ -57,7 +57,7 @@
     "webpack": "^3.5.6"
   },
   "peerDependencies": {
-    "html-webpack-plugin": "^2.10.0"
+    "html-webpack-plugin": "^2.10.0 || ^3.0.4"
   },
   "engines": {
     "node": ">=4"

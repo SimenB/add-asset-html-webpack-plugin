@@ -29,6 +29,12 @@ test('should invoke callback on success', async () => {
   expect(callback).toHaveBeenCalledWith(null, pluginMock);
 });
 
+test('should not reject success', async () => {
+  expect(await addAllAssetsToCompilation([], {}, pluginMock)).toEqual(
+    pluginMock,
+  );
+});
+
 test('should invoke callback on error', async () => {
   const callback = jest.fn();
   const compilation = { errors: [] };
@@ -39,6 +45,18 @@ test('should invoke callback on error', async () => {
 
   expect(callback).toHaveBeenCalledTimes(1);
   expect(callback).toHaveBeenCalledWith(compilation.errors[0], pluginMock);
+});
+
+test('should reject on error', async () => {
+  expect.hasAssertions();
+  const compilation = { errors: [] };
+
+  try {
+    await addAllAssetsToCompilation([{}], compilation, pluginMock);
+  } catch (e) {
+    expect(compilation.errors).toMatchSnapshot();
+    expect(compilation.errors[0]).toBe(e);
+  }
 });
 
 test("should add file using compilation's publicPath", async () => {

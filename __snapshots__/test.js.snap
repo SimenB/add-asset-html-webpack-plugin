@@ -76,6 +76,12 @@ Array [
 ]
 `;
 
+exports[`should reject on error 1`] = `
+Array [
+  [Error: No filepath defined],
+]
+`;
+
 exports[`should replace compilation assets key if \`outputPath\` is set 1`] = `
 Object {
   "css": Array [],

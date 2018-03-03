@@ -8,6 +8,7 @@ module.exports = {
   context: __dirname,
   entry: path.join(__dirname, 'entry.js'),
   devtool: '#source-map',
+  mode: 'development',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index_bundle.js',

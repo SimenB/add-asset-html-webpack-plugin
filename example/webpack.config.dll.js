@@ -6,9 +6,9 @@ module.exports = {
   context: __dirname,
   entry: {
     vendor: ['classnames'],
-    lib: ['classnames'],
   },
   devtool: '#source-map',
+  mode: 'development',
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].[hash:4].dll.js',

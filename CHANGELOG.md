@@ -10,9 +10,18 @@ https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 ### Changed
 
+* Drop support for Node 4 and html-webpack-plugin@2
+
+## [2.1.3] - 2018-03-03
+
+### Fixes
+
+* Webpack 4 compatibility
+
+### Changed
+
 * Replace Bluebird with `p-each-series`
 * Replace `minimatch` with `micromatch`
-* Drop support for Node 4
 
 ## [2.1.2] - 2017-09-15
 
@@ -144,7 +153,8 @@ https://github.com/SimenB/add-asset-html-webpack-plugin/releases
 
 Initial release
 
-[unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.2...HEAD
+[unreleased]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.3...HEAD
+[2.1.3]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/SimenB/add-asset-html-webpack-plugin/compare/v2.0.1...v2.1.0

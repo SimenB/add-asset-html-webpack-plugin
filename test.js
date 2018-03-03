@@ -20,6 +20,12 @@ test('assets should should be reversed', () => {
   expect(new AddAssetHtmlPlugin(['a', 'b']).assets).toEqual(['b', 'a']);
 });
 
+test('should not reject on success', async () => {
+  expect(await addAllAssetsToCompilation([], {}, pluginMock)).toEqual(
+    pluginMock,
+  );
+});
+
 test('should invoke callback on error', async () => {
   const compilation = { errors: [] };
 
@@ -28,6 +34,18 @@ test('should invoke callback on error', async () => {
   ).rejects.toThrowError();
 
   expect(compilation.errors).toMatchSnapshot();
+});
+
+test('should reject on error', async () => {
+  expect.hasAssertions();
+  const compilation = { errors: [] };
+
+  try {
+    await addAllAssetsToCompilation([{}], compilation, pluginMock);
+  } catch (e) {
+    expect(compilation.errors).toMatchSnapshot();
+    expect(compilation.errors[0]).toBe(e);
+  }
 });
 
 test("should add file using compilation's publicPath", async () => {

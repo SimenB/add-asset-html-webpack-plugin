@@ -7,17 +7,11 @@ export default class AddAssetHtmlPlugin {
 
   /* istanbul ignore next: this would be integration tests */
   apply(compiler) {
-    compiler.plugin('compilation', compilation => {
-      compilation.plugin(
-        'html-webpack-plugin-before-html-generation',
-        async (htmlPluginData, callback) => {
-          await addAllAssetsToCompilation(
-            this.assets,
-            compilation,
-            htmlPluginData,
-            callback,
-          );
-        },
+    compiler.hooks.compilation.tap('AddAssetHtmlPlugin', compilation => {
+      compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapPromise(
+        'AddAssetHtmlPlugin',
+        htmlPluginData =>
+          addAllAssetsToCompilation(this.assets, compilation, htmlPluginData),
       );
     });
   }

@@ -20,15 +20,6 @@ test('assets should should be reversed', () => {
   expect(new AddAssetHtmlPlugin(['a', 'b']).assets).toEqual(['b', 'a']);
 });
 
-test('should invoke callback on success', async () => {
-  const callback = jest.fn();
-
-  await addAllAssetsToCompilation([], {}, pluginMock, callback);
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginMock);
-});
-
 test('should not reject success', async () => {
   expect(await addAllAssetsToCompilation([], {}, pluginMock)).toEqual(
     pluginMock,
@@ -36,15 +27,13 @@ test('should not reject success', async () => {
 });
 
 test('should invoke callback on error', async () => {
-  const callback = jest.fn();
   const compilation = { errors: [] };
 
-  await addAllAssetsToCompilation([{}], compilation, pluginMock, callback);
+  await expect(
+    addAllAssetsToCompilation([{}], compilation, pluginMock),
+  ).rejects.toThrowError();
 
   expect(compilation.errors).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(compilation.errors[0], pluginMock);
 });
 
 test('should reject on error', async () => {
@@ -60,7 +49,6 @@ test('should reject on error', async () => {
 });
 
 test("should add file using compilation's publicPath", async () => {
-  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
@@ -68,17 +56,12 @@ test("should add file using compilation's publicPath", async () => {
     [{ filepath: path.join(__dirname, 'my-file.js') }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test('should used passed in publicPath', async () => {
-  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
@@ -86,20 +69,15 @@ test('should used passed in publicPath', async () => {
     [{ filepath: 'my-file.js', publicPath: 'pp' }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 // TODO: No idea what this does, actually... Coverage currently hits it, but the logic is untested.
 test.skip('should handle missing `publicPath`', () => {});
 
 test('should add file missing "/" to public path', async () => {
-  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
@@ -107,17 +85,12 @@ test('should add file missing "/" to public path', async () => {
     [{ filepath: 'my-file.js' }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test('should add sourcemap to compilation', async () => {
-  const callback = jest.fn();
   const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = {
@@ -130,13 +103,9 @@ test('should add sourcemap to compilation', async () => {
     [{ filepath: 'my-file.js' }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 
   expect(addFileToAssetsStub).toHaveBeenCalledTimes(2);
   expect(addFileToAssetsStub.mock.calls[0]).toEqual([
@@ -150,7 +119,6 @@ test('should add sourcemap to compilation', async () => {
 });
 
 test('should skip adding sourcemap to compilation if set to false', async () => {
-  const callback = jest.fn();
   const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = {
@@ -163,20 +131,15 @@ test('should skip adding sourcemap to compilation if set to false', async () => 
     [{ filepath: 'my-file.js', includeSourcemap: false }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 
   expect(addFileToAssetsStub).toHaveBeenCalledTimes(1);
   expect(addFileToAssetsStub).toHaveBeenCalledWith('my-file.js', compilation);
 });
 
 test('should include hash of file content if option is set', async () => {
-  const callback = jest.fn();
   const compilation = {
     options: { output: {} },
     assets: {
@@ -189,17 +152,12 @@ test('should include hash of file content if option is set', async () => {
     [{ filepath: 'my-file.js', hash: true }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test('should add to css if `typeOfAsset` is css', async () => {
-  const callback = jest.fn();
   const compilation = {
     options: { output: {} },
     assets: {
@@ -212,17 +170,12 @@ test('should add to css if `typeOfAsset` is css', async () => {
     [{ filepath: 'my-file.css', typeOfAsset: 'css' }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test('should replace compilation assets key if `outputPath` is set', async () => {
-  const callback = jest.fn();
   const source = { source: () => 'test' };
   const addFileToAssetsMock = (filename, compilation) => {
     const name = path.basename(filename);
@@ -242,7 +195,6 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
     [{ filepath: 'my-file.js', outputPath: 'assets' }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
@@ -254,7 +206,6 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
 });
 
 test('filter option should exclude some files', async () => {
-  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
@@ -267,17 +218,12 @@ test('filter option should exclude some files', async () => {
     ],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test('filter option should include some files', async () => {
-  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
@@ -285,17 +231,12 @@ test('filter option should include some files', async () => {
     [{ filepath: path.join(__dirname, 'my-file.js'), files: ['index.*'] }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test('filter option should include some files with string option', async () => {
-  const callback = jest.fn();
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
 
@@ -303,13 +244,9 @@ test('filter option should include some files with string option', async () => {
     [{ filepath: path.join(__dirname, 'my-file.js'), files: 'index.*' }],
     compilation,
     pluginData,
-    callback,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
-
-  expect(callback).toHaveBeenCalledTimes(1);
-  expect(callback).toHaveBeenCalledWith(null, pluginData);
 });
 
 test('use globby to find multi file', async () => {

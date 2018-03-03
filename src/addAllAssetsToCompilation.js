@@ -99,13 +99,9 @@ async function addFileToAssets(
 
 // Visible for testing
 export default async function(assets, compilation, htmlPluginData) {
-  try {
-    const handledAssets = await handleUrl(assets);
-    await pEachSeries(handledAssets, asset =>
-      addFileToAssets(compilation, htmlPluginData, asset),
-    );
-    return htmlPluginData;
-  } catch (e) {
-    throw new Error(e);
-  }
+  const handledAssets = await handleUrl(assets);
+  await pEachSeries(handledAssets, asset =>
+    addFileToAssets(compilation, htmlPluginData, asset),
+  );
+  return htmlPluginData;
 }

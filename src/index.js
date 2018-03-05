@@ -10,7 +10,7 @@ export default class AddAssetHtmlPlugin {
     compiler.hooks.compilation.tap('AddAssetHtmlPlugin', compilation => {
       compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapPromise(
         'AddAssetHtmlPlugin',
-        async htmlPluginData =>
+        htmlPluginData =>
           addAllAssetsToCompilation(this.assets, compilation, htmlPluginData),
       );
     });

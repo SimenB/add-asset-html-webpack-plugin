@@ -1,14 +1,17 @@
 {
   "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "node": 6
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "node": 6
+        }
       }
-    }]
+    ]
   ],
   "plugins": [
     "add-module-exports",
-    "transform-inline-imports-commonjs"
+    ["@babel/plugin-transform-modules-commonjs", { "lazy": true }]
   ]
 }

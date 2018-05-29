@@ -120,6 +120,13 @@ Type: `string`
 
 If set, will be used as the output directory of the file.
 
+#### `outputName`
+
+Type: `string`
+
+If set, will be used as the name of the file instead of filepath. Template string accepts `[name]` and `[contentHash]`
+place holders, e.g. `[name].[contentHash].js`.
+
 #### `publicPath`
 
 Type: `string`

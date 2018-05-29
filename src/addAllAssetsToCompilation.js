@@ -44,6 +44,7 @@ async function addFileToAssets(
     publicPath,
     outputPath,
     files = [],
+    outputName,
   },
 ) {
   if (!filepath) {
@@ -67,6 +68,7 @@ async function addFileToAssets(
   const addedFilename = await htmlPluginData.plugin.addFileToAssets(
     filepath,
     compilation,
+    outputName,
   );
 
   let suffix = '';
@@ -90,6 +92,7 @@ async function addFileToAssets(
     const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(
       `${filepath}.map`,
       compilation,
+      `${outputName}.map`,
     );
     resolveOutput(compilation, addedMapFilename, outputPath);
   }

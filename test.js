@@ -142,10 +142,41 @@ test('should add sourcemap to compilation', async () => {
   expect(addFileToAssetsStub.mock.calls[0]).toEqual([
     'my-file.js',
     compilation,
+    undefined,
   ]);
   expect(addFileToAssetsStub.mock.calls[1]).toEqual([
     'my-file.js.map',
     compilation,
+    undefined,
+  ]);
+});
+
+test('passes outputName option to addFileToAssetsStub', async () => {
+  const callback = jest.fn();
+  const addFileToAssetsStub = jest.fn();
+  const compilation = { options: { output: {} } };
+  const pluginData = {
+    assets: { js: [], css: [] },
+    plugin: { addFileToAssets: addFileToAssetsStub },
+  };
+  addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
+
+  await addAllAssetsToCompilation(
+    [{ filepath: 'my-file.js', outputName: '[name].[contentHash].js' }],
+    compilation,
+    pluginData,
+    callback,
+  );
+
+  expect(addFileToAssetsStub.mock.calls[0]).toEqual([
+    'my-file.js',
+    compilation,
+    '[name].[contentHash].js',
+  ]);
+  expect(addFileToAssetsStub.mock.calls[1]).toEqual([
+    'my-file.js.map',
+    compilation,
+    '[name].[contentHash].js.map',
   ]);
 });
 
@@ -172,7 +203,11 @@ test('should skip adding sourcemap to compilation if set to false', async () => 
   expect(callback).toHaveBeenCalledWith(null, pluginData);
 
   expect(addFileToAssetsStub).toHaveBeenCalledTimes(1);
-  expect(addFileToAssetsStub).toHaveBeenCalledWith('my-file.js', compilation);
+  expect(addFileToAssetsStub).toHaveBeenCalledWith(
+    'my-file.js',
+    compilation,
+    undefined,
+  );
 });
 
 test('should include hash of file content if option is set', async () => {

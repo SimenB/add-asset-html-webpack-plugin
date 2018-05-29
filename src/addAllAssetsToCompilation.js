@@ -92,7 +92,7 @@ async function addFileToAssets(
     const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(
       `${filepath}.map`,
       compilation,
-      `${outputName}.map`,
+      outputName != null ? `${outputName}.map` : undefined,
     );
     resolveOutput(compilation, addedMapFilename, outputPath);
   }

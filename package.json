@@ -46,7 +46,7 @@
     "del-cli": "^1.1.0",
     "eslint": "^4.6.1",
     "eslint-config-simenb-base": "^14.0.0",
-    "eslint_d": "^5.1.0",
+    "eslint_d": "^6.0.0",
     "html-webpack-plugin": "^2.10.0",
     "husky": "^0.14.3",
     "in-publish": "^2.0.0",

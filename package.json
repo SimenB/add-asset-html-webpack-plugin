@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-add-module-exports": "^0.3.0",
     "babel-plugin-transform-inline-imports-commonjs": "^1.2.0",
     "babel-preset-env": "^1.6.0",
     "classnames": "^2.2.5",

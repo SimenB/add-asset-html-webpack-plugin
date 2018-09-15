@@ -2,6 +2,7 @@ import path from 'path';
 import crypto from 'crypto';
 import pEachSeries from 'p-each-series';
 import micromatch from 'micromatch';
+import globby from 'globby';
 import handleUrl from './handleUrl';
 
 function ensureTrailingSlash(string) {
@@ -39,7 +40,7 @@ async function addFileToAssets(
   {
     filepath,
     typeOfAsset = 'js',
-    includeSourcemap = true,
+    includeRelatedFiles = true,
     hash = false,
     publicPath,
     outputPath,
@@ -86,12 +87,17 @@ async function addFileToAssets(
 
   resolveOutput(compilation, addedFilename, outputPath);
 
-  if (includeSourcemap) {
-    const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(
-      `${filepath}.map`,
-      compilation,
+  if (includeRelatedFiles) {
+    const relatedFiles = await globby(`${filepath}.*`);
+    await Promise.all(
+      relatedFiles.sort().map(async relatedFile => {
+        const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(
+          relatedFile,
+          compilation,
+        );
+        resolveOutput(compilation, addedMapFilename, outputPath);
+      }),
     );
-    resolveOutput(compilation, addedMapFilename, outputPath);
   }
 
   return Promise.resolve(null);

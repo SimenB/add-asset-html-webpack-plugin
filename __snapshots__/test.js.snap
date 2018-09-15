@@ -86,7 +86,7 @@ exports[`should replace compilation assets key if \`outputPath\` is set 1`] = `
 Object {
   "css": Array [],
   "js": Array [
-    "my-file.js",
+    "some-file.js",
   ],
 }
 `;

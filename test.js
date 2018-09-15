@@ -3,6 +3,8 @@ import AddAssetHtmlPlugin from './src/index';
 import addAllAssetsToCompilation from './src/addAllAssetsToCompilation';
 import handleUrl from './src/handleUrl';
 
+const testFile = require.resolve('./fixture/some-file');
+
 const pluginMock = {
   plugin: {
     addFileToAssets: filename => Promise.resolve(path.basename(filename)),
@@ -100,7 +102,7 @@ test('should add sourcemap and gzipped files to compilation', async () => {
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
   await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js' }],
+    [{ filepath: testFile }],
     compilation,
     pluginData,
   );
@@ -108,15 +110,15 @@ test('should add sourcemap and gzipped files to compilation', async () => {
   expect(pluginData.assets).toMatchSnapshot();
 
   expect(addFileToAssetsStub).toHaveBeenCalledTimes(3);
-  expect(addFileToAssetsStub.mock.calls[0]).toEqual([
-    'my-file.js',
-    compilation,
-  ]);
+  expect(addFileToAssetsStub.mock.calls[0]).toEqual([testFile, compilation]);
   expect(addFileToAssetsStub.mock.calls[1]).toEqual([
-    'my-file.js.map',
+    `${testFile}.gz`,
     compilation,
   ]);
-  expect(addFileToAssetsStub.mock.calls[2]).toEqual(['my-file.js.gz', compilation]);
+  expect(addFileToAssetsStub.mock.calls[2]).toEqual([
+    `${testFile}.map`,
+    compilation,
+  ]);
 });
 
 test('should skip adding sourcemap and gzipped files to compilation if set to false', async () => {
@@ -129,7 +131,7 @@ test('should skip adding sourcemap and gzipped files to compilation if set to fa
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
   await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', includeSourcemap: false, includeGzipped: false }],
+    [{ filepath: 'my-file.js', includeRelatedFiles: false }],
     compilation,
     pluginData,
   );
@@ -193,17 +195,18 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
   };
 
   await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', outputPath: 'assets' }],
+    [{ filepath: testFile, outputPath: 'assets' }],
     compilation,
     pluginData,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
 
-  expect(compilation.assets['my-file.js']).toBeUndefined();
-  expect(compilation.assets['assets/my-file.js']).toEqual(source);
-  expect(compilation.assets['my-file.js.map']).toBeUndefined();
-  expect(compilation.assets['assets/my-file.js.map']).toEqual(source);
+  expect(compilation.assets).toEqual({
+    'assets/some-file.js': source,
+    'assets/some-file.js.gz': source,
+    'assets/some-file.js.map': source,
+  });
 });
 
 test('filter option should exclude some files', async () => {

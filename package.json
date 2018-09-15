@@ -92,7 +92,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.{md,json}": [
+    "*.{md,json,ts}": [
       "prettier --write",
       "git add"
     ],
@@ -104,6 +104,7 @@
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all",
+    "proseWrap": "always",
     "overrides": [
       {
         "files": [

@@ -104,16 +104,12 @@ Type: `boolean`, default: `false`
 If `true`, will append a unique hash of the file to the filename. This is useful
 for cache busting.
 
-#### `includeSourcemap`
+#### `includeRelatedFiles`
 
 Type: `boolean`, default: `true`
 
-If `true`, will add `filepath + '.map'` to the compilation as well.
-
-#### `includeGzipped`
-Type: `boolean`, default: `true`
-
-If `true`, will add `filepath + '.gz'` to the compilation as well.
+If `true`, will add `filepath + '.*'` to the compilation as well. E.g
+`filepath.map` and `filepath.gz`.
 
 #### `outputPath`
 
@@ -201,16 +197,26 @@ const webpackConfig = {
 [npm-url]: https://npmjs.org/package/add-asset-html-webpack-plugin
 [npm-image]: https://img.shields.io/npm/v/add-asset-html-webpack-plugin.svg
 [travis-url]: https://travis-ci.org/SimenB/add-asset-html-webpack-plugin
-[travis-image]: https://img.shields.io/travis/SimenB/add-asset-html-webpack-plugin/master.svg
-[appveyor-url]: https://ci.appveyor.com/project/SimenB/add-asset-html-webpack-plugin
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/dim5hcl49h3pi332/branch/master?svg=true
+[travis-image]:
+  https://img.shields.io/travis/SimenB/add-asset-html-webpack-plugin/master.svg
+[appveyor-url]:
+  https://ci.appveyor.com/project/SimenB/add-asset-html-webpack-plugin
+[appveyor-image]:
+  https://ci.appveyor.com/api/projects/status/dim5hcl49h3pi332/branch/master?svg=true
 [codecov-url]: https://codecov.io/gh/SimenB/add-asset-html-webpack-plugin
-[codecov-image]: https://img.shields.io/codecov/c/github/SimenB/add-asset-html-webpack-plugin/master.svg
+[codecov-image]:
+  https://img.shields.io/codecov/c/github/SimenB/add-asset-html-webpack-plugin/master.svg
 [david-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin
-[david-image]: https://img.shields.io/david/SimenB/add-asset-html-webpack-plugin.svg
-[david-dev-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=dev
-[david-dev-image]: https://img.shields.io/david/dev/SimenB/add-asset-html-webpack-plugin.svg
-[david-peer-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=peer
-[david-peer-image]: https://img.shields.io/david/peer/SimenB/add-asset-html-webpack-plugin.svg
+[david-image]:
+  https://img.shields.io/david/SimenB/add-asset-html-webpack-plugin.svg
+[david-dev-url]:
+  https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=dev
+[david-dev-image]:
+  https://img.shields.io/david/dev/SimenB/add-asset-html-webpack-plugin.svg
+[david-peer-url]:
+  https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=peer
+[david-peer-image]:
+  https://img.shields.io/david/peer/SimenB/add-asset-html-webpack-plugin.svg
 [greenkeeper-url]: https://greenkeeper.io/
-[greenkeeper-image]: https://badges.greenkeeper.io/SimenB/add-asset-html-webpack-plugin.svg
+[greenkeeper-image]:
+  https://badges.greenkeeper.io/SimenB/add-asset-html-webpack-plugin.svg

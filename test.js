@@ -1,7 +1,10 @@
 import path from 'path';
+import slash from 'slash';
 import AddAssetHtmlPlugin from './src/index';
 import addAllAssetsToCompilation from './src/addAllAssetsToCompilation';
 import handleUrl from './src/handleUrl';
+
+const testFile = slash(require.resolve('./fixture/some-file'));
 
 const pluginMock = {
   plugin: {
@@ -20,7 +23,7 @@ test('assets should should be reversed', () => {
   expect(new AddAssetHtmlPlugin(['a', 'b']).assets).toEqual(['b', 'a']);
 });
 
-test('should not reject success', async () => {
+test('should not reject on success', async () => {
   expect(await addAllAssetsToCompilation([], {}, pluginMock)).toEqual(
     pluginMock,
   );
@@ -90,7 +93,7 @@ test('should add file missing "/" to public path', async () => {
   expect(pluginData.assets).toMatchSnapshot();
 });
 
-test('should add sourcemap to compilation', async () => {
+test('should add sourcemap and gzipped files to compilation', async () => {
   const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = {
@@ -100,25 +103,26 @@ test('should add sourcemap to compilation', async () => {
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
   await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js' }],
+    [{ filepath: testFile }],
     compilation,
     pluginData,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
 
-  expect(addFileToAssetsStub).toHaveBeenCalledTimes(2);
-  expect(addFileToAssetsStub.mock.calls[0]).toEqual([
-    'my-file.js',
+  expect(addFileToAssetsStub).toHaveBeenCalledTimes(3);
+  expect(addFileToAssetsStub.mock.calls[0]).toEqual([testFile, compilation]);
+  expect(addFileToAssetsStub.mock.calls[1]).toEqual([
+    `${testFile}.gz`,
     compilation,
   ]);
-  expect(addFileToAssetsStub.mock.calls[1]).toEqual([
-    'my-file.js.map',
+  expect(addFileToAssetsStub.mock.calls[2]).toEqual([
+    `${testFile}.map`,
     compilation,
   ]);
 });
 
-test('should skip adding sourcemap to compilation if set to false', async () => {
+test('should skip adding sourcemap and gzipped files to compilation if set to false', async () => {
   const addFileToAssetsStub = jest.fn();
   const compilation = { options: { output: {} } };
   const pluginData = {
@@ -128,7 +132,7 @@ test('should skip adding sourcemap to compilation if set to false', async () => 
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
 
   await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', includeSourcemap: false }],
+    [{ filepath: 'my-file.js', includeRelatedFiles: false }],
     compilation,
     pluginData,
   );
@@ -192,17 +196,18 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
   };
 
   await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', outputPath: 'assets' }],
+    [{ filepath: testFile, outputPath: 'assets' }],
     compilation,
     pluginData,
   );
 
   expect(pluginData.assets).toMatchSnapshot();
 
-  expect(compilation.assets['my-file.js']).toBeUndefined();
-  expect(compilation.assets['assets/my-file.js']).toEqual(source);
-  expect(compilation.assets['my-file.js.map']).toBeUndefined();
-  expect(compilation.assets['assets/my-file.js.map']).toEqual(source);
+  expect(compilation.assets).toEqual({
+    'assets/some-file.js': source,
+    'assets/some-file.js.gz': source,
+    'assets/some-file.js.map': source,
+  });
 });
 
 test('filter option should exclude some files', async () => {

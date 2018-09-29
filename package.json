@@ -20,8 +20,7 @@
     "pretest": "npm run lint",
     "test": "jest",
     "pretravis": "npm run lint && npm run clean",
-    "travis": "npm run cover",
-    "precommit": "lint-staged"
+    "travis": "npm run cover"
   },
   "repository": "SimenB/add-asset-html-webpack-plugin",
   "keywords": [
@@ -54,7 +53,7 @@
     "eslint-config-simenb-base": "^15.0.0",
     "eslint_d": "^7.1.0",
     "html-webpack-plugin": "^4.0.0-0",
-    "husky": "^0.14.3",
+    "husky": "^1.0.1",
     "jest": "^23.6.0",
     "jest-watch-typeahead": "^0.2.0",
     "licensor": "^4.0.0",
@@ -114,5 +113,10 @@
         }
       }
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

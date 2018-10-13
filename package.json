@@ -10,6 +10,7 @@
   "scripts": {
     "clean": "del-cli lib/ coverage/ example/*/build example/*/dist",
     "build": "babel src/ --out-dir lib/",
+    "postbuild": "prettier lib/* --write",
     "cover": "jest --coverage",
     "preexample": "npm run clean && npm run build",
     "example": "npm run example:dll",

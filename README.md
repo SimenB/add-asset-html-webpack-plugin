@@ -24,7 +24,10 @@ NOTE: This plugin requires `html-webpack-plugin@^2.10.0`.
 
 ## Migrating to webpack 4+
 
-After webpack 4+, it is required to apply `AddAssetHtmlPlugin` after `HtmlWebpackPlugin` to register `html-webpack-plugin-before-html-generation` hook which is used inside first, while previous versions of webpack do not care about it.
+After webpack 4+, it is required to apply `AddAssetHtmlPlugin` after
+`HtmlWebpackPlugin` to register `html-webpack-plugin-before-html-generation`
+hook which is used inside first, while previous versions of webpack do not care
+about it.
 
 ## Basic Usage
 
@@ -139,8 +142,8 @@ Can be set to `css` to create a `link`-tag instead of a `script`-tag.
 
 Note: Remember to build the DLL file in a separate build.
 
-See [example](example/) for an example of how to set it up. You can run it by
-cloning this repo, running `yarn` followed by `yarn run example`.
+See [example](example/dll/) for an example of how to set it up. You can run it
+by cloning this repo, running `yarn` followed by `yarn run example`.
 
 When adding assets, it's added to the start of the array, so when
 `html-webpack-plugin` injects the assets, it's before other assets. If you

@@ -1,8 +1,7 @@
 import path from 'path';
 import slash from 'slash';
 import AddAssetHtmlPlugin from './src/index';
-import addAllAssetsToCompilation from './src/addAllAssetsToCompilation';
-import handleUrl from './src/handleUrl';
+import { handleUrl } from './src/utils';
 
 const testFile = slash(require.resolve('./fixture/some-file'));
 
@@ -24,16 +23,18 @@ test('assets should should be reversed', () => {
 });
 
 test('should not reject on success', async () => {
-  expect(await addAllAssetsToCompilation([], {}, pluginMock)).toEqual(
+  const plugin = new AddAssetHtmlPlugin();
+  expect(await plugin.addAllAssetsToCompilation({}, pluginMock)).toEqual(
     pluginMock,
   );
 });
 
 test('should invoke callback on error', async () => {
   const compilation = { errors: [] };
+  const plugin = new AddAssetHtmlPlugin({});
 
   await expect(
-    addAllAssetsToCompilation([{}], compilation, pluginMock),
+    plugin.addAllAssetsToCompilation(compilation, pluginMock),
   ).rejects.toThrowError();
 
   expect(compilation.errors).toMatchSnapshot();
@@ -42,9 +43,10 @@ test('should invoke callback on error', async () => {
 test('should reject on error', async () => {
   expect.hasAssertions();
   const compilation = { errors: [] };
+  const plugin = new AddAssetHtmlPlugin({});
 
   try {
-    await addAllAssetsToCompilation([{}], compilation, pluginMock);
+    await plugin.addAllAssetsToCompilation(compilation, pluginMock);
   } catch (e) {
     expect(compilation.errors).toMatchSnapshot();
     expect(compilation.errors[0]).toBe(e);
@@ -54,12 +56,11 @@ test('should reject on error', async () => {
 test("should add file using compilation's publicPath", async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: path.join(__dirname, 'my-file.js'),
+  });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: path.join(__dirname, 'my-file.js') }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -67,12 +68,12 @@ test("should add file using compilation's publicPath", async () => {
 test('should used passed in publicPath', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: 'my-file.js',
+    publicPath: 'pp',
+  });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', publicPath: 'pp' }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -83,12 +84,9 @@ test.skip('should handle missing `publicPath`', () => {});
 test('should add file missing "/" to public path', async () => {
   const compilation = { options: { output: { publicPath: 'vendor' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({ filepath: 'my-file.js' });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js' }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -101,12 +99,9 @@ test('should add sourcemap and gzipped files to compilation', async () => {
     plugin: { addFileToAssets: addFileToAssetsStub },
   };
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
+  const plugin = new AddAssetHtmlPlugin({ filepath: testFile });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: testFile }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 
@@ -130,12 +125,12 @@ test('should skip adding sourcemap and gzipped files to compilation if set to fa
     plugin: { addFileToAssets: addFileToAssetsStub },
   };
   addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: 'my-file.js',
+    includeRelatedFiles: false,
+  });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', includeRelatedFiles: false }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 
@@ -151,12 +146,9 @@ test('should include hash of file content if option is set', async () => {
     },
   };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({ filepath: 'my-file.js', hash: true });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.js', hash: true }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -169,12 +161,12 @@ test('should add to css if `typeOfAsset` is css', async () => {
     },
   };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: 'my-file.css',
+    typeOfAsset: 'css',
+  });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: 'my-file.css', typeOfAsset: 'css' }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -194,12 +186,12 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
     assets: { js: [], css: [] },
     plugin: { addFileToAssets: addFileToAssetsMock },
   };
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: testFile,
+    outputPath: 'assets',
+  });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: testFile, outputPath: 'assets' }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 
@@ -213,17 +205,12 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
 test('filter option should exclude some files', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: path.join(__dirname, 'my-file.js'),
+    files: ['something-weird'],
+  });
 
-  await addAllAssetsToCompilation(
-    [
-      {
-        filepath: path.join(__dirname, 'my-file.js'),
-        files: ['something-weird'],
-      },
-    ],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -231,12 +218,12 @@ test('filter option should exclude some files', async () => {
 test('filter option should include some files', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: path.join(__dirname, 'my-file.js'),
+    files: ['index.*'],
+  });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: path.join(__dirname, 'my-file.js'), files: ['index.*'] }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -244,12 +231,12 @@ test('filter option should include some files', async () => {
 test('filter option should include some files with string option', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: path.join(__dirname, 'my-file.js'),
+    files: 'index.*',
+  });
 
-  await addAllAssetsToCompilation(
-    [{ filepath: path.join(__dirname, 'my-file.js'), files: 'index.*' }],
-    compilation,
-    pluginData,
-  );
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
 
   expect(pluginData.assets).toMatchSnapshot();
 });
@@ -257,7 +244,7 @@ test('filter option should include some files with string option', async () => {
 test('use globby to find multi file', async () => {
   const assets = [{ filepath: './src/*.js' }];
   const ret = await handleUrl(assets);
-  expect(ret).toHaveLength(3);
+  expect(ret).toHaveLength(2);
 });
 
 test('filepath without globbyMagic should just return', async () => {

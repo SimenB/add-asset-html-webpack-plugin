@@ -39,7 +39,15 @@ declare namespace AddAssetHtmlPlugin {
      * Can be set to css to create a link-tag instead of a script-tag.
      * Default 'js'
      */
-    typeOfAsset?: string;
+    typeOfAsset?: 'js' | 'css';
+
+    /**
+     * Extra attributes to be added to the generated tag. Useful to for instance add
+     * `nomodule` to a polyfill script. The `attributes` object uses the key as the
+     * name of the attribute, and the value as the value of it. If value is simply
+     * `true` no value will be added.
+     */
+    attributes?: Object;
   }
 }
 

@@ -12,25 +12,44 @@ import {
 
 export default class AddAssetHtmlPlugin {
   constructor(assets = []) {
-    this.assets = Array.isArray(assets)
-      ? assets.slice().reverse()
-      : [assets].filter(Boolean);
+    this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets];
+    this.addedAssets = [];
   }
 
   /* istanbul ignore next: this would be integration tests */
   apply(compiler) {
     compiler.hooks.compilation.tap('AddAssetHtmlPlugin', compilation => {
-      let hook;
+      let beforeGenerationHook;
+      let alterAssetTagsHook;
 
       if (HtmlWebpackPlugin.version === 4) {
-        hook = HtmlWebpackPlugin.getHooks(compilation).beforeAssetTagGeneration;
+        const hooks = HtmlWebpackPlugin.getHooks(compilation);
+
+        beforeGenerationHook = hooks.beforeAssetTagGeneration;
+        alterAssetTagsHook = hooks.alterAssetTags;
       } else {
-        hook = compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration;
+        const { hooks } = compilation;
+
+        beforeGenerationHook = hooks.htmlWebpackPluginBeforeHtmlGeneration;
+        alterAssetTagsHook = hooks.htmlWebpackPluginAlterAssetTags;
       }
 
-      hook.tapPromise('AddAssetHtmlPlugin', htmlPluginData =>
+      beforeGenerationHook.tapPromise('AddAssetHtmlPlugin', htmlPluginData =>
         this.addAllAssetsToCompilation(compilation, htmlPluginData),
       );
+
+      alterAssetTagsHook.tap('AddAssetHtmlPlugin', htmlPluginData => {
+        const { assetTags } = htmlPluginData;
+        if (assetTags) {
+          this.alterAssetsAttributes(assetTags);
+        } else {
+          this.alterAssetsAttributes({
+            scripts: htmlPluginData.body
+              .concat(htmlPluginData.head)
+              .filter(({ tagName }) => tagName === 'script'),
+          });
+        }
+      });
     });
   }
 
@@ -42,7 +61,19 @@ export default class AddAssetHtmlPlugin {
     return htmlPluginData;
   }
 
-  // eslint-disable-next-line class-methods-use-this
+  alterAssetsAttributes(assetTags) {
+    this.assets
+      .filter(
+        asset => asset.attributes && Object.keys(asset.attributes).length > 0,
+      )
+      .forEach(asset => {
+        assetTags.scripts
+          .map(({ attributes }) => attributes)
+          .filter(attrs => this.addedAssets.includes(attrs.src))
+          .forEach(attrs => Object.assign(attrs, asset.attributes));
+      });
+  }
+
   async addFileToAssets(
     compilation,
     htmlPluginData,
@@ -95,6 +126,8 @@ export default class AddAssetHtmlPlugin {
     htmlPluginData.assets[typeOfAsset].unshift(resolvedPath);
 
     resolveOutput(compilation, addedFilename, outputPath);
+
+    this.addedAssets.push(resolvedPath);
 
     if (includeRelatedFiles) {
       const relatedFiles = await globby(`${filepath}.*`);

@@ -136,7 +136,26 @@ Type: `string`, default: `js`
 
 Can be set to `css` to create a `link`-tag instead of a `script`-tag.
 
+#### `attributes`
+
+Type: `object`, default: `{}`
+
+Extra attributes to be added to the generated tag. Useful to for instance add
+`nomodule` to a polyfill script. The `attributes` object uses the key as the
+name of the attribute, and the value as the value of it. If value is simply
+`true` no value will be added.
+
+An example of this is included in the repository.
+
+Currently only supports script tags.
+
 ## Examples
+
+When adding assets, it's added to the start of the array, so when
+`html-webpack-plugin` injects the assets, it's before other assets. If you
+depend on some order for the assets beyond that, and ordering the plugins
+doesn't cut it, you'll have to create a custom template and add the tags
+yourself.
 
 ### Add a DLL file from `webpack.DllPlugin`
 
@@ -144,12 +163,6 @@ Note: Remember to build the DLL file in a separate build.
 
 See [example](example/dll/) for an example of how to set it up. You can run it
 by cloning this repo, running `yarn` followed by `yarn run example`.
-
-When adding assets, it's added to the start of the array, so when
-`html-webpack-plugin` injects the assets, it's before other assets. If you
-depend on some order for the assets beyond that, and ordering the plugins
-doesn't cut it, you'll have to create a custom template and add the tags
-yourself.
 
 #### Webpack config
 
@@ -196,6 +209,38 @@ const webpackConfig = {
     new HtmlWebpackPlugin(),
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, './build/*.dll.js'),
+    }),
+  ],
+};
+```
+
+### Add a polyfill file you have locally
+
+See [example](example/polyfill/) for an example of how to use it. You can run it
+by cloning this repo, running `yarn` followed by `yarn run example`.
+
+#### Webpack config
+
+```js
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('../../');
+
+const webpackConfig = {
+  entry: 'entry.js',
+  devtool: '#source-map',
+  mode: 'development',
+  output: {
+    path: 'dist',
+    filename: 'index_bundle.js',
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new AddAssetHtmlPlugin({
+      filepath: path.resolve(__dirname, './polyfill.js'),
+      attributes: {
+        nomodule: true,
+      },
     }),
   ],
 };

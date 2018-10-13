@@ -241,6 +241,40 @@ test('filter option should include some files with string option', async () => {
   expect(pluginData.assets).toMatchSnapshot();
 });
 
+test('filter option should include some files with string option', async () => {
+  const pluginData = {
+    scripts: [
+      {
+        tagName: 'script',
+        voidTag: false,
+        attributes: { src: 'polyfill.js' },
+      },
+      {
+        tagName: 'script',
+        voidTag: false,
+        attributes: { src: 'index_bundle.js' },
+      },
+    ],
+    styles: [],
+    meta: [],
+  };
+  const plugin = new AddAssetHtmlPlugin({
+    filepath: path.join(__dirname, 'my-file.js'),
+    files: 'index.*',
+    attributes: { nomodule: true },
+  });
+
+  plugin.addedAssets.push('polyfill.js');
+
+  await plugin.alterAssetsAttributes(pluginData);
+
+  expect(pluginData.scripts).toContainEqual({
+    tagName: 'script',
+    voidTag: false,
+    attributes: { src: 'polyfill.js', nomodule: true },
+  });
+});
+
 test('use globby to find multi file', async () => {
   const assets = [{ filepath: './src/*.js' }];
   const ret = await handleUrl(assets);

@@ -1,37 +1,42 @@
 import path from 'path';
 import slash from 'slash';
-import AddAssetHtmlPlugin from './src/index';
-import { handleUrl } from './src/utils';
+import AddAssetHtmlPlugin from '../index';
+import { handleUrl } from '../utils';
 
 const testFile = slash(require.resolve('./fixture/some-file'));
 
 const pluginMock = {
   plugin: {
-    addFileToAssets: filename => Promise.resolve(path.basename(filename)),
+    addFileToAssets: (filename: string) =>
+      Promise.resolve(path.basename(filename)),
   },
   outputName: 'index.html',
 };
 
 test('assets should always be an array', () => {
-  expect(new AddAssetHtmlPlugin({}).assets).toBeInstanceOf(Array);
+  expect(new AddAssetHtmlPlugin({ filepath: 'blablah' }).assets).toBeInstanceOf(
+    Array,
+  );
   expect(new AddAssetHtmlPlugin([]).assets).toBeInstanceOf(Array);
   expect(new AddAssetHtmlPlugin().assets).toBeInstanceOf(Array);
 });
 
 test('assets should should be reversed', () => {
-  expect(new AddAssetHtmlPlugin(['a', 'b']).assets).toEqual(['b', 'a']);
+  expect(
+    new AddAssetHtmlPlugin([{ filepath: 'a' }, { filepath: 'b' }]).assets,
+  ).toEqual([{ filepath: 'b' }, { filepath: 'a' }]);
 });
 
 test('should not reject on success', async () => {
   const plugin = new AddAssetHtmlPlugin();
-  expect(await plugin.addAllAssetsToCompilation({}, pluginMock)).toEqual(
-    pluginMock,
-  );
+  await expect(
+    plugin.addAllAssetsToCompilation({}, pluginMock),
+  ).resolves.toEqual(pluginMock);
 });
 
 test('should invoke callback on error', async () => {
   const compilation = { errors: [] };
-  const plugin = new AddAssetHtmlPlugin({});
+  const plugin = new AddAssetHtmlPlugin({ filepath: 'blablah' });
 
   await expect(
     plugin.addAllAssetsToCompilation(compilation, pluginMock),
@@ -79,6 +84,7 @@ test('should used passed in publicPath', async () => {
 });
 
 // TODO: No idea what this does, actually... Coverage currently hits it, but the logic is untested.
+// @ts-ignore: it's wrong, added in Jest 24
 test.todo('should handle missing `publicPath`');
 
 test('should add file missing "/" to public path', async () => {

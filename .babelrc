@@ -4,11 +4,10 @@
       "@babel/preset-env",
       {
         "modules": false,
-        "targets": {
-          "node": 6
-        }
+        "targets": { "node": 6 }
       }
-    ]
+    ],
+    "@babel/preset-typescript"
   ],
   "plugins": [
     "add-module-exports",

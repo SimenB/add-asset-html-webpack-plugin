@@ -1,9 +1,23 @@
 {
   "root": true,
-  "extends": "simenb-base",
+  "extends": [
+    "simenb-base",
+    "simenb-typescript",
+    "prettier/@typescript-eslint"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  },
   "overrides": [
     {
-      "files": "test.js",
+      "files": "**/test.ts",
       "env": {
         "jest": true
       }
@@ -19,7 +33,9 @@
           { "devDependencies": true }
         ],
         // Off becuase stuff is generated later
-        "import/no-unresolved": "off"
+        "import/no-unresolved": "off",
+        // this isnt transpiled
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ],

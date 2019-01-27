@@ -3,21 +3,50 @@ import pEachSeries from 'p-each-series';
 import micromatch from 'micromatch';
 import crypto from 'crypto';
 import globby from 'globby';
+import { Plugin, Compiler, compilation as compilationType } from 'webpack';
 import {
   ensureTrailingSlash,
   handleUrl,
   resolveOutput,
   resolvePublicPath,
 } from './utils';
+import { Asset } from './types';
 
-export default class AddAssetHtmlPlugin {
-  constructor(assets = []) {
+// TODO: These 2 types are copied from html-webpack-plugin's @types entry
+type EntryObject = {
+  /** Webpack entry or chunk name */
+  entryName: string;
+  /** Entry or chunk path */
+  path: string;
+};
+
+type HtmlPluginData = {
+  assets: {
+    publicPath: string;
+    js: EntryObject[];
+    css: EntryObject[];
+  };
+  outputName: string;
+  plugin: HtmlWebpackPluginWithAdd;
+};
+
+declare class HtmlWebpackPluginWithAdd extends HtmlWebpackPlugin {
+  addFileToAssets(filepath: string, compilation: any): any;
+}
+
+export default class AddAssetHtmlPlugin extends Plugin {
+  assets: Asset[];
+
+  addedAssets: string[];
+
+  constructor(assets: Asset | Asset[] = []) {
+    super();
     this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets];
     this.addedAssets = [];
   }
 
   /* istanbul ignore next: this would be integration tests */
-  apply(compiler) {
+  apply(compiler: Compiler) {
     compiler.hooks.compilation.tap('AddAssetHtmlPlugin', compilation => {
       let beforeGenerationHook;
       let alterAssetTagsHook;
@@ -34,26 +63,36 @@ export default class AddAssetHtmlPlugin {
         alterAssetTagsHook = hooks.htmlWebpackPluginAlterAssetTags;
       }
 
-      beforeGenerationHook.tapPromise('AddAssetHtmlPlugin', htmlPluginData =>
-        this.addAllAssetsToCompilation(compilation, htmlPluginData),
+      beforeGenerationHook.tapPromise(
+        'AddAssetHtmlPlugin',
+        (htmlPluginData: HtmlPluginData) =>
+          this.addAllAssetsToCompilation(compilation, htmlPluginData),
       );
 
-      alterAssetTagsHook.tap('AddAssetHtmlPlugin', htmlPluginData => {
-        const { assetTags } = htmlPluginData;
-        if (assetTags) {
-          this.alterAssetsAttributes(assetTags);
-        } else {
-          this.alterAssetsAttributes({
-            scripts: htmlPluginData.body
-              .concat(htmlPluginData.head)
-              .filter(({ tagName }) => tagName === 'script'),
-          });
-        }
-      });
+      alterAssetTagsHook.tap(
+        'AddAssetHtmlPlugin',
+        (htmlPluginData: HtmlPluginData) => {
+          const { assetTags } = htmlPluginData;
+          if (assetTags) {
+            this.alterAssetsAttributes(assetTags);
+          } else {
+            this.alterAssetsAttributes({
+              scripts: htmlPluginData.body
+                .concat(htmlPluginData.head)
+                .filter(
+                  ({ tagName }: { tagName: string }) => tagName === 'script',
+                ),
+            });
+          }
+        },
+      );
     });
   }
 
-  async addAllAssetsToCompilation(compilation, htmlPluginData) {
+  async addAllAssetsToCompilation(
+    compilation: typeof compilationType,
+    htmlPluginData: HtmlPluginData,
+  ) {
     const handledAssets = await handleUrl(this.assets);
     await pEachSeries(handledAssets, asset =>
       this.addFileToAssets(compilation, htmlPluginData, asset),
@@ -75,8 +114,8 @@ export default class AddAssetHtmlPlugin {
   }
 
   async addFileToAssets(
-    compilation,
-    htmlPluginData,
+    compilation: typeof compilationType,
+    htmlPluginData: HtmlPluginData,
     {
       filepath,
       typeOfAsset = 'js',
@@ -85,7 +124,7 @@ export default class AddAssetHtmlPlugin {
       publicPath,
       outputPath,
       files = [],
-    },
+    }: Asset,
   ) {
     if (!filepath) {
       const error = new Error('No filepath defined');

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "rootDir": "src/",
+    "outDir": "lib/",
+    "lib": ["es2015"],
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  }
+}

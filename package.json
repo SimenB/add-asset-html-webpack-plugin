@@ -115,6 +115,12 @@
         "options": {
           "parser": "json"
         }
+      },
+      {
+        "files": "lib/**/*.js",
+        "options": {
+          "trailingComma": "es5"
+        }
       }
     ]
   },

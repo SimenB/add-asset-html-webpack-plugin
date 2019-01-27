@@ -41,11 +41,10 @@ export async function handleUrl(assets) {
   const globbyAssets = [];
   const normalAssets = [];
   // if filepath is null or undefined, just bubble up.
-  assets.forEach(
-    asset =>
-      asset.filepath && globby.hasMagic(asset.filepath)
-        ? globbyAssets.push(asset)
-        : normalAssets.push(asset),
+  assets.forEach(asset =>
+    asset.filepath && globby.hasMagic(asset.filepath)
+      ? globbyAssets.push(asset)
+      : normalAssets.push(asset),
   );
   const ret = [];
   await Promise.all(

@@ -36,6 +36,7 @@ and put it into the list of assets `html-webpack-plugin` injects into the
 generated html. Add the plugin the your config, providing it a filepath:
 
 ```js
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const webpackConfig = {
@@ -46,7 +47,7 @@ const webpackConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
-    new AddAssetHtmlPlugin({ filepath: require.resolve('./some-file') }),
+    new AddAssetHtmlPlugin({ filepath: path.resolve('./some-file') }),
   ],
 };
 ```
@@ -73,10 +74,10 @@ below, just pass multiple objects as an array.
 
 ```js
 new AddAssetHtmlPlugin([
-  { filepath: require.resolve('./some-file') },
-  { filepath: require.resolve('./some-other-file') },
+  { filepath: path.resolve('./some-file') },
+  { filepath: path.resolve('./some-other-file') },
   // Glob to match all of the dll file
-  { filepath: require.resolve('./**/*.dll.js') },
+  { filepath: path.resolve('./**/*.dll.js') },
 ]);
 ```
 
@@ -85,7 +86,7 @@ new AddAssetHtmlPlugin([
 Options are passed to the plugin during instantiation.
 
 ```js
-new AddAssetHtmlPlugin({ filepath: require.resolve('./some-file') });
+new AddAssetHtmlPlugin({ filepath: path.resolve('./some-file') });
 ```
 
 #### `filepath`

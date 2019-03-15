@@ -5132,6 +5132,11 @@ p-each-series@^1.0.0:
   dependencies:
     p-reduce "^1.0.0"
 
+p-each-series@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/p-each-series/-/p-each-series-2.0.0.tgz#25e3eb3c957210e34502a152033a4b8b42ba11ed"
+  integrity sha512-f8qYQeWdhR+o/80sRDEcJl/id24ri09iZwoVvnCoFwA4jKR6G8m/A8i1j87TVw8YiL3WP457fjKS/tmap7ALoQ==
+
 p-finally@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"

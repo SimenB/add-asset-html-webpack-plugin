@@ -40,7 +40,7 @@
   "dependencies": {
     "globby": "^9.0.0",
     "micromatch": "^3.1.3",
-    "p-each-series": "^1.0.0"
+    "p-each-series": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",

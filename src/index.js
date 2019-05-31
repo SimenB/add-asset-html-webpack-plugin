@@ -1,7 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import pEachSeries from 'p-each-series';
 import micromatch from 'micromatch';
-import crypto from 'crypto';
 import globby from 'globby';
 import {
   ensureTrailingSlash,
@@ -112,9 +111,7 @@ export default class AddAssetHtmlPlugin {
 
     let suffix = '';
     if (hash) {
-      const md5 = crypto.createHash('md5');
-      md5.update(compilation.assets[addedFilename].source());
-      suffix = `?${md5.digest('hex').substr(0, 20)}`;
+      suffix = `?${compilation.hash}`;
     }
 
     const resolvedPublicPath =

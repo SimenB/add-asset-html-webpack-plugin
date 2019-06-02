@@ -119,6 +119,7 @@ export default class AddAssetHtmlPlugin {
         const md5 = crypto.createHash('md5');
         md5.update(compilation.assets[addedFilename].source());
         suffix = `?${md5.digest('hex').substr(0, 20)}`;
+      }
     }
 
     const resolvedPublicPath =

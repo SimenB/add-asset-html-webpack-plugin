@@ -53,7 +53,7 @@
     "del-cli": "^1.1.0",
     "eslint": "^5.6.0",
     "eslint-config-simenb-base": "^15.0.1",
-    "eslint_d": "^7.1.0",
+    "eslint_d": "^8.0.0",
     "html-webpack-plugin": "^4.0.0-0",
     "husky": "^1.0.1",
     "jest": "^24.0.0",

@@ -8,12 +8,14 @@ import {
   handleUrl,
   resolveOutput,
   resolvePublicPath,
+  getAsValue,
 } from './utils';
 
 export default class AddAssetHtmlPlugin {
   constructor(assets = []) {
     this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets];
     this.addedAssets = [];
+    this.resourceHints = [];
   }
 
   /* istanbul ignore next: this would be integration tests */
@@ -21,17 +23,19 @@ export default class AddAssetHtmlPlugin {
     compiler.hooks.compilation.tap('AddAssetHtmlPlugin', compilation => {
       let beforeGenerationHook;
       let alterAssetTagsHook;
+      let alterAssetTagGroupsHook;
 
       if (HtmlWebpackPlugin.version === 4) {
         const hooks = HtmlWebpackPlugin.getHooks(compilation);
-
         beforeGenerationHook = hooks.beforeAssetTagGeneration;
         alterAssetTagsHook = hooks.alterAssetTags;
+        alterAssetTagGroupsHook = hooks.alterAssetTagGroups;
       } else {
         const { hooks } = compilation;
 
         beforeGenerationHook = hooks.htmlWebpackPluginBeforeHtmlGeneration;
         alterAssetTagsHook = hooks.htmlWebpackPluginAlterAssetTags;
+        alterAssetTagGroupsHook = hooks.htmlWebpackPluginAlterAssetTagGroups;
       }
 
       beforeGenerationHook.tapPromise('AddAssetHtmlPlugin', htmlPluginData =>
@@ -48,6 +52,12 @@ export default class AddAssetHtmlPlugin {
               .concat(htmlPluginData.head)
               .filter(({ tagName }) => tagName === 'script'),
           });
+        }
+      });
+      alterAssetTagGroupsHook.tap('AddAssetHtmlPlugin', htmlPluginData => {
+        const { headTags } = htmlPluginData;
+        if (headTags) {
+          headTags.push(...this.resourceHints);
         }
       });
     });
@@ -85,6 +95,8 @@ export default class AddAssetHtmlPlugin {
       publicPath,
       outputPath,
       files = [],
+      rel,
+      optionsAs,
     },
   ) {
     if (!filepath) {
@@ -128,6 +140,16 @@ export default class AddAssetHtmlPlugin {
     resolveOutput(compilation, addedFilename, outputPath);
 
     this.addedAssets.push(resolvedPath);
+
+    if (rel) {
+      const as =
+        rel === 'preload' ? { as: getAsValue(optionsAs, resolvedPath) } : {};
+      this.resourceHints.push({
+        tagName: 'link',
+        voidTag: true,
+        attributes: { href: resolvedPath, rel, ...as },
+      });
+    }
 
     if (includeRelatedFiles) {
       const relatedFiles = await globby(`${filepath}.*`);

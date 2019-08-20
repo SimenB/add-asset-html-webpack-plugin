@@ -3,3 +3,4 @@ coverage/
 build/
 dist/
 example/polyfill/polyfill.js
+example/resourceHint/polyfill.js

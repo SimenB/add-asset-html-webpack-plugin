@@ -59,3 +59,17 @@ export async function handleUrl(assets) {
 
   return ret.concat(normalAssets);
 }
+
+export function getAsValue(optionsAs, href) {
+  if (!optionsAs) {
+    const extension = path.extname(href);
+    if (extension === '.css') {
+      return 'style';
+    }
+    if (extension === '.woff2') {
+      return 'font';
+    }
+    return 'script';
+  }
+  return optionsAs;
+}

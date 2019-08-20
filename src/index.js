@@ -24,7 +24,6 @@ export default class AddAssetHtmlPlugin {
       let beforeGenerationHook;
       let alterAssetTagsHook;
       let alterAssetTagGroupsHook;
-
       if (HtmlWebpackPlugin.version === 4) {
         const hooks = HtmlWebpackPlugin.getHooks(compilation);
         beforeGenerationHook = hooks.beforeAssetTagGeneration;
@@ -35,7 +34,7 @@ export default class AddAssetHtmlPlugin {
 
         beforeGenerationHook = hooks.htmlWebpackPluginBeforeHtmlGeneration;
         alterAssetTagsHook = hooks.htmlWebpackPluginAlterAssetTags;
-        alterAssetTagGroupsHook = hooks.htmlWebpackPluginAlterAssetTagGroups;
+        alterAssetTagGroupsHook = hooks.htmlWebpackPluginAlterAssetTags;
       }
 
       beforeGenerationHook.tapPromise('AddAssetHtmlPlugin', htmlPluginData =>
@@ -54,10 +53,15 @@ export default class AddAssetHtmlPlugin {
           });
         }
       });
+
       alterAssetTagGroupsHook.tap('AddAssetHtmlPlugin', htmlPluginData => {
-        const { headTags } = htmlPluginData;
+        const { headTags, head } = htmlPluginData;
         if (headTags) {
+          // HtmlWebpackPlugin 4.0.0
           headTags.push(...this.resourceHints);
+        } else if (head) {
+          // HtmlWebpackPlugin 3.x
+          head.push(...this.resourceHints);
         }
       });
     });

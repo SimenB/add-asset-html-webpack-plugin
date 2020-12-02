@@ -22,7 +22,7 @@ export default class AddAssetHtmlPlugin {
       let beforeGenerationHook;
       let alterAssetTagsHook;
 
-      if (HtmlWebpackPlugin.version === 4) {
+      if (HtmlWebpackPlugin.version >= 4) {
         const hooks = HtmlWebpackPlugin.getHooks(compilation);
 
         beforeGenerationHook = hooks.beforeAssetTagGeneration;

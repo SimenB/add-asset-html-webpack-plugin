@@ -10,11 +10,14 @@ on:
 
 jobs:
   test-node:
-    name: Test on Node.js v${{ matrix.node-version }}
+    name:
+      # prettier-ignore
+      Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{ matrix.html-plugin-version }}
     strategy:
       fail-fast: false
       matrix:
         node-version: [6.x, 8.x, 10.x, 12.x, 14.x, 15.x]
+        html-plugin-version: [3, 4]
     runs-on: ubuntu-latest
 
     steps:
@@ -35,10 +38,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
+      - name: install with html-webpack-plugin v${{matrix.html-plugin-version }}
+        run: |
+          yarn
+          yarn add --dev html-webpack-plugin@${{matrix.html-plugin-version }}
       - name: run tests
         run: yarn travis
       - uses: codecov/codecov-action@v1
+        if: ${{ matrix.html-plugin-version == 4 }}
   test-os:
     name: Test on ${{ matrix.os }} using Node.js LTS
     strategy:

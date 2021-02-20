@@ -61,7 +61,7 @@
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "engines": {
-    "node": ">=10"
+    "node": "^12.13.0 || ^14.15.0 || >=15.0.0"
   },
   "jest": {
     "testEnvironment": "node",

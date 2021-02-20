@@ -51,7 +51,6 @@ jobs:
           yarn
           yarn add --dev html-webpack-plugin@${{matrix.html-plugin-version }} webpack@${{ matrix.webpack-version }}
           git checkout yarn.lock
-
       - name: install puppeteer
         if: ${{ matrix.install-puppeteer }}
         run: |
@@ -86,6 +85,11 @@ jobs:
         with:
           node-version: 14.x
       - run: yarn
+      - name: install puppeteer
+        run: |
+          yarn add --dev puppeteer
+          yarn example
+          git checkout yarn.lock
       - name: run tests
         run: yarn cover
   lint:

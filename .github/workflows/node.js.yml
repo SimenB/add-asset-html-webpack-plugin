@@ -10,8 +10,9 @@ on:
 
 jobs:
   test-node:
-    # prettier-ignore
-    Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{matrix.html-plugin-version }}
+    name:
+      # prettier-ignore
+      Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{ matrix.html-plugin-version }}
     strategy:
       fail-fast: false
       matrix:

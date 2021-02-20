@@ -18,9 +18,9 @@ const fsReadFileAsync = promisify(fs.readFile);
 
 /**
  * Pushes the content of the given filename to the compilation assets
- * @param {string} resolvedFilename
+ * @param {string} filename
  * @param {WebpackCompilation} compilation
- * @returns {string} file basename
+ * @returns {Promise<string>} file basename
  */
 function addFileToAssetsWebpack5(filename, compilation) {
   const resolvedFilename = path.resolve(compilation.compiler.context, filename);

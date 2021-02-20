@@ -92,6 +92,7 @@ jobs:
         with:
           node-version: 14.x
       - name: install puppeteer
+        run: |
           yarn
           yarn add --dev puppeteer
           git checkout yarn.lock

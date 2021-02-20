@@ -9,6 +9,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "del-cli lib/ coverage/ example/*/build example/*/dist",
+    "prebuild": "npm run clean",
     "build": "babel src/ --out-dir lib/",
     "postbuild": "prettier lib/* --write",
     "cover": "jest --coverage",
@@ -21,9 +22,7 @@
     "build-and-update-license": "npm run build && npm run update-license",
     "prepublishOnly": "npm run build",
     "pretest": "npm run lint",
-    "test": "jest",
-    "pretravis": "npm run lint && npm run clean",
-    "travis": "npm run cover"
+    "test": "jest"
   },
   "repository": "SimenB/add-asset-html-webpack-plugin",
   "keywords": [

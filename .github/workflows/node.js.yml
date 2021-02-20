@@ -92,7 +92,7 @@ jobs:
       # prettier-ignore
       ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/main' }}
     name: Release new version
-    needs: [test-node, test-os]
+    needs: [lint, test-node, test-os]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

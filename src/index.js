@@ -3,19 +3,17 @@ import pEachSeries from 'p-each-series';
 import micromatch from 'micromatch';
 import crypto from 'crypto';
 import globby from 'globby';
-import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
-import { promisify } from 'util';
 import {
   ensureTrailingSlash,
+  fsReadFileAsync,
   handleUrl,
   resolveOutput,
   resolvePublicPath,
 } from './utils';
 
-const fsReadFileAsync = promisify(fs.readFile);
-
+/* istanbul ignore next: webpack 5 not in unit test mocks */
 /**
  * Pushes the content of the given filename to the compilation assets
  * @param {string} filename
@@ -135,9 +133,11 @@ export default class AddAssetHtmlPlugin {
       }
     }
 
-    const addedFilename = await (
-      htmlPluginData.plugin.addFileToAssets || addFileToAssetsWebpack5
-    )(filepath, compilation);
+    const addFileToAssets =
+      htmlPluginData.plugin.addFileToAssets ||
+      /* istanbul ignore next: webpack 5 not in unit test mocks */ addFileToAssetsWebpack5;
+
+    const addedFilename = await addFileToAssets(filepath, compilation);
 
     let suffix = '';
     if (hash) {
@@ -162,9 +162,10 @@ export default class AddAssetHtmlPlugin {
       const relatedFiles = await globby(`${filepath}.*`);
       await Promise.all(
         relatedFiles.sort().map(async relatedFile => {
-          const addedMapFilename = await (
-            htmlPluginData.plugin.addFileToAssets || addFileToAssetsWebpack5
-          )(relatedFile, compilation);
+          const addedMapFilename = await addFileToAssets(
+            relatedFile,
+            compilation,
+          );
           resolveOutput(compilation, addedMapFilename, outputPath);
         }),
       );

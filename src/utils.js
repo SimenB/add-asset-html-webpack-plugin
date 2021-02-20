@@ -1,5 +1,6 @@
 import path from 'path';
 import globby from 'globby';
+import fs from 'fs';
 
 export function ensureTrailingSlash(string) {
   if (string.length && string.substr(-1, 1) !== '/') {
@@ -28,6 +29,19 @@ export function resolveOutput(compilation, addedFilename, outputPath) {
     delete compilation.assets[addedFilename];
     /* eslint-enable */
   }
+}
+
+/* istanbul ignore next: webpack 5 not in unit test mocks */
+export function fsReadFileAsync(filePath) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
+    });
+  });
 }
 
 /**

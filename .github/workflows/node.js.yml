@@ -45,7 +45,6 @@ jobs:
       - name: run tests
         run: yarn cover
       - uses: codecov/codecov-action@v1
-        if: ${{ matrix.html-plugin-version == 4 }}
   test-os:
     name: Test on ${{ matrix.os }} using Node.js LTS
     strategy:

@@ -127,5 +127,13 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "resolutions": {
+    "**/@types/webpack-sources/source-map": "0.6.1"
   }
 }

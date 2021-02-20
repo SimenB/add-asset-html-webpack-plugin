@@ -135,8 +135,9 @@ export default class AddAssetHtmlPlugin {
       }
     }
 
-    const addedFilename = await (htmlPluginData.plugin.addFileToAssets ||
-      addFileToAssetsWebpack5)(filepath, compilation);
+    const addedFilename = await (
+      htmlPluginData.plugin.addFileToAssets || addFileToAssetsWebpack5
+    )(filepath, compilation);
 
     let suffix = '';
     if (hash) {
@@ -161,11 +162,9 @@ export default class AddAssetHtmlPlugin {
       const relatedFiles = await globby(`${filepath}.*`);
       await Promise.all(
         relatedFiles.sort().map(async relatedFile => {
-          const addedMapFilename = await (htmlPluginData.plugin
-            .addFileToAssets || addFileToAssetsWebpack5)(
-            relatedFile,
-            compilation,
-          );
+          const addedMapFilename = await (
+            htmlPluginData.plugin.addFileToAssets || addFileToAssetsWebpack5
+          )(relatedFile, compilation);
           resolveOutput(compilation, addedMapFilename, outputPath);
         }),
       );

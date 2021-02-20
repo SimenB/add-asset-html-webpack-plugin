@@ -96,6 +96,8 @@ jobs:
           yarn
           yarn add --dev puppeteer
           git checkout yarn.lock
+      - name: run examples
+        run: yarn example
       - name: run tests
         run: yarn jest
   lint:

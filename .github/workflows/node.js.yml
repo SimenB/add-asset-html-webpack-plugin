@@ -23,6 +23,9 @@ jobs:
           # plugin@5 only supports webpack@5
           - html-plugin-version: 5
             webpack-version: 4
+          # plugin@3 only supports webpack@4
+          - html-plugin-version: 3
+            webpack-version: 5
           # webpack@5 and plugin@5 does not support node 6 or 8
           - node-version: 6.x
             webpack-version: 5

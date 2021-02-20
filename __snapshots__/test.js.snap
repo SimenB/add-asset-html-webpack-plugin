@@ -91,6 +91,15 @@ Object {
 }
 `;
 
+exports[`should skip adding sourcemap and gzipped files to compilation if set to false 1`] = `
+Object {
+  "css": Array [],
+  "js": Array [
+    "my-file.js",
+  ],
+}
+`;
+
 exports[`should used passed in publicPath 1`] = `
 Object {
   "css": Array [],

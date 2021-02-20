@@ -9,7 +9,7 @@ let browser;
 
 (() => {
   try {
-    // eslint-disable-next-line global-require,import/no-unresolved
+    // eslint-disable-next-line global-require,import/no-unresolved,import/no-extraneous-dependencies
     puppeteer = require('puppeteer');
   } catch (error) {
     if (error.code !== 'MODULE_NOT_FOUND') {
@@ -72,7 +72,7 @@ test('load dll correctly', async () => {
   try {
     expect(errorFn).not.toHaveBeenCalled();
     expect(consoleFn).toHaveBeenCalledTimes(1);
-    expect(consoleFn).toHaveBeenCalledWith('hello some classes');
+    expect(consoleFn).toHaveBeenCalledWith('hello some');
   } finally {
     await Promise.all([page.close(), server.stop()]);
   }

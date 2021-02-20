@@ -1,8 +1,7 @@
-import path from 'path';
-import globby from 'globby';
-import fs from 'fs';
+const path = require('path');
+const globby = require('globby');
 
-export function ensureTrailingSlash(string) {
+function ensureTrailingSlash(string) {
   if (string.length && string.substr(-1, 1) !== '/') {
     return `${string}/`;
   }
@@ -11,7 +10,7 @@ export function ensureTrailingSlash(string) {
 }
 
 // Copied from html-webpack-plugin
-export function resolvePublicPath(compilation, filename) {
+function resolvePublicPath(compilation, filename) {
   /* istanbul ignore else */
   const publicPath =
     typeof compilation.options.output.publicPath !== 'undefined'
@@ -21,7 +20,7 @@ export function resolvePublicPath(compilation, filename) {
   return ensureTrailingSlash(publicPath);
 }
 
-export function resolveOutput(compilation, addedFilename, outputPath) {
+function resolveOutput(compilation, addedFilename, outputPath) {
   if (outputPath && outputPath.length) {
     /* eslint-disable no-param-reassign */
     compilation.assets[`${outputPath}/${addedFilename}`] =
@@ -31,19 +30,6 @@ export function resolveOutput(compilation, addedFilename, outputPath) {
   }
 }
 
-/* istanbul ignore next: webpack 5 not in unit test mocks */
-export function fsReadFileAsync(filePath) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(filePath, (err, res) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res);
-      }
-    });
-  });
-}
-
 /**
  * handle globby filepath and return an array with all matched assets.
  *
@@ -51,25 +37,30 @@ export function fsReadFileAsync(filePath) {
  * @param {Array} assets
  * @returns
  */
-export async function handleUrl(assets) {
+async function handleUrl(assets) {
   const globbyAssets = [];
   const normalAssets = [];
   // if filepath is null or undefined, just bubble up.
   assets.forEach(asset =>
     asset.filepath && globby.hasMagic(asset.filepath)
       ? globbyAssets.push(asset)
-      : normalAssets.push(asset),
+      : normalAssets.push(asset)
   );
   const ret = [];
   await Promise.all(
     globbyAssets.map(asset =>
       globby(asset.filepath).then(paths =>
         paths.forEach(filepath =>
-          ret.push(Object.assign({}, asset, { filepath })),
-        ),
-      ),
-    ),
+          ret.push(Object.assign({}, asset, { filepath }))
+        )
+      )
+    )
   );
 
   return ret.concat(normalAssets);
 }
+
+module.exports.ensureTrailingSlash = ensureTrailingSlash;
+module.exports.resolvePublicPath = resolvePublicPath;
+module.exports.resolveOutput = resolveOutput;
+module.exports.handleUrl = handleUrl;

@@ -1,17 +1,19 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import pEachSeries from 'p-each-series';
-import micromatch from 'micromatch';
-import crypto from 'crypto';
-import globby from 'globby';
-import path from 'path';
-import webpack from 'webpack';
-import {
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const micromatch = require('micromatch');
+const crypto = require('crypto');
+const globby = require('globby');
+const path = require('path');
+const fs = require('fs');
+const util = require('util');
+const webpack = require('webpack');
+const {
   ensureTrailingSlash,
-  fsReadFileAsync,
   handleUrl,
   resolveOutput,
   resolvePublicPath,
-} from './utils';
+} = require('./utils');
+
+const fsReadFileAsync = util.promisify(fs.readFile);
 
 /* istanbul ignore next: webpack 5 not in unit test mocks */
 /**
@@ -27,8 +29,8 @@ function addFileToAssetsWebpack5(filename, compilation) {
     .then(source => new webpack.sources.RawSource(source, true))
     .catch(() =>
       Promise.reject(
-        new Error(`HtmlWebpackPlugin: could not load file ${resolvedFilename}`),
-      ),
+        new Error(`HtmlWebpackPlugin: could not load file ${resolvedFilename}`)
+      )
     )
     .then(rawSource => {
       const basename = path.basename(resolvedFilename);
@@ -38,7 +40,7 @@ function addFileToAssetsWebpack5(filename, compilation) {
     });
 }
 
-export default class AddAssetHtmlPlugin {
+module.exports = class AddAssetHtmlPlugin {
   constructor(assets = []) {
     this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets];
     this.addedAssets = [];
@@ -63,7 +65,7 @@ export default class AddAssetHtmlPlugin {
       }
 
       beforeGenerationHook.tapPromise('AddAssetHtmlPlugin', htmlPluginData =>
-        this.addAllAssetsToCompilation(compilation, htmlPluginData),
+        this.addAllAssetsToCompilation(compilation, htmlPluginData)
       );
 
       alterAssetTagsHook.tap('AddAssetHtmlPlugin', htmlPluginData => {
@@ -83,16 +85,17 @@ export default class AddAssetHtmlPlugin {
 
   async addAllAssetsToCompilation(compilation, htmlPluginData) {
     const handledAssets = await handleUrl(this.assets);
-    await pEachSeries(handledAssets, asset =>
-      this.addFileToAssets(compilation, htmlPluginData, asset),
-    );
+    // eslint-disable-next-line no-restricted-syntax
+    for (const asset of handledAssets) {
+      await this.addFileToAssets(compilation, htmlPluginData, asset);
+    }
     return htmlPluginData;
   }
 
   alterAssetsAttributes(assetTags) {
     this.assets
       .filter(
-        asset => asset.attributes && Object.keys(asset.attributes).length > 0,
+        asset => asset.attributes && Object.keys(asset.attributes).length > 0
       )
       .forEach(asset => {
         assetTags.scripts
@@ -113,7 +116,7 @@ export default class AddAssetHtmlPlugin {
       publicPath,
       outputPath,
       files = [],
-    },
+    }
   ) {
     if (!filepath) {
       const error = new Error('No filepath defined');
@@ -125,7 +128,7 @@ export default class AddAssetHtmlPlugin {
 
     if (fileFilters.length > 0) {
       const shouldSkip = !fileFilters.some(file =>
-        micromatch.isMatch(htmlPluginData.outputName, file),
+        micromatch.isMatch(htmlPluginData.outputName, file)
       );
 
       if (shouldSkip) {
@@ -164,11 +167,11 @@ export default class AddAssetHtmlPlugin {
         relatedFiles.sort().map(async relatedFile => {
           const addedMapFilename = await addFileToAssets(
             relatedFile,
-            compilation,
+            compilation
           );
           resolveOutput(compilation, addedMapFilename, outputPath);
-        }),
+        })
       );
     }
   }
-}
+};

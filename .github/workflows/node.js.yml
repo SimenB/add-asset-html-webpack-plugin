@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [6.x, 8.x, 10.x, 12.x, 14.x, 15.x]
+        node-version: [10.x, 12.x, 14.x, 15.x]
         html-plugin-version: [3, 4, 5]
         webpack-version: [4, 5]
         exclude:
@@ -24,24 +24,6 @@ jobs:
           # plugin@3 only supports webpack@4
           - html-plugin-version: 3
             webpack-version: 5
-          # webpack@5 and plugin@5 does not support node 6 or 8
-          - node-version: 6.x
-            webpack-version: 5
-          - node-version: 6.x
-            html-plugin-version: 5
-          - node-version: 8.x
-            webpack-version: 5
-          - node-version: 8.x
-            html-plugin-version: 5
-        include:
-          - node-version: 10.x
-            install-puppeteer: true
-          - node-version: 12.x
-            install-puppeteer: true
-          - node-version: 14.x
-            install-puppeteer: true
-          - node-version: 15.x
-            install-puppeteer: true
     runs-on: ubuntu-latest
 
     steps:
@@ -66,12 +48,6 @@ jobs:
         run: |
           yarn
           yarn add --dev html-webpack-plugin@${{matrix.html-plugin-version }} webpack@${{ matrix.webpack-version }}
-          git checkout yarn.lock
-      - name: install puppeteer
-        if: ${{ matrix.install-puppeteer }}
-        run: |
-          yarn add --dev puppeteer
-          yarn example
           git checkout yarn.lock
       - name: run tests
         run: yarn cover
@@ -101,11 +77,6 @@ jobs:
         with:
           node-version: 14.x
       - run: yarn
-      - name: install puppeteer
-        run: |
-          yarn add --dev puppeteer
-          yarn example
-          git checkout yarn.lock
       - name: run tests
         run: yarn cover
   lint:
@@ -154,7 +125,7 @@ jobs:
           node-version: 14.x
       - name: install
         run: yarn
-      - run: npx semantic-release@17
+      - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

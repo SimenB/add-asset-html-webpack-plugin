@@ -7,11 +7,12 @@ module.exports = {
   // Normally CWD
   context: __dirname,
   entry: path.join(__dirname, 'entry.js'),
-  devtool: '#source-map',
+  devtool: 'source-map',
   mode: 'development',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'index_bundle.js',
+    publicPath: '',
   },
   plugins: [
     new webpack.DllReferencePlugin({

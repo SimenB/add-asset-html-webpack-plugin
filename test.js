@@ -117,27 +117,6 @@ test('should add sourcemap and gzipped files to compilation', async () => {
   ]);
 });
 
-test('should skip adding sourcemap and gzipped files to compilation if set to false', async () => {
-  const addFileToAssetsStub = jest.fn();
-  const compilation = { options: { output: {} } };
-  const pluginData = {
-    assets: { js: [], css: [] },
-    plugin: { addFileToAssets: addFileToAssetsStub },
-  };
-  addFileToAssetsStub.mockReturnValue(Promise.resolve('my-file.js'));
-  const plugin = new AddAssetHtmlPlugin({
-    filepath: 'my-file.js',
-    includeRelatedFiles: false,
-  });
-
-  await plugin.addAllAssetsToCompilation(compilation, pluginData);
-
-  expect(pluginData.assets).toMatchSnapshot();
-
-  expect(addFileToAssetsStub).toHaveBeenCalledTimes(1);
-  expect(addFileToAssetsStub).toHaveBeenCalledWith('my-file.js', compilation);
-});
-
 test('should include hash of file content if option is set', async () => {
   const compilation = {
     options: { output: {} },

@@ -10,9 +10,7 @@ on:
 
 jobs:
   test-node:
-    name:
-      # prettier-ignore
-      Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{ matrix.html-plugin-version }} and webpack v${{ matrix.webpack-version }}
+    name: Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{ matrix.html-plugin-version }} and webpack v${{ matrix.webpack-version }}
     strategy:
       fail-fast: false
       matrix:
@@ -48,7 +46,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      # prettier-ignore
       - name: install with html-webpack-plugin v${{matrix.html-plugin-version }} and webpack v${{ matrix.webpack-version }}
         run: |
           yarn
@@ -114,9 +111,7 @@ jobs:
       - run: yarn lint
 
   release:
-    if:
-      # prettier-ignore
-      ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/main' }}
+    if: ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/main' }}
     name: Release new version
     needs: [lint, test-node, test-os]
     runs-on: ubuntu-latest

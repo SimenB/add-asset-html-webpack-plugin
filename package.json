@@ -121,6 +121,12 @@
         "options": {
           "trailingComma": "es5"
         }
+      },
+      {
+        "files": ".github/workflows/**/*.yml",
+        "options": {
+          "printWidth": 175
+        }
       }
     ]
   },

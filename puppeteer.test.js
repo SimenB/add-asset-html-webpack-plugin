@@ -72,7 +72,7 @@ test('load dll correctly', async () => {
   try {
     expect(errorFn).not.toHaveBeenCalled();
     expect(consoleFn).toHaveBeenCalledTimes(1);
-    expect(consoleFn).toHaveBeenCalledWith('hello some classes');
+    expect(consoleFn).toHaveBeenCalledWith('hello  classes');
   } finally {
     await Promise.all([page.close(), server.stop()]);
   }

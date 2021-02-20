@@ -20,8 +20,8 @@
     "lint": "eslint --cache .",
     "update-license": "licensor --width 72",
     "build-and-update-license": "npm run build && npm run update-license",
-    "prepublishOnly": "npm run build",
-    "pretest": "npm run lint",
+    "prepare": "npm run build",
+    "pretest": "npm run example",
     "test": "jest"
   },
   "repository": "SimenB/add-asset-html-webpack-plugin",
@@ -53,6 +53,7 @@
     "eslint": "^5.6.0",
     "eslint-config-simenb-base": "^15.0.1",
     "eslint_d": "^7.1.0",
+    "express": "^4.17.1",
     "html-webpack-plugin": "^4.0.0-0",
     "husky": "^1.0.1",
     "jest": "^24.0.0",
@@ -61,6 +62,7 @@
     "lint-staged": "^7.0.0",
     "prettier": "^1.8.2",
     "slash": "^2.0.0",
+    "stoppable": "^1.1.0",
     "webpack": "^4.0.0",
     "webpack-cli": "^3.1.0"
   },

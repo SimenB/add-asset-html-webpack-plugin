@@ -3,12 +3,40 @@ import pEachSeries from 'p-each-series';
 import micromatch from 'micromatch';
 import crypto from 'crypto';
 import globby from 'globby';
+import path from 'path';
+import webpack from 'webpack';
 import {
   ensureTrailingSlash,
+  fsReadFileAsync,
   handleUrl,
   resolveOutput,
   resolvePublicPath,
 } from './utils';
+
+/* istanbul ignore next: webpack 5 not in unit test mocks */
+/**
+ * Pushes the content of the given filename to the compilation assets
+ * @param {string} filename
+ * @param {WebpackCompilation} compilation
+ * @returns {Promise<string>} file basename
+ */
+function addFileToAssetsWebpack5(filename, compilation) {
+  const resolvedFilename = path.resolve(compilation.compiler.context, filename);
+
+  return fsReadFileAsync(resolvedFilename)
+    .then(source => new webpack.sources.RawSource(source, true))
+    .catch(() =>
+      Promise.reject(
+        new Error(`HtmlWebpackPlugin: could not load file ${resolvedFilename}`),
+      ),
+    )
+    .then(rawSource => {
+      const basename = path.basename(resolvedFilename);
+      compilation.fileDependencies.add(resolvedFilename);
+      compilation.emitAsset(basename, rawSource);
+      return basename;
+    });
+}
 
 export default class AddAssetHtmlPlugin {
   constructor(assets = []) {
@@ -22,7 +50,7 @@ export default class AddAssetHtmlPlugin {
       let beforeGenerationHook;
       let alterAssetTagsHook;
 
-      if (HtmlWebpackPlugin.version === 4) {
+      if (HtmlWebpackPlugin.version >= 4) {
         const hooks = HtmlWebpackPlugin.getHooks(compilation);
 
         beforeGenerationHook = hooks.beforeAssetTagGeneration;
@@ -105,10 +133,11 @@ export default class AddAssetHtmlPlugin {
       }
     }
 
-    const addedFilename = await htmlPluginData.plugin.addFileToAssets(
-      filepath,
-      compilation,
-    );
+    const addFileToAssets =
+      htmlPluginData.plugin.addFileToAssets ||
+      /* istanbul ignore next: webpack 5 not in unit test mocks */ addFileToAssetsWebpack5;
+
+    const addedFilename = await addFileToAssets(filepath, compilation);
 
     let suffix = '';
     if (hash) {
@@ -133,7 +162,7 @@ export default class AddAssetHtmlPlugin {
       const relatedFiles = await globby(`${filepath}.*`);
       await Promise.all(
         relatedFiles.sort().map(async relatedFile => {
-          const addedMapFilename = await htmlPluginData.plugin.addFileToAssets(
+          const addedMapFilename = await addFileToAssets(
             relatedFile,
             compilation,
           );

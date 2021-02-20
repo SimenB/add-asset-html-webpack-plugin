@@ -15,8 +15,24 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [6.x, 8.x, 10.x, 12.x, 14.x, 15.x]
-        html-plugin-version: [3, 4]
-        webpack-version: [4]
+        html-plugin-version: [3, 4, 5]
+        webpack-version: [4, 5]
+        exclude:
+          # plugin@5 only supports webpack@5
+          - html-plugin-version: 5
+            webpack-version: 4
+          # plugin@3 only supports webpack@4
+          - html-plugin-version: 3
+            webpack-version: 5
+          # webpack@5 and plugin@5 does not support node 6 or 8
+          - node-version: 6.x
+            webpack-version: 5
+          - node-version: 6.x
+            html-plugin-version: 5
+          - node-version: 8.x
+            webpack-version: 5
+          - node-version: 8.x
+            html-plugin-version: 5
         include:
           - node-version: 10.x
             install-puppeteer: true

@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     vendor: ['classnames'],
   },
-  devtool: '#source-map',
+  devtool: 'source-map',
   mode: 'development',
   output: {
     path: path.join(__dirname, 'build'),

@@ -57,6 +57,9 @@ jobs:
         node-version: [10.x, 12.x, 14.x, 15.x]
         html-plugin-version: [4, 5]
         webpack-version: [4, 5]
+        exclude:
+          - html-plugin-version: 5
+            webpack-version: 4
     runs-on: ubuntu-latest
 
     steps:

@@ -28,7 +28,7 @@ beforeAll(async () => {
   if (puppeteer) {
     browser = await puppeteer.launch();
   }
-});
+}, 10000);
 
 afterAll(async () => {
   if (browser) {
@@ -76,4 +76,4 @@ test('load dll correctly', async () => {
   } finally {
     await Promise.all([page.close(), server.stop()]);
   }
-});
+}, 10000);

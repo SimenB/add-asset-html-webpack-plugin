@@ -9,7 +9,7 @@ let browser;
 
 (() => {
   try {
-    // eslint-disable-next-line global-require,import/no-unresolved
+    // eslint-disable-next-line global-require,import/no-unresolved,import/no-extraneous-dependencies
     puppeteer = require('puppeteer');
   } catch (error) {
     if (error.code !== 'MODULE_NOT_FOUND') {

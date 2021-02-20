@@ -10,14 +10,22 @@ on:
 
 jobs:
   test-node:
-    name:
-      # prettier-ignore
-      Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{ matrix.html-plugin-version }}
+    name: Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{ matrix.html-plugin-version }} and webpack v${{ matrix.webpack-version }}
     strategy:
       fail-fast: false
       matrix:
         node-version: [6.x, 8.x, 10.x, 12.x, 14.x, 15.x]
         html-plugin-version: [3, 4]
+        webpack-version: [4]
+        include:
+          - node-version: 10.x
+            install-puppeteer: true
+          - node-version: 12.x
+            install-puppeteer: true
+          - node-version: 14.x
+            install-puppeteer: true
+          - node-version: 15.x
+            install-puppeteer: true
     runs-on: ubuntu-latest
 
     steps:
@@ -38,10 +46,17 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install with html-webpack-plugin v${{matrix.html-plugin-version }}
+      - name: install with html-webpack-plugin v${{matrix.html-plugin-version }} and webpack v${{ matrix.webpack-version }}
         run: |
           yarn
-          yarn add --dev html-webpack-plugin@${{matrix.html-plugin-version }}
+          yarn add --dev html-webpack-plugin@${{matrix.html-plugin-version }} webpack@${{ matrix.webpack-version }}
+          git checkout yarn.lock
+      - name: install puppeteer
+        if: ${{ matrix.install-puppeteer }}
+        run: |
+          yarn add --dev puppeteer
+          yarn example
+          git checkout yarn.lock
       - name: run tests
         run: yarn cover
       - uses: codecov/codecov-action@v1
@@ -70,36 +85,13 @@ jobs:
         with:
           node-version: 14.x
       - run: yarn
-      - name: run tests
-        run: yarn cover
-  test-browser:
-    name: Test DLL example with Puppeteer
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - uses: actions/setup-node@v2.1.4
-        with:
-          node-version: 14.x
       - name: install puppeteer
         run: |
-          yarn
           yarn add --dev puppeteer
+          yarn example
           git checkout yarn.lock
-      - name: run examples
-        run: yarn example
       - name: run tests
-        run: yarn jest
+        run: yarn cover
   lint:
     name: Run ESLint using Node.js LTS
     runs-on: ubuntu-latest
@@ -123,11 +115,9 @@ jobs:
       - run: yarn lint
 
   release:
-    if:
-      # prettier-ignore
-      ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/main' }}
+    if: ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/main' }}
     name: Release new version
-    needs: [lint, test-node, test-os, test-browser]
+    needs: [lint, test-node, test-os]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

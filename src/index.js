@@ -29,8 +29,8 @@ function addFileToAssetsWebpack5(filename, compilation) {
     .then(source => new webpack.sources.RawSource(source, true))
     .catch(() =>
       Promise.reject(
-        new Error(`HtmlWebpackPlugin: could not load file ${resolvedFilename}`)
-      )
+        new Error(`HtmlWebpackPlugin: could not load file ${resolvedFilename}`),
+      ),
     )
     .then(rawSource => {
       const basename = path.basename(resolvedFilename);
@@ -65,7 +65,7 @@ module.exports = class AddAssetHtmlPlugin {
       }
 
       beforeGenerationHook.tapPromise('AddAssetHtmlPlugin', htmlPluginData =>
-        this.addAllAssetsToCompilation(compilation, htmlPluginData)
+        this.addAllAssetsToCompilation(compilation, htmlPluginData),
       );
 
       alterAssetTagsHook.tap('AddAssetHtmlPlugin', htmlPluginData => {
@@ -95,7 +95,7 @@ module.exports = class AddAssetHtmlPlugin {
   alterAssetsAttributes(assetTags) {
     this.assets
       .filter(
-        asset => asset.attributes && Object.keys(asset.attributes).length > 0
+        asset => asset.attributes && Object.keys(asset.attributes).length > 0,
       )
       .forEach(asset => {
         assetTags.scripts
@@ -116,7 +116,7 @@ module.exports = class AddAssetHtmlPlugin {
       publicPath,
       outputPath,
       files = [],
-    }
+    },
   ) {
     if (!filepath) {
       const error = new Error('No filepath defined');
@@ -128,7 +128,7 @@ module.exports = class AddAssetHtmlPlugin {
 
     if (fileFilters.length > 0) {
       const shouldSkip = !fileFilters.some(file =>
-        micromatch.isMatch(htmlPluginData.outputName, file)
+        micromatch.isMatch(htmlPluginData.outputName, file),
       );
 
       if (shouldSkip) {
@@ -167,10 +167,10 @@ module.exports = class AddAssetHtmlPlugin {
         relatedFiles.sort().map(async relatedFile => {
           const addedMapFilename = await addFileToAssets(
             relatedFile,
-            compilation
+            compilation,
           );
           resolveOutput(compilation, addedMapFilename, outputPath);
-        })
+        }),
       );
     }
   }

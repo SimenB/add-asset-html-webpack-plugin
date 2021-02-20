@@ -44,17 +44,17 @@ async function handleUrl(assets) {
   assets.forEach(asset =>
     asset.filepath && globby.hasMagic(asset.filepath)
       ? globbyAssets.push(asset)
-      : normalAssets.push(asset)
+      : normalAssets.push(asset),
   );
   const ret = [];
   await Promise.all(
     globbyAssets.map(asset =>
       globby(asset.filepath).then(paths =>
         paths.forEach(filepath =>
-          ret.push(Object.assign({}, asset, { filepath }))
-        )
-      )
-    )
+          ret.push(Object.assign({}, asset, { filepath })),
+        ),
+      ),
+    ),
   );
 
   return ret.concat(normalAssets);

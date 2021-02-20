@@ -24,7 +24,7 @@
     }
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "trailingComma": "all" }],
     "no-await-in-loop": "off"
   }
 }

@@ -25,7 +25,7 @@ test('assets should should be reversed', () => {
 test('should not reject on success', async () => {
   const plugin = new AddAssetHtmlPlugin();
   expect(await plugin.addAllAssetsToCompilation({}, pluginMock)).toEqual(
-    pluginMock
+    pluginMock,
   );
 });
 
@@ -34,7 +34,7 @@ test('should invoke callback on error', async () => {
   const plugin = new AddAssetHtmlPlugin({});
 
   await expect(
-    plugin.addAllAssetsToCompilation(compilation, pluginMock)
+    plugin.addAllAssetsToCompilation(compilation, pluginMock),
   ).rejects.toThrowError();
 
   expect(compilation.errors).toMatchSnapshot();

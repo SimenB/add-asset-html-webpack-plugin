@@ -57,7 +57,7 @@ jobs:
         run: |
           yarn
           yarn add --dev html-webpack-plugin@${{matrix.html-plugin-version }} webpack@${{ matrix.webpack-version }}
-          git checkout
+          git checkout yarn.lock
 
       - name: run tests
         run: yarn cover

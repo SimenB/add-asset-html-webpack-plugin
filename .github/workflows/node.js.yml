@@ -92,7 +92,7 @@ jobs:
           node-version: 14.x
       - name: install
         run: yarn
-      - run: npx semantic-release@15
+      - run: npx semantic-release@17
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -132,5 +132,8 @@
     "branches": [
       "main"
     ]
+  },
+  "resolutions": {
+    "**/@types/webpack-sources/source-map": "0.6.1"
   }
 }

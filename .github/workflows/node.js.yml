@@ -79,10 +79,9 @@ jobs:
           yarn
           yarn add --dev html-webpack-plugin@${{matrix.html-plugin-version }} webpack@${{ matrix.webpack-version }}
           git checkout yarn.lock
+      - run: yarn run example
       - name: run tests
-        run: |
-          yarn run example
-          yarn cover
+        run: yarn cover
       - uses: codecov/codecov-action@v1
         if: ${{ always() }}
   test-os:
@@ -109,10 +108,9 @@ jobs:
         with:
           node-version: 14.x
       - run: yarn
+      - run: yarn run example
       - name: run tests
-        run: |
-          yarn run example
-          yarn cover
+        run: yarn cover
   lint:
     name: Run ESLint using Node.js LTS
     runs-on: ubuntu-latest

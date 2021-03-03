@@ -23,7 +23,7 @@ function resolvePublicPath(compilation, filename) {
 function resolveOutput(compilation, addedFilename, outputPath) {
   if (outputPath && outputPath.length) {
     /* eslint-disable no-param-reassign */
-    compilation.assets[path.join(outputPath, addedFilename)] =
+    compilation.assets[`${outputPath}/${addedFilename}`] =
       compilation.assets[addedFilename];
     delete compilation.assets[addedFilename];
     /* eslint-enable */

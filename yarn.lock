@@ -1165,9 +1165,9 @@ __metadata:
   linkType: hard
 
 "@types/prettier@npm:^2.1.5":
-  version: 2.2.1
-  resolution: "@types/prettier@npm:2.2.1"
-  checksum: 9dc257dfc51eab6bc1e9ce58df94b309a206b2cdc6768709de3d20f70ae545c616bbc46add6d66f66cfa6cfbb0613dd09e6b6028ff6ff8ba9d3625f38d85cc66
+  version: 2.2.2
+  resolution: "@types/prettier@npm:2.2.2"
+  checksum: 907c2dac93899961706017ecf17d0038b500f499f61d6f1d31e439dae88f7cb90ee944760b1348856baa7befa42761fc53f9bde5add08feccfc810280347d681
   languageName: node
   linkType: hard
 
@@ -1515,7 +1515,7 @@ __metadata:
     eslint: ^7.20.0
     eslint-config-simenb-base: ^15.0.1
     express: ^4.17.1
-    globby: ^11.0.2
+    globby: ^10.0.2
     html-webpack-plugin: ^5.2.0
     husky: ^4.3.8
     jest: ^27.0.0-next.3
@@ -4660,7 +4660,7 @@ fsevents@^2.2.1:
   languageName: node
   linkType: hard
 
-"globby@npm:^10.0.1":
+"globby@npm:^10.0.1, globby@npm:^10.0.2":
   version: 10.0.2
   resolution: "globby@npm:10.0.2"
   dependencies:
@@ -4676,7 +4676,7 @@ fsevents@^2.2.1:
   languageName: node
   linkType: hard
 
-"globby@npm:^11.0.0, globby@npm:^11.0.1, globby@npm:^11.0.2":
+"globby@npm:^11.0.0, globby@npm:^11.0.1":
   version: 11.0.2
   resolution: "globby@npm:11.0.2"
   dependencies:

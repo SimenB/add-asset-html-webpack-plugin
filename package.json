@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/SimenB/add-asset-html-webpack-plugin#readme",
   "dependencies": {
-    "globby": "^11.0.2",
+    "globby": "^10.0.2",
     "micromatch": "^4.0.2"
   },
   "devDependencies": {

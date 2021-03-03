@@ -782,10 +782,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "@octokit/openapi-types@npm:5.2.1"
-  checksum: 6e81bfa3320a52fa46029f5d14212f00733ad3d6c8d9150bdb8b5c0a6f3f4df5a3c3fa5c12fcb79cced2ee832a380ccaf804997824a1e44e3da7548178073750
+"@octokit/openapi-types@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "@octokit/openapi-types@npm:5.2.2"
+  checksum: 58cdc301a759c5dfd1e6ac7bc9398c2cd960062867f9fa8e95e7503c78c35837c107faaf54e421faeffbfae8186ca65817d1001fca120bed1b946717c5c75e72
   languageName: node
   linkType: hard
 
@@ -809,15 +809,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-rest-endpoint-methods@npm:4.13.1":
-  version: 4.13.1
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:4.13.1"
+"@octokit/plugin-rest-endpoint-methods@npm:4.13.2":
+  version: 4.13.2
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:4.13.2"
   dependencies:
-    "@octokit/types": ^6.11.1
+    "@octokit/types": ^6.11.2
     deprecation: ^2.3.1
   peerDependencies:
     "@octokit/core": ">=3"
-  checksum: 9349c9f36d578450366b47c6d6d9074e91ab3b848b937a35285569f62af55e8d984bef835265d3f476ac34396e3c5145e6f3034e8f99a6284813a409ca6dab11
+  checksum: 1834fdba7a64f6e16533ef8f08574e9bfbb0a14444569f5f72c746ce5287f76f62f3d4a99dcf966cf0e5c8ac7778f1470989e2a2fae6c11fe794eb5c917fbcc6
   languageName: node
   linkType: hard
 
@@ -849,23 +849,23 @@ __metadata:
   linkType: hard
 
 "@octokit/rest@npm:^18.0.0":
-  version: 18.3.1
-  resolution: "@octokit/rest@npm:18.3.1"
+  version: 18.3.2
+  resolution: "@octokit/rest@npm:18.3.2"
   dependencies:
     "@octokit/core": ^3.2.3
     "@octokit/plugin-paginate-rest": ^2.6.2
     "@octokit/plugin-request-log": ^1.0.2
-    "@octokit/plugin-rest-endpoint-methods": 4.13.1
-  checksum: a4d0569ce0e19eeff42b72f7af62b0626a602e3f1864e077f06a959227c72ecb755e3721426e470348ffccaaf827cc0e8d340e84ee2e25d50da3b8933ba1a13f
+    "@octokit/plugin-rest-endpoint-methods": 4.13.2
+  checksum: ca2d2d8959f49b1dc9174e9174bb23bcbdbb623391e80087c5ef9eabdb66e9d355f8f014cba05b7d73c09a869eb586849fb63f9e557c74812d698469bebdec8d
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.11.0, @octokit/types@npm:^6.11.1, @octokit/types@npm:^6.7.1":
-  version: 6.11.1
-  resolution: "@octokit/types@npm:6.11.1"
+"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.11.0, @octokit/types@npm:^6.11.2, @octokit/types@npm:^6.7.1":
+  version: 6.11.2
+  resolution: "@octokit/types@npm:6.11.2"
   dependencies:
-    "@octokit/openapi-types": ^5.2.1
-  checksum: 1fb0105137958d88bdb0ee1ceeeef947cbf35dec5bfc6245d11ca0c26c73afd2e12f1cf0e57c99218f7addfc1cbf61ad6c182e582f91012926e7c993193d96fd
+    "@octokit/openapi-types": ^5.2.2
+  checksum: 274473c5ba8850ff328c04607a4b26e3471807c499d6a8fa5c29edec3db747dfd790f9eb3e2d9221e233f31266a9b96203e216fe94d5e6a923a3a6a890084318
   languageName: node
   linkType: hard
 
@@ -3435,9 +3435,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.649":
-  version: 1.3.677
-  resolution: "electron-to-chromium@npm:1.3.677"
-  checksum: bb0c4fa3403af00b2739d0bf2cdf2418641c1ebd1cdfb3084a99aa1efb24e12418a2b0d2d8572d5da04deea61425f67afd94ed2a6dc5ddf3c2c73f785d6d5e32
+  version: 1.3.678
+  resolution: "electron-to-chromium@npm:1.3.678"
+  checksum: 61ee1c1359f650fdbd09ac7977c82c39587a17fd0aca6e37565b40ff7e3b7ab5a7dead0f22615a964524bb858f6d2ec84aeb4beeb67e268df5c1abd2eaa64506
   languageName: node
   linkType: hard
 
@@ -7161,18 +7161,18 @@ fsevents@^2.2.1:
   linkType: hard
 
 "marked-terminal@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "marked-terminal@npm:4.1.0"
+  version: 4.1.1
+  resolution: "marked-terminal@npm:4.1.1"
   dependencies:
     ansi-escapes: ^4.3.1
     cardinal: ^2.1.1
-    chalk: ^4.0.0
+    chalk: ^4.1.0
     cli-table: ^0.3.1
     node-emoji: ^1.10.0
     supports-hyperlinks: ^2.1.0
   peerDependencies:
-    marked: ">=0.4.0 <2.0.0"
-  checksum: bb7483eadd3318eb50aa51688442716f7fe3716b73057a65347821bd4281847a62cd8264151ce9033ba95ecb53d683c3dc1d6a4a1b1fd9de40882d9d688f4b4d
+    marked: ^1.0.0 || ^2.0.0
+  checksum: 43a1485ef83107f93e45d411eea0a25bb409a30d46bf942f267178849460ad70750c5cca8477d5f9a4fa205952f8ea2b465629181ca3176aa9d4cee0c642cb7c
   languageName: node
   linkType: hard
 

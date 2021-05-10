@@ -141,6 +141,7 @@
     ]
   },
   "resolutions": {
-    "**/@types/webpack-sources/source-map": "0.6.1"
+    "**/@types/webpack-sources/source-map": "0.6.1",
+    "merge2": "~1.2.3"
   }
 }

@@ -143,6 +143,7 @@
   "resolutions": {
     "**/@types/webpack-sources/source-map": "0.6.1",
     "anymatch": "^2.0.0",
-    "merge2": "~1.2.3"
+    "merge2": "~1.2.3",
+    "stack-utils": "1.0.2"
   }
 }

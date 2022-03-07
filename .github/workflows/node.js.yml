@@ -33,6 +33,8 @@ jobs:
             webpack-version: 5
           - node-version: 8.x
             html-plugin-version: 5
+          - node-version: 10.x
+            html-plugin-version: 5
         include:
           - node-version: 10.x
             install-puppeteer: true

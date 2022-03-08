@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "classnames": "^2.2.5",
-    "del-cli": "^3.0.1",
-    "eslint": "^7.20.0",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.10.0",
     "eslint-config-simenb-base": "^15.0.1",
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.2.0",
@@ -45,10 +45,10 @@
     "jest": "^27.0.0",
     "jest-watch-typeahead": "^1.0.0",
     "licensor": "^4.0.0",
-    "lint-staged": "^10.5.4",
+    "lint-staged": "^12.3.5",
     "prettier": "^2.2.1",
-    "puppeteer": "^8.0.0",
-    "semantic-release": "^17.3.9",
+    "puppeteer": "^13.5.0",
+    "semantic-release": "^19.0.2",
     "slash": "^3.0.0",
     "stoppable": "^1.1.0",
     "webpack": "^5.23.0",
@@ -59,7 +59,7 @@
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "engines": {
-    "node": "^12.13.0 || ^14.15.0 || >=15.0.0"
+    "node": "^12.13.0 || ^14.15.0 || >=16.0.0"
   },
   "jest": {
     "testEnvironment": "node",
@@ -78,9 +78,9 @@
     ]
   },
   "lint-staged": {
-    "*.js": "eslint --fix --cache",
-    "*.{md,json,ts}": "prettier --write",
-    ".{eslintrc}": "prettier --write"
+    "*.{js,ts}": "eslint --fix --cache",
+    "*.{md,json}": "prettier --write",
+    ".eslintrc": "prettier --write"
   },
   "prettier": {
     "singleQuote": true,

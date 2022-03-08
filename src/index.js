@@ -33,7 +33,9 @@ function addFileToAssetsWebpack5(filename, compilation) {
     .then(rawSource => {
       const basename = path.basename(resolvedFilename);
       compilation.fileDependencies.add(resolvedFilename);
-      compilation.emitAsset(basename, rawSource);
+      if (!compilation.getAsset(basename)) {
+        compilation.emitAsset(basename, rawSource);
+      }
       return basename;
     });
 }

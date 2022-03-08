@@ -24,7 +24,7 @@ module.exports = {
     new HtmlWebpackPlugin(),
     new AddAssetHtmlPlugin({
       // glob needs to use forward slashes
-      filepath: `${slash(path.resolve(__dirname, './build'))}/*.dll.js`,
+      glob: `${slash(path.resolve(__dirname, './build'))}/*.dll.js`,
     }),
   ],
 };

@@ -138,6 +138,22 @@ test('should skip adding sourcemap and gzipped files to compilation if set to fa
   expect(addFileToAssetsStub).toHaveBeenCalledWith('my-file.js', compilation);
 });
 
+test('should use the hash from HtmlWebpackPlugin if option is set', async () => {
+  const compilation = {
+    hash: 'testHash',
+    options: { output: {} },
+    assets: {
+      'my-file.js': { source: () => 'some source code is cool to have;' },
+    },
+  };
+  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const plugin = new AddAssetHtmlPlugin({ filepath: 'my-file.js', hash: true });
+
+  await plugin.addAllAssetsToCompilation(compilation, pluginData);
+
+  expect(pluginData.assets).toMatchSnapshot();
+});
+
 test('should include hash of file content if option is set', async () => {
   const compilation = {
     options: { output: {} },

@@ -6,10 +6,6 @@
 [![CI Build Status][gh-actions-image]][gh-actions-url]
 [![Code Coverage branch][codecov-image]][codecov-url]
 
-[![Dependency Status][david-image]][david-url]
-[![Dev Dependency Status][david-dev-image]][david-dev-url]
-[![Peer Dependency Status][david-peer-image]][david-peer-url]
-
 ## Installation
 
 Install the plugin with `npm`:
@@ -253,15 +249,4 @@ const webpackConfig = {
   https://github.com/SimenB/add-asset-html-webpack-plugin/actions/workflows/node.js.yml/badge.svg?branch=main
 [codecov-url]: https://codecov.io/gh/SimenB/add-asset-html-webpack-plugin
 [codecov-image]:
-  https://img.shields.io/codecov/c/github/SimenB/add-asset-html-webpack-plugin/master.svg
-[david-url]: https://david-dm.org/SimenB/add-asset-html-webpack-plugin
-[david-image]:
-  https://img.shields.io/david/SimenB/add-asset-html-webpack-plugin.svg
-[david-dev-url]:
-  https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=dev
-[david-dev-image]:
-  https://img.shields.io/david/dev/SimenB/add-asset-html-webpack-plugin.svg
-[david-peer-url]:
-  https://david-dm.org/SimenB/add-asset-html-webpack-plugin?type=peer
-[david-peer-image]:
-  https://img.shields.io/david/peer/SimenB/add-asset-html-webpack-plugin.svg
+  https://img.shields.io/codecov/c/github/SimenB/add-asset-html-webpack-plugin/main.svg

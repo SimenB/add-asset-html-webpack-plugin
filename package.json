@@ -115,7 +115,7 @@
   "release": {
     "branches": [
       "main",
-      "v4"
+      "4.x"
     ]
   },
   "resolutions": {

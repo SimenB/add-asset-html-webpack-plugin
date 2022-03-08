@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - v4
+      - 4.x
   pull_request:
     branches:
       - main
-      - v4
+      - 4.x
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -89,7 +89,7 @@ jobs:
       - run: yarn lint
 
   release:
-    if: ${{ github.event_name == 'push' && (github.event.ref == 'refs/heads/main' || github.event.ref == 'refs/heads/v4') }}
+    if: ${{ github.event_name == 'push' && (github.event.ref == 'refs/heads/main' || github.event.ref == 'refs/heads/4.x') }}
     name: Release new version
     needs: [lint, test-node, test-os]
     runs-on: ubuntu-latest

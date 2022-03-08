@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   test-node:
     name: Test on Node.js v${{ matrix.node-version }} and html-webpack-plugin v${{ matrix.html-plugin-version }} and webpack v${{ matrix.webpack-version }}

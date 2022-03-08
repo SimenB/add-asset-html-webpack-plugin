@@ -18,20 +18,14 @@ Install the plugin with `npm`:
 $ npm i add-asset-html-webpack-plugin -D
 ```
 
-NOTE: This plugin requires `html-webpack-plugin@^2.10.0`.
-
-## Migrating to webpack 4+
-
-After webpack 4+, it is required to apply `AddAssetHtmlPlugin` after
-`HtmlWebpackPlugin` to register `html-webpack-plugin-before-html-generation`
-hook which is used inside first, while previous versions of webpack do not care
-about it.
+NOTE: This plugin requires `html-webpack-plugin@^3`, `html-webpack-plugin@^4`,
+or `html-webpack-plugin@^5`.
 
 ## Basic Usage
 
 The plugin will add the given JS or CSS file to the files Webpack knows about,
 and put it into the list of assets `html-webpack-plugin` injects into the
-generated html. Add the plugin the your config, providing it a filepath:
+generated html. Add the plugin to your config, providing it a filepath:
 
 ```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');

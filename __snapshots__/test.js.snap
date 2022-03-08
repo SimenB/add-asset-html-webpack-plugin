@@ -119,3 +119,5 @@ Object {
   ],
 }
 `;
+
+exports[`throws of both filepath and glob is defined 1`] = `"Both filepath and glob defined in {\\"filepath\\":\\"my-file.js\\",\\"glob\\":\\"my-file.js\\"} - only use one of them"`;

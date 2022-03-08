@@ -302,3 +302,8 @@ test('filepath without globbyMagic should just return', async () => {
   const ret = await handleUrl(assets);
   expect(ret).toHaveLength(1);
 });
+
+test('throws of both filepath and glob is defined', async () => {
+  const assets = [{ filepath: 'my-file.js', glob: 'my-file.js' }];
+  await expect(handleUrl(assets)).rejects.toThrowErrorMatchingSnapshot();
+});

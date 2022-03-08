@@ -28,9 +28,6 @@ jobs:
           # plugin@3 only supports webpack@4
           - html-plugin-version: 3
             webpack-version: 5
-          # webpack@4 does not support node@17
-          - node-version: 17.x
-            webpack-version: 4
     runs-on: ubuntu-latest
 
     steps:

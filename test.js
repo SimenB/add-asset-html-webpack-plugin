@@ -53,7 +53,7 @@ test('should reject on error', async () => {
   }
 });
 
-test.only("should add file using compilation's publicPath", async () => {
+test("should add file using compilation's publicPath", async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
   const plugin = new AddAssetHtmlPlugin({

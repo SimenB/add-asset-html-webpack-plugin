@@ -118,7 +118,7 @@
     ]
   },
   "resolutions": {
-    "@semantic-release/npm/npm": "7.20.6"
+    "@semantic-release/npm/npm": "7.24.2"
   },
   "packageManager": "yarn@3.2.0"
 }

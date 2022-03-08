@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Add a JS or CSS assets to a generated HTML file",
   "files": [
-    "lib/",
+    "src/",
     "index.d.ts"
   ],
   "main": "src/index.js",

@@ -114,7 +114,8 @@
   },
   "release": {
     "branches": [
-      "main"
+      "main",
+      "v4"
     ]
   },
   "resolutions": {

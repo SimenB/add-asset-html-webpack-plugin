@@ -118,6 +118,7 @@ module.exports = class AddAssetHtmlPlugin {
       publicPath,
       outputPath,
       files = [],
+      inject = true,
     },
   ) {
     if (!filepath) {
@@ -127,6 +128,15 @@ module.exports = class AddAssetHtmlPlugin {
     }
 
     const fileFilters = Array.isArray(files) ? files : [files];
+
+    const shouldInject =
+      typeof inject === 'function'
+        ? inject(htmlPluginData.plugin)
+        : Boolean(inject);
+
+    if (!shouldInject) {
+      return;
+    }
 
     if (fileFilters.length > 0) {
       const shouldSkip = !fileFilters.some(file =>

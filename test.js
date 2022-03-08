@@ -302,3 +302,79 @@ test('filepath without globbyMagic should just return', async () => {
   const ret = await handleUrl(assets);
   expect(ret).toHaveLength(1);
 });
+
+describe('inject assets conditionally', () => {
+  test('does not inject if false', async () => {
+    const compilation = { options: { output: { publicPath: 'vendor/' } } };
+    const pluginData = Object.assign(
+      { assets: { js: [], css: [] } },
+      pluginMock,
+    );
+    const plugin = new AddAssetHtmlPlugin({
+      filepath: path.join(__dirname, 'my-file.js'),
+      inject: false,
+    });
+
+    await plugin.addAllAssetsToCompilation(compilation, pluginData);
+
+    expect(pluginData.assets.js).toHaveLength(0);
+  });
+
+  test('if inject is a callback it gets called with the HtmlPlugin data', async () => {
+    const mock = {
+      plugin: {
+        options: {
+          HTML_PLUGIN_OPTION: 'hello',
+        },
+      },
+    };
+
+    const compilation = { options: { output: { publicPath: 'vendor/' } } };
+    const pluginData = Object.assign({ assets: { js: [], css: [] } }, mock);
+    const injectCallback = jest.fn();
+    const plugin = new AddAssetHtmlPlugin({
+      filepath: path.join(__dirname, 'my-file.js'),
+      inject: injectCallback,
+    });
+
+    await plugin.addAllAssetsToCompilation(compilation, pluginData);
+
+    expect(injectCallback).toHaveBeenCalledWith(mock.plugin);
+  });
+
+  test('does not inject if the callback returns false', async () => {
+    const compilation = { options: { output: { publicPath: 'vendor/' } } };
+    const pluginData = Object.assign(
+      { assets: { js: [], css: [] } },
+      pluginMock,
+    );
+    const plugin = new AddAssetHtmlPlugin({
+      filepath: path.join(__dirname, 'my-file.js'),
+      inject: () => {
+        return false;
+      },
+    });
+
+    await plugin.addAllAssetsToCompilation(compilation, pluginData);
+
+    expect(pluginData.assets.js).toHaveLength(0);
+  });
+
+  test('injects if the callback returns true', async () => {
+    const compilation = { options: { output: { publicPath: 'vendor/' } } };
+    const pluginData = Object.assign(
+      { assets: { js: [], css: [] } },
+      pluginMock,
+    );
+    const plugin = new AddAssetHtmlPlugin({
+      filepath: path.join(__dirname, 'my-file.js'),
+      inject: () => {
+        return true;
+      },
+    });
+
+    await plugin.addAllAssetsToCompilation(compilation, pluginData);
+
+    expect(pluginData.assets.js).toHaveLength(1);
+  });
+});

@@ -1,34 +1,15 @@
-import path from 'path';
-import fs from 'fs';
-import { promisify } from 'util';
-import express from 'express';
-import stoppable from 'stoppable';
+const path = require('path');
+const fs = require('fs');
+const { promisify } = require('util');
+const express = require('express');
+const stoppable = require('stoppable');
+const puppeteer = require('puppeteer');
 
-let puppeteer;
 let browser;
 
-(() => {
-  try {
-    // eslint-disable-next-line global-require,import/no-unresolved,import/no-extraneous-dependencies
-    puppeteer = require('puppeteer');
-  } catch (error) {
-    if (error.code !== 'MODULE_NOT_FOUND') {
-      throw error;
-    }
-  }
-})();
-
-if (!puppeteer) {
-  test.only('Unable to load puppeteer, skipping tests', () => {
-    console.warn('Unable to load puppeteer, skipping tests');
-  });
-}
-
 beforeAll(async () => {
-  if (puppeteer) {
-    browser = await puppeteer.launch();
-  }
-}, 10000);
+  browser = await puppeteer.launch();
+}, 30000);
 
 afterAll(async () => {
   if (browser) {

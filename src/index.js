@@ -1,17 +1,19 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import pEachSeries from 'p-each-series';
-import micromatch from 'micromatch';
-import crypto from 'crypto';
-import globby from 'globby';
-import path from 'path';
-import webpack from 'webpack';
-import {
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const micromatch = require('micromatch');
+const crypto = require('crypto');
+const globby = require('globby');
+const path = require('path');
+const fs = require('fs');
+const util = require('util');
+const webpack = require('webpack');
+const {
   ensureTrailingSlash,
-  fsReadFileAsync,
   handleUrl,
   resolveOutput,
   resolvePublicPath,
-} from './utils';
+} = require('./utils');
+
+const fsReadFileAsync = util.promisify(fs.readFile);
 
 /* istanbul ignore next: webpack 5 not in unit test mocks */
 /**
@@ -40,7 +42,7 @@ function addFileToAssetsWebpack5(filename, compilation) {
     });
 }
 
-export default class AddAssetHtmlPlugin {
+module.exports = class AddAssetHtmlPlugin {
   constructor(assets = []) {
     this.assets = Array.isArray(assets) ? assets.slice().reverse() : [assets];
     this.addedAssets = [];
@@ -85,9 +87,10 @@ export default class AddAssetHtmlPlugin {
 
   async addAllAssetsToCompilation(compilation, htmlPluginData) {
     const handledAssets = await handleUrl(this.assets);
-    await pEachSeries(handledAssets, asset =>
-      this.addFileToAssets(compilation, htmlPluginData, asset),
-    );
+    // eslint-disable-next-line no-restricted-syntax
+    for (const asset of handledAssets) {
+      await this.addFileToAssets(compilation, htmlPluginData, asset);
+    }
     return htmlPluginData;
   }
 
@@ -178,4 +181,4 @@ export default class AddAssetHtmlPlugin {
       );
     }
   }
-}
+};

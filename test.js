@@ -1,7 +1,7 @@
-import path from 'path';
-import slash from 'slash';
-import AddAssetHtmlPlugin from './src/index';
-import { handleUrl } from './src/utils';
+const path = require('path');
+const slash = require('slash');
+const AddAssetHtmlPlugin = require('./src/index');
+const { handleUrl } = require('./src/utils');
 
 const testFile = slash(require.resolve('./fixture/some-file'));
 

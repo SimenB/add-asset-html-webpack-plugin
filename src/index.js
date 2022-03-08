@@ -143,9 +143,14 @@ export default class AddAssetHtmlPlugin {
 
     let suffix = '';
     if (hash) {
-      const md5 = crypto.createHash('md5');
-      md5.update(compilation.assets[addedFilename].source());
-      suffix = `?${md5.digest('hex').substr(0, 20)}`;
+      // if the hash is set by html-webpack-plugin use that hash, else generate a new one
+      if (compilation.hash) {
+        suffix = `?${compilation.hash}`;
+      } else {
+        const md5 = crypto.createHash('md5');
+        md5.update(compilation.assets[addedFilename].source());
+        suffix = `?${md5.digest('hex').substr(0, 20)}`;
+      }
     }
 
     const resolvedPublicPath =

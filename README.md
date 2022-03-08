@@ -67,8 +67,8 @@ below, just pass multiple objects as an array.
 new AddAssetHtmlPlugin([
   { filepath: require.resolve('./some-file') },
   { filepath: require.resolve('./some-other-file') },
-  // Glob to match all of the dll file
-  { filepath: require.resolve('./**/*.dll.js') },
+  // Glob to match all of the dll file, make sure to use forward slashes on Windows
+  { glob: require.resolve('./**/*.dll.js') },
 ]);
 ```
 
@@ -82,10 +82,17 @@ new AddAssetHtmlPlugin({ filepath: require.resolve('./some-file') });
 
 #### `filepath`
 
-Type: `string|Glob`, mandatory
+Type: `string`, mandatory unless `glob` is defined
 
 The absolute path of the file you want to add to the compilation, and resulting
-HTML file. Also support globby string.
+HTML file.
+
+#### `glob`
+
+Type: `string`, mandatory unless `filepath` is defined
+
+A glob used to locate files to add to the compilation. See
+[`globby`'s docs](https://github.com/sindresorhus/globby) for how to use it.
 
 #### `files`
 

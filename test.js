@@ -3,8 +3,6 @@ const slash = require('slash');
 const AddAssetHtmlPlugin = require('./src/index');
 const { handleUrl } = require('./src/utils');
 
-jest.mock('path', () => jest.requireActual('path').posix);
-
 const testFile = slash(require.resolve('./fixture/some-file'));
 
 const pluginMock = {
@@ -55,7 +53,7 @@ test('should reject on error', async () => {
   }
 });
 
-test("should add file using compilation's publicPath", async () => {
+test.only("should add file using compilation's publicPath", async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
   const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
   const plugin = new AddAssetHtmlPlugin({
@@ -294,7 +292,7 @@ test('filter option should include some files with string option', async () => {
 });
 
 test('use globby to find multi file', async () => {
-  const assets = [{ filepath: './src/*.js' }];
+  const assets = [{ glob: './src/*.js' }];
   const ret = await handleUrl(assets);
   expect(ret).toHaveLength(2);
 });

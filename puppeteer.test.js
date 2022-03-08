@@ -9,7 +9,7 @@ let browser;
 
 beforeAll(async () => {
   browser = await puppeteer.launch();
-}, 10000);
+}, 30000);
 
 afterAll(async () => {
   if (browser) {

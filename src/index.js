@@ -92,11 +92,11 @@ module.exports = class AddAssetHtmlPlugin {
       for (const asset of handledAssets) {
         await this.addFileToAssets(compilation, htmlPluginData, asset);
       }
-      return htmlPluginData;
     } catch (error) {
       compilation.errors.push(error);
       throw error;
     }
+    return htmlPluginData;
   }
 
   alterAssetsAttributes(assetTags) {

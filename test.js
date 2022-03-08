@@ -3,6 +3,8 @@ const slash = require('slash');
 const AddAssetHtmlPlugin = require('./src/index');
 const { handleUrl } = require('./src/utils');
 
+jest.mock('path', () => jest.requireActual('path').posix);
+
 const testFile = slash(require.resolve('./fixture/some-file'));
 
 const pluginMock = {

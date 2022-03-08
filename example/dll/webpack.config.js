@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const slash = require('slash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('../../');
 
@@ -22,7 +23,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin(),
     new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, './build/*.dll.js'),
+      // glob needs to use forward slashes
+      glob: `${slash(path.resolve(__dirname, './build'))}/*.dll.js`,
     }),
   ],
 };

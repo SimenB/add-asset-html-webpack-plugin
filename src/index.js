@@ -86,10 +86,15 @@ module.exports = class AddAssetHtmlPlugin {
   }
 
   async addAllAssetsToCompilation(compilation, htmlPluginData) {
-    const handledAssets = await handleUrl(this.assets);
-    // eslint-disable-next-line no-restricted-syntax
-    for (const asset of handledAssets) {
-      await this.addFileToAssets(compilation, htmlPluginData, asset);
+    try {
+      const handledAssets = await handleUrl(this.assets);
+      // eslint-disable-next-line no-restricted-syntax
+      for (const asset of handledAssets) {
+        await this.addFileToAssets(compilation, htmlPluginData, asset);
+      }
+    } catch (error) {
+      compilation.errors.push(error);
+      throw error;
     }
     return htmlPluginData;
   }

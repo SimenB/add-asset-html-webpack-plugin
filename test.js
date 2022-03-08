@@ -292,7 +292,7 @@ test('filter option should include some files with string option', async () => {
 });
 
 test('use globby to find multi file', async () => {
-  const assets = [{ filepath: './src/*.js' }];
+  const assets = [{ glob: './src/*.js' }];
   const ret = await handleUrl(assets);
   expect(ret).toHaveLength(2);
 });
@@ -301,4 +301,9 @@ test('filepath without globbyMagic should just return', async () => {
   const assets = [{ filepath: path.join(__dirname, 'my-file.js') }];
   const ret = await handleUrl(assets);
   expect(ret).toHaveLength(1);
+});
+
+test('throws of both filepath and glob is defined', async () => {
+  const assets = [{ filepath: 'my-file.js', glob: 'my-file.js' }];
+  await expect(handleUrl(assets)).rejects.toThrowErrorMatchingSnapshot();
 });

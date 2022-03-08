@@ -40,16 +40,21 @@ function resolveOutput(compilation, addedFilename, outputPath) {
 async function handleUrl(assets) {
   const globbyAssets = [];
   const normalAssets = [];
-  // if filepath is null or undefined, just bubble up.
-  assets.forEach(asset =>
-    asset.filepath && globby.hasMagic(asset.filepath)
-      ? globbyAssets.push(asset)
-      : normalAssets.push(asset),
-  );
+  assets.forEach(asset => {
+    if (asset.filepath && asset.glob) {
+      throw new Error(
+        `Both filepath and glob defined in ${JSON.stringify(
+          asset,
+        )} - only use one of them`,
+      );
+    }
+
+    return asset.glob ? globbyAssets.push(asset) : normalAssets.push(asset);
+  });
   const ret = [];
   await Promise.all(
     globbyAssets.map(asset =>
-      globby(asset.filepath).then(paths =>
+      globby(asset.glob).then(paths =>
         paths.forEach(filepath =>
           ret.push(Object.assign({}, asset, { filepath })),
         ),

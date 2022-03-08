@@ -54,7 +54,7 @@
     "eslint-config-simenb-base": "^15.0.1",
     "eslint_d": "^7.1.0",
     "express": "^4.17.1",
-    "html-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.0.0",
     "husky": "^1.0.1",
     "jest": "^24.0.0",
     "jest-watch-typeahead": "^0.2.0",

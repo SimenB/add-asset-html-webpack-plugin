@@ -50,7 +50,7 @@
     "babel-plugin-add-module-exports": "^1.0.0",
     "classnames": "^2.2.5",
     "del-cli": "^1.1.0",
-    "eslint": "^5.6.0",
+    "eslint": "^8.0.0",
     "eslint-config-simenb-base": "^15.0.1",
     "eslint_d": "^7.1.0",
     "express": "^4.17.1",

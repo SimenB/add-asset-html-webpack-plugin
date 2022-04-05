@@ -52,7 +52,7 @@ jobs:
           git checkout yarn.lock
       - name: run tests
         run: yarn cover
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v3
         if: ${{ always() }}
   test-os:
     name: Test on ${{ matrix.os }} using Node.js LTS

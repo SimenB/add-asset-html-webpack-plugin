@@ -1,11 +1,15 @@
 declare namespace AddAssetHtmlPlugin {
-  interface Options {
+  type Options = {
     /**
-     * The absolute path of the file you want to add to the compilation, and resulting HTML file.
-     * Mandatory.
+     * The absolute path of the file you want to add to the compilation and resulting HTML file.
      */
     filepath: string;
-
+  } | {
+    /**
+     * The path as a glob pattern you want to add to the compilation and resulting HTML file.
+     */
+    glob: string;
+  } & {
     /**
      * Files that the assets will be added to.
      * By default the assets will be included in all files. If files are defined, the

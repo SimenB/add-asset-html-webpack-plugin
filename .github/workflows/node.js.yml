@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [12.x, 14.x, 16.x, 17.x]
+        node-version: [12.x, 14.x, 16.x, 17.x, 18.x]
         html-plugin-version: [3, 4, 5]
         webpack-version: [4, 5]
         exclude:

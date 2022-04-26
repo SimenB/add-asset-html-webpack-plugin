@@ -33,6 +33,9 @@ jobs:
           # webpack@4 does not support node@17: https://github.com/webpack/webpack/issues/14532
           - node-version: 17.x
             webpack-version: 4
+          # webpack@4 does not support node@18: https://github.com/webpack/webpack/issues/14532
+          - node-version: 18.x
+            webpack-version: 4
     runs-on: ubuntu-latest
 
     steps:

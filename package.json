@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "classnames": "^2.2.5",
-    "del-cli": "^4.0.1",
+    "del-cli": "^5.0.0",
     "eslint": "^8.10.0",
     "eslint-config-simenb-base": "^15.0.1",
     "express": "^4.17.1",

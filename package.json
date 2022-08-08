@@ -51,7 +51,7 @@
     "lint-staged": "^12.3.5",
     "pinst": "^3.0.0",
     "prettier": "^2.2.1",
-    "puppeteer": "^15.0.0",
+    "puppeteer": "^16.0.0",
     "semantic-release": "^19.0.2",
     "slash": "^3.0.0",
     "stoppable": "^1.1.0",

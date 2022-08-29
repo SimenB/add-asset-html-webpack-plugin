@@ -1754,7 +1754,7 @@ __metadata:
     micromatch: ^4.0.4
     pinst: ^3.0.0
     prettier: ^2.2.1
-    puppeteer: ^16.0.0
+    puppeteer: ^17.0.0
     semantic-release: ^19.0.2
     slash: ^3.0.0
     stoppable: ^1.1.0
@@ -7523,9 +7523,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:^16.0.0":
-  version: 16.2.0
-  resolution: "puppeteer@npm:16.2.0"
+"puppeteer@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "puppeteer@npm:17.0.0"
   dependencies:
     cross-fetch: 3.1.5
     debug: 4.3.4
@@ -7538,7 +7538,7 @@ __metadata:
     tar-fs: 2.1.1
     unbzip2-stream: 1.4.3
     ws: 8.8.1
-  checksum: b0f96f27e48e421410800b2a61ba8d45b3d4f60295a0d5189dfa0c442eedeea4b936cfe2c7cf00ba92057b9f42a1f000e5d843d0288137b0f76800a57ccbafdc
+  checksum: 435c03852a8f9606d169e646d7f5a98ca2637bc8fc882c2abf3a60d8e42eace07b6625cafbf0d46f61eda908715fe8f98741bcbb115bfebffb7c2b47624bf691
   languageName: node
   linkType: hard
 

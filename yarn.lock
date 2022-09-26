@@ -1756,7 +1756,7 @@ __metadata:
     prettier: ^2.2.1
     puppeteer: ^17.0.0
     semantic-release: ^19.0.2
-    slash: ^3.0.0
+    slash: ^4.0.0
     stoppable: ^1.1.0
     webpack: ^5.23.0
     webpack-cli: ^4.5.0

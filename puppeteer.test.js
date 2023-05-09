@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 let browser;
 
 beforeAll(async () => {
-  browser = await puppeteer.launch();
+  browser = await puppeteer.launch({ headless: 'new' });
 }, 30000);
 
 afterAll(async () => {

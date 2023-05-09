@@ -20,22 +20,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [12.x, 14.x, 16.x, 17.x, 18.x]
-        html-plugin-version: [3, 4, 5]
-        webpack-version: [4, 5]
-        exclude:
-          # plugin@5 only supports webpack@5
-          - html-plugin-version: 5
-            webpack-version: 4
-          # plugin@3 only supports webpack@4
-          - html-plugin-version: 3
-            webpack-version: 5
-          # webpack@4 does not support node@17: https://github.com/webpack/webpack/issues/14532
-          - node-version: 17.x
-            webpack-version: 4
-          # webpack@4 does not support node@18: https://github.com/webpack/webpack/issues/14532
-          - node-version: 18.x
-            webpack-version: 4
+        node-version: [16.x, 18.x, 20.x]
+        html-plugin-version: [4, 5]
+        webpack-version: [5]
     runs-on: ubuntu-latest
 
     steps:

@@ -11,13 +11,13 @@ module.exports = {
   mode: 'development',
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].[hash:4].dll.js',
-    library: '[name]_[hash]',
+    filename: '[name].[chunkhash].dll.js',
+    library: '[name]_[fullhash]',
   },
   plugins: [
     new webpack.DllPlugin({
       path: path.join(__dirname, 'build', '[name]-manifest.json'),
-      name: '[name]_[hash]',
+      name: '[name]_[fullhash]',
     }),
   ],
 };

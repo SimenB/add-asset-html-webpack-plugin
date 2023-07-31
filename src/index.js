@@ -1,10 +1,10 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const micromatch = require('micromatch');
 const crypto = require('crypto');
-const globby = require('globby');
 const path = require('path');
 const fs = require('fs');
 const util = require('util');
+const globby = require('globby');
+const micromatch = require('micromatch');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const {
   ensureTrailingSlash,

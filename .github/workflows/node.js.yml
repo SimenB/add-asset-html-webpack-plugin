@@ -62,7 +62,7 @@ jobs:
       - name: build example
         run: |
           yarn example
-          git checkout yarn.lock
+          git resolve issues 
       - name: run tests
         run: yarn cover
   lint:

@@ -40,7 +40,7 @@
   "devDependencies": {
     "classnames": "^2.2.5",
     "eslint": "^8.10.0",
-    "eslint-config-simenb-base": "^15.0.1",
+    "eslint-config-simenb-base": "^16.0.0",
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.2.0",
     "husky": "^9.0.0",

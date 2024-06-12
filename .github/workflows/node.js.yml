@@ -42,8 +42,11 @@ jobs:
           git checkout yarn.lock
       - name: run tests
         run: yarn cover
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
         if: ${{ always() }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
   test-os:
     name: Test on ${{ matrix.os }} using Node.js LTS
     strategy:

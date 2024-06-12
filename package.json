@@ -118,5 +118,5 @@
       "4.x"
     ]
   },
-  "packageManager": "yarn@3.8.2"
+  "packageManager": "yarn@4.3.0"
 }

@@ -17,7 +17,7 @@
     "update-license": "licensor --width 72",
     "build-and-update-license": "yarn run update-license",
     "test": "jest",
-    "postinstall": "husky install",
+    "postinstall": "husky",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
   },
@@ -43,7 +43,7 @@
     "eslint-config-simenb-base": "^15.0.1",
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.2.0",
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "jest": "^29.5.0",
     "jest-watch-typeahead": "^2.2.2",
     "licensor": "^4.0.0",

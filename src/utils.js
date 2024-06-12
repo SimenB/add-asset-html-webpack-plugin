@@ -55,9 +55,7 @@ async function handleUrl(assets) {
   await Promise.all(
     globbyAssets.map(asset =>
       globby(asset.glob).then(paths =>
-        paths.forEach(filepath =>
-          ret.push(Object.assign({}, asset, { filepath })),
-        ),
+        paths.forEach(filepath => ret.push({ ...asset, filepath })),
       ),
     ),
   );

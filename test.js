@@ -55,7 +55,7 @@ test('should reject on error', async () => {
 
 test("should add file using compilation's publicPath", async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({
     filepath: path.join(__dirname, 'my-file.js'),
   });
@@ -67,7 +67,7 @@ test("should add file using compilation's publicPath", async () => {
 
 test('should used passed in publicPath', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({
     filepath: 'my-file.js',
     publicPath: 'pp',
@@ -83,7 +83,7 @@ test.todo('should handle missing `publicPath`');
 
 test('should add file missing "/" to public path', async () => {
   const compilation = { options: { output: { publicPath: 'vendor' } } };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({ filepath: 'my-file.js' });
 
   await plugin.addAllAssetsToCompilation(compilation, pluginData);
@@ -146,7 +146,7 @@ test('should use the hash from HtmlWebpackPlugin if option is set', async () => 
       'my-file.js': { source: () => 'some source code is cool to have;' },
     },
   };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({ filepath: 'my-file.js', hash: true });
 
   await plugin.addAllAssetsToCompilation(compilation, pluginData);
@@ -161,7 +161,7 @@ test('should include hash of file content if option is set', async () => {
       'my-file.js': { source: () => 'some source code is cool to have;' },
     },
   };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({ filepath: 'my-file.js', hash: true });
 
   await plugin.addAllAssetsToCompilation(compilation, pluginData);
@@ -176,7 +176,7 @@ test('should add to css if `typeOfAsset` is css', async () => {
       'my-file.js': { source: () => 'some source code is cool to have;' },
     },
   };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({
     filepath: 'my-file.css',
     typeOfAsset: 'css',
@@ -220,7 +220,7 @@ test('should replace compilation assets key if `outputPath` is set', async () =>
 
 test('filter option should exclude some files', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({
     filepath: path.join(__dirname, 'my-file.js'),
     files: ['something-weird'],
@@ -233,7 +233,7 @@ test('filter option should exclude some files', async () => {
 
 test('filter option should include some files', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({
     filepath: path.join(__dirname, 'my-file.js'),
     files: ['index.*'],
@@ -246,7 +246,7 @@ test('filter option should include some files', async () => {
 
 test('filter option should include some files with string option', async () => {
   const compilation = { options: { output: { publicPath: 'vendor/' } } };
-  const pluginData = Object.assign({ assets: { js: [], css: [] } }, pluginMock);
+  const pluginData = { assets: { js: [], css: [] }, ...pluginMock };
   const plugin = new AddAssetHtmlPlugin({
     filepath: path.join(__dirname, 'my-file.js'),
     files: 'index.*',

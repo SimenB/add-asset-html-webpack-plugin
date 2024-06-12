@@ -52,7 +52,7 @@
     "prettier": "^2.2.1",
     "puppeteer": "^21.0.0",
     "rimraf": "^5.0.0",
-    "semantic-release": "^21.0.0",
+    "semantic-release": "^24.0.0",
     "slash": "^3.0.0",
     "stoppable": "^1.1.0",
     "webpack": "^5.23.0",

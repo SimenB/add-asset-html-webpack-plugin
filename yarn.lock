@@ -1156,13 +1156,13 @@ __metadata:
   linkType: hard
 
 "@pnpm/npm-conf@npm:^2.1.0":
-  version: 2.3.0
-  resolution: "@pnpm/npm-conf@npm:2.3.0"
+  version: 2.3.1
+  resolution: "@pnpm/npm-conf@npm:2.3.1"
   dependencies:
     "@pnpm/config.env-replace": ^1.1.0
     "@pnpm/network.ca-file": ^1.0.1
     config-chain: ^1.1.11
-  checksum: df071050bad2c7f750a349330428d5e681047fbe65ce043d30fa3c75a6cb02e16eb08c56d310d1bc6bb6c5606d70d95bc5e30529424c35c78505449eb9bd8e2c
+  checksum: 9e1e1ce5faa64719e866b02d10e28d727d809365eb3692ccfdc420ab6d2073b93abe403994691868f265e34a5601a8eee18ffff6562b27124d971418ba6bb815
   languageName: node
   linkType: hard
 
@@ -1217,8 +1217,8 @@ __metadata:
   linkType: hard
 
 "@semantic-release/github@npm:^10.0.0":
-  version: 10.1.3
-  resolution: "@semantic-release/github@npm:10.1.3"
+  version: 10.1.4
+  resolution: "@semantic-release/github@npm:10.1.4"
   dependencies:
     "@octokit/core": ^6.0.0
     "@octokit/plugin-paginate-rest": ^11.0.0
@@ -1238,7 +1238,7 @@ __metadata:
     url-join: ^5.0.0
   peerDependencies:
     semantic-release: ">=20.1.0"
-  checksum: 05073c8d74f4da03da505b455c2ec5e277e41cd2974d89424ed1a469b92151788cae25a58bfcfe0a3fdbff42f629c4109c9f9e0716becc5baa6a06e549f48e4c
+  checksum: fd20e4b1d604e3e2cd1ec945cf3d362ce4899e6e3564f9894ee1b1b06453a5174895cdfe88bed55bb19106bcff1cbeea7d4c7218f3202f7a1ede3b2689f77fc7
   languageName: node
   linkType: hard
 
@@ -1537,11 +1537,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 22.1.0
-  resolution: "@types/node@npm:22.1.0"
+  version: 22.2.0
+  resolution: "@types/node@npm:22.2.0"
   dependencies:
     undici-types: ~6.13.0
-  checksum: 3544c35da06009790a2e07742a7dfa0ac0f0d64ec47d9e6d3edf0ff6dcfc1a7cc2efdc5e524e80f8ed80aa37154513b2c1c724f95146ff89fc5aefb8e33575f2
+  checksum: 63724799337bfb57719a1992690e738341d824e1744a2ac52c5278a008fbfadf99765519c19858feb80418cc7da0d5c8bdf7ea4d82973869b3882bd602c48ade
   languageName: node
   linkType: hard
 
@@ -3401,9 +3401,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.4":
-  version: 1.5.5
-  resolution: "electron-to-chromium@npm:1.5.5"
-  checksum: fcdd2797ece1ece6764b88b5fc36cfc6a571e08b832c6777d8bbefa19cae22a36614411aacc5687d9fea7e1db86469f53c3952ca2579c5fe705dea7ed270d8cc
+  version: 1.5.6
+  resolution: "electron-to-chromium@npm:1.5.6"
+  checksum: 09ca45c781e3e3ef87de87fb74019228f41e1a4abd2e703319aa7d942866815f3df89cc4bf61af81a4cac81271992d4f59a5eca7a093c07322ae0608bf98a427
   languageName: node
   linkType: hard
 
@@ -9558,11 +9558,11 @@ __metadata:
   linkType: hard
 
 "uglify-js@npm:^3.1.4":
-  version: 3.19.1
-  resolution: "uglify-js@npm:3.19.1"
+  version: 3.19.2
+  resolution: "uglify-js@npm:3.19.2"
   bin:
     uglifyjs: bin/uglifyjs
-  checksum: c71e455b0adcc75631effbcc8fa868e3e906c97b73be034ccdb1373babfa30c3378356febec6bd9abe756dad80ba156af9654b9540244ab9950b56d2543cd54b
+  checksum: 2236220638223f72340d770daa46704a6f54bcd3022e04510a55bb693a40c32e38a9a439333703f16c9880226cc9952c0dddfe67e7b870c287d915b54757ab51
   languageName: node
   linkType: hard
 

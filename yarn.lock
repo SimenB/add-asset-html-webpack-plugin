@@ -1990,11 +1990,11 @@ __metadata:
   linkType: hard
 
 "ansi-escapes@npm:^7.0.0":
-  version: 7.1.0
-  resolution: "ansi-escapes@npm:7.1.0"
+  version: 7.1.1
+  resolution: "ansi-escapes@npm:7.1.1"
   dependencies:
     environment: ^1.0.0
-  checksum: 1ce0f65900d5322c067d7e6e9adac1275359ff4f8cf4320e1b0a273b70b0753269d70c56bb5ebb4e3a4b7fa233ad38a29800f5ee688ca56be554461f5d062249
+  checksum: 458361e54f6e7f3a8a3df6d0e39e9e2d0270963753ec50e05b6a4d784d05bcc5e35ee370071725b9e9f5b66b1d11f607196b516216fb4cd22a76bd0ea9fa6d39
   languageName: node
   linkType: hard
 
@@ -2239,14 +2239,14 @@ __metadata:
   linkType: hard
 
 "b4a@npm:^1.6.4":
-  version: 1.7.1
-  resolution: "b4a@npm:1.7.1"
+  version: 1.7.3
+  resolution: "b4a@npm:1.7.3"
   peerDependencies:
     react-native-b4a: "*"
   peerDependenciesMeta:
     react-native-b4a:
       optional: true
-  checksum: 51d3cf021cd71d0a55ee9ee59388c3c6af6d8189227ebf9001d95c6631a7c5802121970726e3f48536ca39577b75ecc15d8271f6bff1e573b350f573f0d8b16f
+  checksum: b2e5f572bb2024b612eddedfbfce9626e103fd523da3d7bb8267f345bca6d7d4772ed00310527c7a629fc54184d5b1b47b73f8dd976d713aea7e16d2af38aecf
   languageName: node
   linkType: hard
 
@@ -2336,7 +2336,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bare-events@npm:^2.2.0, bare-events@npm:^2.5.4":
+"bare-events@npm:^2.5.4, bare-events@npm:^2.7.0":
   version: 2.7.0
   resolution: "bare-events@npm:2.7.0"
   checksum: b59dd25b0840560373c22d17e01fb108d6c1a1da0a8eee190c69c9d08b89a50e5a8ec15c2253e86c7f706f41ea4f1bfd9376bdd837e511bac2d6f9cf5331cbd2
@@ -2344,8 +2344,8 @@ __metadata:
   linkType: hard
 
 "bare-fs@npm:^4.0.1":
-  version: 4.4.4
-  resolution: "bare-fs@npm:4.4.4"
+  version: 4.4.5
+  resolution: "bare-fs@npm:4.4.5"
   dependencies:
     bare-events: ^2.5.4
     bare-path: ^3.0.0
@@ -2357,7 +2357,7 @@ __metadata:
   peerDependenciesMeta:
     bare-buffer:
       optional: true
-  checksum: 63a854c604274f9e5c5a83aa7056298f8815442281b4aeb9391219585425f4acfad6555fe19ea6c11e9818aa034e1f179973a8391bb4669473faa9ff32e3cfec
+  checksum: bc550fbf8d70eb0f17b7a311da482f49a59ef4408bdd2e4e2e508824c09bf5c2f18b802872cbea6b2c3ca3d5b32bcc7c665f62f11eba06927be5c537ecb0cccb
   languageName: node
   linkType: hard
 
@@ -2404,11 +2404,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.8.3":
-  version: 2.8.6
-  resolution: "baseline-browser-mapping@npm:2.8.6"
+  version: 2.8.9
+  resolution: "baseline-browser-mapping@npm:2.8.9"
   bin:
     baseline-browser-mapping: dist/cli.js
-  checksum: 113a89acbc7cbcb0ca191ff2498f33f64be3fac90b58bf7c192a325654a436fd7abe9ad98e24394d16c1be102b6e905483181182df69e79f090f180fac1bcbbc
+  checksum: ad426d6e239ffaad388e126c52263c0bf4248b9482b56db219f7c866a3f5a6cef39a5c08b7ace1bdf3f87f26ac96b0e9f9bfc199fc148d838ea68e43e3104d92
   languageName: node
   linkType: hard
 
@@ -2644,9 +2644,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001741":
-  version: 1.0.30001743
-  resolution: "caniuse-lite@npm:1.0.30001743"
-  checksum: 9e203fe09158b011bd4a6707f6e5f9ad040e5b4093b12e2e047636a71d6e2e3bf5209aae42f213251cc812d9091188d7f1da7bd4785bc0b879beb98f9aa04ebc
+  version: 1.0.30001745
+  resolution: "caniuse-lite@npm:1.0.30001745"
+  checksum: a018bfbf6eda6e2728184cd39f3d0438cea04011893664fc7de19568d8e6f26cbc09e59460137bb2f4e792d1cdb7f1a48ad35f31a1c1388c1d7f74b3c889d35b
   languageName: node
   linkType: hard
 
@@ -2727,15 +2727,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromium-bidi@npm:8.0.0":
-  version: 8.0.0
-  resolution: "chromium-bidi@npm:8.0.0"
+"chromium-bidi@npm:9.1.0":
+  version: 9.1.0
+  resolution: "chromium-bidi@npm:9.1.0"
   dependencies:
     mitt: ^3.0.1
     zod: ^3.24.1
   peerDependencies:
     devtools-protocol: "*"
-  checksum: 4241dc4bf44996b01907b940a180ff85c845d59a5a799d6dd9ba5fb64bc719ffff322d7204f57efc3478019fea397fb6c0871c2342f34e30cb1a8d3e017475e7
+  checksum: ad6f7ba4bb741f8bd65bc7aedae48073e8ecde3000e8ba4b9727f7026f3a0a841b879379047b6bfade92fb8f57086fd98f87bb680a183faeb8f303c87901bbba
   languageName: node
   linkType: hard
 
@@ -3514,9 +3514,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.218":
-  version: 1.5.222
-  resolution: "electron-to-chromium@npm:1.5.222"
-  checksum: d97705512b4de328766c5df0aa7cc3b3ab7b293f33dd2cd69eddd4c710ce3ad68d96251148550f8a819fbc348c80dfd55327f66892c5989ba666f78a7c459acd
+  version: 1.5.227
+  resolution: "electron-to-chromium@npm:1.5.227"
+  checksum: 6a798b53216b300f20dbad56c0ef3777da59cb37a761c169fbf8b1dcbeca74ccf137f83a5b3b959ae82cf3cd454aae1d4fda8c7dabd99a72bef645ac18fa6a45
   languageName: node
   linkType: hard
 
@@ -3615,11 +3615,11 @@ __metadata:
   linkType: hard
 
 "envinfo@npm:^7.14.0":
-  version: 7.14.0
-  resolution: "envinfo@npm:7.14.0"
+  version: 7.15.0
+  resolution: "envinfo@npm:7.15.0"
   bin:
     envinfo: dist/cli.js
-  checksum: 137c1dd9a4d5781c4a6cdc6b695454ba3c4ba1829f73927198aa4122f11b35b59d7b2cb7e1ceea1364925a30278897548511d22f860c14253a33797d0bebd551
+  checksum: 38595c11134ecb66a40289980d8ca82e89fdcd68849dd72560c1bbc3cfc55c867573b4150967707ff9ff2e5cad6f1d0cb6cc56c333a6eccdcd3533452141c0a8
   languageName: node
   linkType: hard
 
@@ -4089,6 +4089,15 @@ __metadata:
   version: 5.0.1
   resolution: "eventemitter3@npm:5.0.1"
   checksum: 543d6c858ab699303c3c32e0f0f47fc64d360bf73c3daf0ac0b5079710e340d6fe9f15487f94e66c629f5f82cd1a8678d692f3dbb6f6fcd1190e1b97fcad36f8
+  languageName: node
+  linkType: hard
+
+"events-universal@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "events-universal@npm:1.0.1"
+  dependencies:
+    bare-events: ^2.7.0
+  checksum: fb8451c98535bde30585004303a368d55c38e5bc3ed6aa9b5d29fecaabaf8ec276a33ff77dcc1d1c05eecf83b8161f184cabc9a03b76a06c10e9a4ce827a6abc
   languageName: node
   linkType: hard
 
@@ -5218,9 +5227,9 @@ __metadata:
   linkType: hard
 
 "index-to-position@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "index-to-position@npm:1.1.0"
-  checksum: 078b05777ba4ccc2af13328cbdef8ac945c885aed7c28bf55b17b7e7722507dfb3afbdeb30b59ff224374857147d16043da1bcb2a4dc533c7924d81873ef4363
+  version: 1.2.0
+  resolution: "index-to-position@npm:1.2.0"
+  checksum: 2026188af74d4f4c19de44ca29116f093daf072ff4f4b8dda61668463bd28b097164d43f819684cb2f65ff749bc0dec14fb3956da0299a36faa68255c4eb6858
   languageName: node
   linkType: hard
 
@@ -8368,34 +8377,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:24.22.0":
-  version: 24.22.0
-  resolution: "puppeteer-core@npm:24.22.0"
+"puppeteer-core@npm:24.22.3":
+  version: 24.22.3
+  resolution: "puppeteer-core@npm:24.22.3"
   dependencies:
     "@puppeteer/browsers": 2.10.10
-    chromium-bidi: 8.0.0
+    chromium-bidi: 9.1.0
     debug: ^4.4.3
     devtools-protocol: 0.0.1495869
     typed-query-selector: ^2.12.0
     webdriver-bidi-protocol: 0.2.11
     ws: ^8.18.3
-  checksum: acf144dc6af545a5badea3318a347a03d8cda512a8e35c35fee56d11bfb05dec0c456485ad81a0f4cb4ed462e867dd4c1d8a91c56e0d4554ebaa4f040752faa3
+  checksum: c2d50726f096cbf4aa8161027bb15adb4b9623ffdee8bec421a7216d5dcd0cf7a3ac2b43fe739e235855e61c886cf939bcea7891d7066d2a1d33e841916e2260
   languageName: node
   linkType: hard
 
 "puppeteer@npm:^24.0.0":
-  version: 24.22.0
-  resolution: "puppeteer@npm:24.22.0"
+  version: 24.22.3
+  resolution: "puppeteer@npm:24.22.3"
   dependencies:
     "@puppeteer/browsers": 2.10.10
-    chromium-bidi: 8.0.0
+    chromium-bidi: 9.1.0
     cosmiconfig: ^9.0.0
     devtools-protocol: 0.0.1495869
-    puppeteer-core: 24.22.0
+    puppeteer-core: 24.22.3
     typed-query-selector: ^2.12.0
   bin:
     puppeteer: lib/cjs/puppeteer/node/cli.js
-  checksum: cffe56e7b8507c43f5450362291a6c1fb28aa613d844034bffcf4cdddf5f42e918695d742eae45ad843e6b7ca88b1134747b44cfd1724048a3913c642e982bb9
+  checksum: be8cbde3104d53036c5cdb4939cc3ccc328170807d2e9a423e6ad75b7faf3bd34d50ac4488a737068316f3efc0b35ab3d2959b572a84d133b1627070dedb767a
   languageName: node
   linkType: hard
 
@@ -9307,16 +9316,13 @@ __metadata:
   linkType: hard
 
 "streamx@npm:^2.15.0, streamx@npm:^2.21.0":
-  version: 2.22.1
-  resolution: "streamx@npm:2.22.1"
+  version: 2.23.0
+  resolution: "streamx@npm:2.23.0"
   dependencies:
-    bare-events: ^2.2.0
+    events-universal: ^1.0.0
     fast-fifo: ^1.3.2
     text-decoder: ^1.1.0
-  dependenciesMeta:
-    bare-events:
-      optional: true
-  checksum: 26e66c75eca24bf00c0fe8392a67c5c5783450e2596a5bb598c25fd51241c42aaaa64c31ff89c97cdf77ee7c9e915d5e201bc0dd4f8d949ec0c66dad6bf7cd91
+  checksum: d57de47db76ffd926842afab562fc8b139d7333269c6db11da5a233e8524cd326161b48bdddd28cefc010cec0b143af04dbb6f5e92d5034839ce7428928dfcae
   languageName: node
   linkType: hard
 
@@ -9603,15 +9609,15 @@ __metadata:
   linkType: hard
 
 "tar@npm:^7.4.3":
-  version: 7.4.4
-  resolution: "tar@npm:7.4.4"
+  version: 7.5.1
+  resolution: "tar@npm:7.5.1"
   dependencies:
     "@isaacs/fs-minipass": ^4.0.0
     chownr: ^3.0.0
     minipass: ^7.1.2
     minizlib: ^3.1.0
     yallist: ^5.0.0
-  checksum: 608cbdde055a012379f731445c1c815b81d2c539a20440e2a6e27bdcc808e0ab535000bb413c9bb1f15eefbc5ce839cf318178b05d4b89c4da7ec6e9bead474e
+  checksum: dbd55d4c3bd9e3c69aed137d9dc9fcb8f86afd103c28d97d52728ca80708f4c84b07e0a01d0bf1c8e820be84d37632325debf19f672a06e0c605c57a03636fd0
   languageName: node
   linkType: hard
 

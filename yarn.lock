@@ -1185,20 +1185,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@puppeteer/browsers@npm:2.10.11":
-  version: 2.10.11
-  resolution: "@puppeteer/browsers@npm:2.10.11"
+"@puppeteer/browsers@npm:2.10.12":
+  version: 2.10.12
+  resolution: "@puppeteer/browsers@npm:2.10.12"
   dependencies:
     debug: ^4.4.3
     extract-zip: ^2.0.1
     progress: ^2.0.3
     proxy-agent: ^6.5.0
-    semver: ^7.7.2
+    semver: ^7.7.3
     tar-fs: ^3.1.1
     yargs: ^17.7.2
   bin:
     browsers: lib/cjs/main-cli.js
-  checksum: 2cde4787ca3a1176af79128a0ba0c98e7d1ab31c1653017c4c9490d78ac3e51da62534d8a7ccce452395e502fb04fc40632a8d0a938ec7341ffa5806c1e91b15
+  checksum: de479b9b5b198a570df2973bce25558af0e5cefe493f437b474b476d5a35c5634de0d3595cd6e9f5afd1141a57c6b3fb062bb779bcc78840a788c30587f242f8
   languageName: node
   linkType: hard
 
@@ -1555,11 +1555,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 24.7.2
-  resolution: "@types/node@npm:24.7.2"
+  version: 24.8.1
+  resolution: "@types/node@npm:24.8.1"
   dependencies:
     undici-types: ~7.14.0
-  checksum: dd676a9041e36825e9c6917b34105da0c3f390ee95cca8e050a9efb7d55851dcb48d05f23700eb5540a22a8d4fd3da289b4c07a3888aeb74d3304dcb07b813b0
+  checksum: 55fca8f900a017c207e4e413956f3fdd17178c3d5ffc8fd4bb7b0b5136865ca06076b1335e1e5e6f3269cace491dc1f4ecc1ab4410ff4acf25c9087585560c86
   languageName: node
   linkType: hard
 
@@ -2340,8 +2340,8 @@ __metadata:
   linkType: hard
 
 "bare-fs@npm:^4.0.1":
-  version: 4.4.10
-  resolution: "bare-fs@npm:4.4.10"
+  version: 4.4.11
+  resolution: "bare-fs@npm:4.4.11"
   dependencies:
     bare-events: ^2.5.4
     bare-path: ^3.0.0
@@ -2353,7 +2353,7 @@ __metadata:
   peerDependenciesMeta:
     bare-buffer:
       optional: true
-  checksum: 7a3990b7e76ccdfda39068cd4f9b9be79338fd06b661748917f59e633f65edcd6cc63399f69379ee53ba6a6b6d5244795732329cdfef9e11193cd50c07c3b878
+  checksum: 319b7a97b8a7fe26e78a900c8e256d62353a28257b9f3fb83afca75e0f1e8f0739d663de0488895636199fc55ef031995bd9ffc8830556e09767b409ec57f454
   languageName: node
   linkType: hard
 
@@ -2391,20 +2391,20 @@ __metadata:
   linkType: hard
 
 "bare-url@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "bare-url@npm:2.2.2"
+  version: 2.3.0
+  resolution: "bare-url@npm:2.3.0"
   dependencies:
     bare-path: ^3.0.0
-  checksum: a5bc3f34e9b2d10d3d67c62c922d8b4e02581eb00aba6249ad28568ecd8fe9c7eb6b1622174c2cbef07fe9ce4af59fdc7b83ac6cfe16df670e69abb814f29202
+  checksum: 3bc031d05bd35f1cc48e276b6a9c284c18b133c85575d758a44642d30a191e7d5548d469b2dc55e384cbabb3a4f44be5cafbad8653b330fe6bcefe6d3ec81c73
   languageName: node
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.8.9":
-  version: 2.8.16
-  resolution: "baseline-browser-mapping@npm:2.8.16"
+  version: 2.8.18
+  resolution: "baseline-browser-mapping@npm:2.8.18"
   bin:
     baseline-browser-mapping: dist/cli.js
-  checksum: 929b3f2b5f4beb3b9e02b660a4a8b24f62e43cc7efdc38a726ef061137f9529d3372e1c70298eacde191ac70f5defd21ae4a29ff9e470c4c2b7fd7be68320241
+  checksum: 833787afd8b6566da1866903b46497d6bff3139d5e41053d80df3632bcea3008f9097ecdaeff9c4f73f0b12785ec19e4e7449bca8fb6e014e526a10489c2bff5
   languageName: node
   linkType: hard
 
@@ -2640,9 +2640,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001746":
-  version: 1.0.30001750
-  resolution: "caniuse-lite@npm:1.0.30001750"
-  checksum: 4a50a24ceed75cde8a8cd8b370a8c044463c26cc171eb30d1e738cd55b328c599b6e2602ec79e3e9d3b15d56e3cc980f02dd2f82784f91410544fa49c6d09cad
+  version: 1.0.30001751
+  resolution: "caniuse-lite@npm:1.0.30001751"
+  checksum: d11e25c44e40c21e7b7492a25c9fd60f4c04e94aa265573f7c487666f5e1b5ca3ed09d09560336f959237063616255cb294d415511bb6cf0486eb2cb6a3a4318
   languageName: node
   linkType: hard
 
@@ -2896,9 +2896,9 @@ __metadata:
   linkType: hard
 
 "collect-v8-coverage@npm:^1.0.0":
-  version: 1.0.2
-  resolution: "collect-v8-coverage@npm:1.0.2"
-  checksum: c10f41c39ab84629d16f9f6137bc8a63d332244383fc368caf2d2052b5e04c20cd1fd70f66fcf4e2422b84c8226598b776d39d5f2d2a51867cc1ed5d1982b4da
+  version: 1.0.3
+  resolution: "collect-v8-coverage@npm:1.0.3"
+  checksum: ed1d1ebc9c05e7263fffa3ad6440031db6a1fdd9f574435aa689effcdfe9f2b93aba8ec600f9c7b99124cd6ff5d9415c17961d84ae829a72251a4fe668a49b63
   languageName: node
   linkType: hard
 
@@ -3510,9 +3510,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.227":
-  version: 1.5.234
-  resolution: "electron-to-chromium@npm:1.5.234"
-  checksum: eeb04a31ec81920cc9ce4d787f4b2c92ae451a707303d8495df95a964bf5102c0431fb42bc8b33b396ec3cb0311f42c2079bc4a373a470b22657e468646342ef
+  version: 1.5.237
+  resolution: "electron-to-chromium@npm:1.5.237"
+  checksum: 5905e2808dc6243ced0a83537afbafedec20c063feb6403a678b612a7855d79bc6ecb7d094bdab71f54173cf2ae5d1d8070b0c31572025001c94de62af84f5f8
   languageName: node
   linkType: hard
 
@@ -3611,11 +3611,11 @@ __metadata:
   linkType: hard
 
 "envinfo@npm:^7.14.0":
-  version: 7.17.0
-  resolution: "envinfo@npm:7.17.0"
+  version: 7.19.0
+  resolution: "envinfo@npm:7.19.0"
   bin:
     envinfo: dist/cli.js
-  checksum: d09e6d2d5dea999f9b5e1a8c496337b5e470f843c046843603e28132a7f391eef18589735c5bc8cc529a3cd8848bd1d4750fe8851f5de7b9d0d6b1d2f415adf9
+  checksum: ae27a34200fab30c6898867b63024b016bf883f8a166854055be5ccda34d7e7fc81b5048df21f7f9acaf8f6ce49cf91247c5a58df8bb054ed08ccdab9ab12fe8
   languageName: node
   linkType: hard
 
@@ -7288,8 +7288,8 @@ __metadata:
   linkType: hard
 
 "node-gyp@npm:^11.0.0, node-gyp@npm:^11.2.0, node-gyp@npm:latest":
-  version: 11.4.2
-  resolution: "node-gyp@npm:11.4.2"
+  version: 11.5.0
+  resolution: "node-gyp@npm:11.5.0"
   dependencies:
     env-paths: ^2.2.0
     exponential-backoff: ^3.1.1
@@ -7303,7 +7303,7 @@ __metadata:
     which: ^5.0.0
   bin:
     node-gyp: bin/node-gyp.js
-  checksum: d8041cee7ec60c86fb2961d77c12a2d083a481fb28b08e6d9583153186c0e7766044dc30bdb1f3ac01ddc5763b83caeed3d1ea35787ec4ffd8cc4aeedfc34f2b
+  checksum: 6cc29b9d454d9a684c8fe299668db618875bb4282e37717ca5b79689cc5ce99cd553c70944bb367979f2eba40ad6a50afaf7b12a6b214172edc7377384efa051
   languageName: node
   linkType: hard
 
@@ -7315,9 +7315,9 @@ __metadata:
   linkType: hard
 
 "node-releases@npm:^2.0.21":
-  version: 2.0.23
-  resolution: "node-releases@npm:2.0.23"
-  checksum: dc3194ffdf04975f8525a5e175c03f5a95cecd7607b6b0e80d28aaa03900706d920722b5f2ae2e8e28e029e6ae75f0d0f7eae87e8ee2a363c704785e3118f13d
+  version: 2.0.25
+  resolution: "node-releases@npm:2.0.25"
+  checksum: 9a23149cf3f6778e62440b1f26f91927aff06c3606a29996f3d196c7c0f5e31c17c24c324b5ef1f571cebef6b5a8db9adce9c09381ca271bc6422aac91463f75
   languageName: node
   linkType: hard
 
@@ -8384,34 +8384,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:24.24.0":
-  version: 24.24.0
-  resolution: "puppeteer-core@npm:24.24.0"
+"puppeteer-core@npm:24.25.0":
+  version: 24.25.0
+  resolution: "puppeteer-core@npm:24.25.0"
   dependencies:
-    "@puppeteer/browsers": 2.10.11
+    "@puppeteer/browsers": 2.10.12
     chromium-bidi: 9.1.0
     debug: ^4.4.3
     devtools-protocol: 0.0.1508733
     typed-query-selector: ^2.12.0
-    webdriver-bidi-protocol: 0.3.6
+    webdriver-bidi-protocol: 0.3.7
     ws: ^8.18.3
-  checksum: 5bce4043a10175de173c5d36174d4b83972d97cf1c138c22124760abff766bd32fd8e8e9a7bf5adbb945579a24de96e11a688f71937191c5eeea961c08da26a8
+  checksum: f247a810d2f73b3a2f933737b4910d1a8df313917eb63d89eaa8ea1283098536b8ced0006893dfa844c66ebdb98d511f695fff2c5914b3b36e805481e97e67b3
   languageName: node
   linkType: hard
 
 "puppeteer@npm:^24.0.0":
-  version: 24.24.0
-  resolution: "puppeteer@npm:24.24.0"
+  version: 24.25.0
+  resolution: "puppeteer@npm:24.25.0"
   dependencies:
-    "@puppeteer/browsers": 2.10.11
+    "@puppeteer/browsers": 2.10.12
     chromium-bidi: 9.1.0
     cosmiconfig: ^9.0.0
     devtools-protocol: 0.0.1508733
-    puppeteer-core: 24.24.0
+    puppeteer-core: 24.25.0
     typed-query-selector: ^2.12.0
   bin:
     puppeteer: lib/cjs/puppeteer/node/cli.js
-  checksum: 053125291a91cfbcfe143f8414efbfdfe79242257fd504dfcc0d3722be952cd61058cfaad15dd267cbe745412ce5153e8f11d489ae31d76d62d0417e9738b616
+  checksum: 0be9d6c60638f28596581da35b4973d6089489e22eaaa464b5065ecc27f3ef343208f128f72065b4b956faf8f8f1118630dce0dc68c4a662a07cc8896e92c5c0
   languageName: node
   linkType: hard
 
@@ -8901,7 +8901,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.7.2":
+"semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.7.2, semver@npm:^7.7.3":
   version: 7.7.3
   resolution: "semver@npm:7.7.3"
   bin:
@@ -10161,10 +10161,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webdriver-bidi-protocol@npm:0.3.6":
-  version: 0.3.6
-  resolution: "webdriver-bidi-protocol@npm:0.3.6"
-  checksum: 5ee4e1b8679f84e80c5a51f316cfbb9325417b841faeb1abe0968359f9c90af60ae09936f1b594086abf4129343f3d882de5bcd90f1af835e36cdc2edd4d9191
+"webdriver-bidi-protocol@npm:0.3.7":
+  version: 0.3.7
+  resolution: "webdriver-bidi-protocol@npm:0.3.7"
+  checksum: e069eb14c4857656e13603e02c7cadd73c69af5d97b61389c47aad35cbe92fa59c54bf04ccdc81dea6fe3246b87d3e4a082732e4ed7ab27546cc613bc155729d
   languageName: node
   linkType: hard
 

@@ -549,9 +549,9 @@ __metadata:
   linkType: hard
 
 "@istanbuljs/schema@npm:^0.1.2, @istanbuljs/schema@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "@istanbuljs/schema@npm:0.1.3"
-  checksum: 5282759d961d61350f33d9118d16bcaed914ebf8061a52f4fa474b2cb08720c9c81d165e13b82f2e5a8a212cc5af482f0c6fc1ac27b9e067e5394c9a6ed186c9
+  version: 0.1.6
+  resolution: "@istanbuljs/schema@npm:0.1.6"
+  checksum: e0700df94e5eee184a64e9712d28a4aa8a0918f01e01e6fe50b93e12c2415c6930065c1622306a3bb28f8774e5aa3291671597826a71fa38f4b5667566e87bba
   languageName: node
   linkType: hard
 
@@ -2399,8 +2399,8 @@ __metadata:
   linkType: hard
 
 "bare-fs@npm:^4.0.1, bare-fs@npm:^4.5.5":
-  version: 4.7.0
-  resolution: "bare-fs@npm:4.7.0"
+  version: 4.7.1
+  resolution: "bare-fs@npm:4.7.1"
   dependencies:
     bare-events: ^2.5.4
     bare-path: ^3.0.0
@@ -2412,7 +2412,7 @@ __metadata:
   peerDependenciesMeta:
     bare-buffer:
       optional: true
-  checksum: 911d8f6d8b1a7aefac33be9e1f3fda6095fcc4e04ad40adc64e889ba5af8e6ec4216d7b725fb6d431757d9ef00f3ece6aed68182333c5c438da6c72d2728f196
+  checksum: f3a1c28edeae21febda343b606d4a15b8e29f0fc6148f6c153d3670ecbd0b5c7c38d4bb034dc042c1e5d3ad789884b0acab5fc526baea0a70b8e3b2b7ec5dcc1
   languageName: node
   linkType: hard
 
@@ -2454,27 +2454,27 @@ __metadata:
   linkType: hard
 
 "bare-url@npm:^2.2.2":
-  version: 2.4.0
-  resolution: "bare-url@npm:2.4.0"
+  version: 2.4.1
+  resolution: "bare-url@npm:2.4.1"
   dependencies:
     bare-path: ^3.0.0
-  checksum: 7ad8b147650b296890f070feeccb5d2b8e1e833d3a0537206da4dc7051c72bceea99d7fa9732bb851ad30827b22b3a2268ef9abf19dc88f540a7314cb4188993
+  checksum: 054cd64b8e6647d488e606effa923e92e594c2eb26b1c5ee8d077dbf4a0184400111cfa9b32fcb72f378d15d51dbe43811abdc05271ad7c4518956fe179b15f3
   languageName: node
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.10.12":
-  version: 2.10.18
-  resolution: "baseline-browser-mapping@npm:2.10.18"
+  version: 2.10.20
+  resolution: "baseline-browser-mapping@npm:2.10.20"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: 89ea23fd68ebb11621af7df3d82984ed1249de361f7f609216bc9a4f38993a6635598d78e6cb674bf24d043ac948806947ed9692842dd08a8e5f85981f490270
+  checksum: b118fc2fb3f9f73172425a0f015198eb2ec451c5627228b9d20d71310234237b436055257e8b9b1b1ea4482c4a9328d359784f35cde75265d65b283abe203f47
   languageName: node
   linkType: hard
 
 "basic-ftp@npm:^5.0.2":
-  version: 5.2.2
-  resolution: "basic-ftp@npm:5.2.2"
-  checksum: 11234c0fd6b810ac3641acf3c03338ae8d0d0ca23aaeaa56204bae05b9dd6f93117312b6d729fde56c20c197711dbe5655363a8590c61f7efa399cb63b56e00d
+  version: 5.3.0
+  resolution: "basic-ftp@npm:5.3.0"
+  checksum: b2c93d98541c805171813bddd7e6349b7fc304ba8896acf60b0b4393253204cff88aa2a31adbaec2f1a58f78e90005672c30796042a2c717a69ccae10160d72d
   languageName: node
   linkType: hard
 
@@ -2710,9 +2710,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001782":
-  version: 1.0.30001787
-  resolution: "caniuse-lite@npm:1.0.30001787"
-  checksum: 00f548869c36ae5db59975c94f38de73a410c90568ec76fa6c55936e9c88d296593efe771cdf10e3a233b4ae3c069f2271d0b1a4dfae5ee4baec4bb6aaaf4764
+  version: 1.0.30001788
+  resolution: "caniuse-lite@npm:1.0.30001788"
+  checksum: 66c57cf49b0d823423146f1136fba2cf297a716c3e0b417a1963b2683fc70f4e4c95de21225ecd1482d4327acb9f375d7885120be25fc449c82bdc7f0c0c5d85
   languageName: node
   linkType: hard
 
@@ -3418,10 +3418,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devtools-protocol@npm:0.0.1581282":
-  version: 0.0.1581282
-  resolution: "devtools-protocol@npm:0.0.1581282"
-  checksum: b5d3997c27399166f15f8b89c1dde838f611d0a77f60d64b4b3b5e5ba12ae81993f6380448725e1103fcbf9d32768360e7a8a4f6de1a1e82fb427a990c859ccf
+"devtools-protocol@npm:0.0.1595872":
+  version: 0.0.1595872
+  resolution: "devtools-protocol@npm:0.0.1595872"
+  checksum: 1b82f1ba75b5026e847794076789b02f5ea3a6299081530df4782fb3b24b61f5fb7f7c10ea4eb590620164a475588c3fcea86eeb500712cf603b2c51c665e396
   languageName: node
   linkType: hard
 
@@ -3574,9 +3574,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.328":
-  version: 1.5.335
-  resolution: "electron-to-chromium@npm:1.5.335"
-  checksum: d8a9cd4b22acf642f01bc3d75fcb2874b071f4501b5e50075447aa10193ed805279a995a4632435264adb214afb768a636350a213397bffab884721a211192e1
+  version: 1.5.340
+  resolution: "electron-to-chromium@npm:1.5.340"
+  checksum: 1c60694fd10c64258606fbe2aa5de1c78c91a8c6005ebdc711d0675c51e97f7259cfa0758b172012b1b3e8fedcf2a69f50ee5c8103551737ed0fd156302f7756
   languageName: node
   linkType: hard
 
@@ -5012,11 +5012,11 @@ __metadata:
   linkType: hard
 
 "hasown@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "hasown@npm:2.0.2"
+  version: 2.0.3
+  resolution: "hasown@npm:2.0.3"
   dependencies:
     function-bind: ^1.1.2
-  checksum: e8516f776a15149ca6c6ed2ae3110c417a00b62260e222590e54aa367cbcd6ed99122020b37b7fbdf05748df57b265e70095d7bf35a47660587619b15ffb93db
+  checksum: bb06756a13dc4e6d1f45993c86c23f12d167c6c30a7dcc907aec5042300b4eb255615a0e5ed2c65014b93bf8bfcff111d991032c5c01ddefb340aa64b329bd55
   languageName: node
   linkType: hard
 
@@ -5093,8 +5093,8 @@ __metadata:
   linkType: hard
 
 "html-webpack-plugin@npm:^5.2.0":
-  version: 5.6.6
-  resolution: "html-webpack-plugin@npm:5.6.6"
+  version: 5.6.7
+  resolution: "html-webpack-plugin@npm:5.6.7"
   dependencies:
     "@types/html-minifier-terser": ^6.0.0
     html-minifier-terser: ^6.0.2
@@ -5109,7 +5109,7 @@ __metadata:
       optional: true
     webpack:
       optional: true
-  checksum: 6aab02f4be85ed2d939bd7dff296bf4af4b7288d6523670176c143d67f7cd4163daa1070c459d1c40e75b233f7fccefae714f58c3402a78aa83dbe9378ecf76f
+  checksum: 043d17f0988fb173dd1a03159fc2e0c9a4d528f7f439b5318c72ec239e3c2be8267167c23a5a09f034c2c14ae0fccf8ab3055bee91151bb832744da2df29bfb6
   languageName: node
   linkType: hard
 
@@ -6413,7 +6413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-parse-even-better-errors@npm:^2.3.0, json-parse-even-better-errors@npm:^2.3.1":
+"json-parse-even-better-errors@npm:^2.3.0":
   version: 2.3.1
   resolution: "json-parse-even-better-errors@npm:2.3.1"
   checksum: 798ed4cf3354a2d9ccd78e86d2169515a0097a5c133337807cdf7f1fc32e1391d207ccfc276518cc1d7d8d4db93288b8a50ba4293d212ad1336e52a8ec0a941f
@@ -6903,9 +6903,9 @@ __metadata:
   linkType: hard
 
 "lru-cache@npm:^11.0.0, lru-cache@npm:^11.1.0, lru-cache@npm:^11.2.1":
-  version: 11.3.3
-  resolution: "lru-cache@npm:11.3.3"
-  checksum: 35d2d2565e7ac35c90b7b57dacddb2728c8f071640ca9bc3d83f5641a7dd1ca1ac2a0aa23eb72c6fd23653f49a5da04262cc28a19f14946869ff69dcc2e75746
+  version: 11.3.5
+  resolution: "lru-cache@npm:11.3.5"
+  checksum: 4b0110312c0d7224ab7ab4b6c30f639312d75b8246b6e90719c412c79256db49453c246e0c8ee02d7b7b1494c52bbd7d4f2d135c768ed2b6ba3e5ccbfe74de10
   languageName: node
   linkType: hard
 
@@ -7076,7 +7076,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.1.27, mime-types@npm:~2.1.24, mime-types@npm:~2.1.34":
+"mime-db@npm:^1.54.0":
+  version: 1.54.0
+  resolution: "mime-db@npm:1.54.0"
+  checksum: e99aaf2f23f5bd607deb08c83faba5dd25cf2fec90a7cc5b92d8260867ee08dab65312e1a589e60093dc7796d41e5fae013268418482f1db4c7d52d0a0960ac9
+  languageName: node
+  linkType: hard
+
+"mime-types@npm:~2.1.24, mime-types@npm:~2.1.34":
   version: 2.1.35
   resolution: "mime-types@npm:2.1.35"
   dependencies:
@@ -8277,11 +8284,11 @@ __metadata:
   linkType: hard
 
 "prettier@npm:^3.0.0":
-  version: 3.8.2
-  resolution: "prettier@npm:3.8.2"
+  version: 3.8.3
+  resolution: "prettier@npm:3.8.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: f415107b70d175983f8141cd78a99d38fbd4241c99b293ed182d76a96081d00db8918b1c76b32e597101d8ed8d3ab37389057b9ff1ba330a6a0e561c873cd22f
+  checksum: f696d5b93b6aa7da53b7e94fd1ac8789915297a67d142159a367901a57a417a25f54500823d26b5580573d388f634d7860bef10922944c47a231194d1613394a
   languageName: node
   linkType: hard
 
@@ -8433,34 +8440,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:24.40.0":
-  version: 24.40.0
-  resolution: "puppeteer-core@npm:24.40.0"
+"puppeteer-core@npm:24.41.0":
+  version: 24.41.0
+  resolution: "puppeteer-core@npm:24.41.0"
   dependencies:
     "@puppeteer/browsers": 2.13.0
     chromium-bidi: 14.0.0
     debug: ^4.4.3
-    devtools-protocol: 0.0.1581282
+    devtools-protocol: 0.0.1595872
     typed-query-selector: ^2.12.1
     webdriver-bidi-protocol: 0.4.1
     ws: ^8.19.0
-  checksum: 189efdf9bd24a63ed18e069e5d0ed5adf5fc28c04db87225ad1375beaa6d3759813a87d9ad958ee4927d0d9d69c2e958d5ebe616ffd3e012b28dd03a63a8b03b
+  checksum: d65e3991f7b7fa448195ca37cca3b1f04b60cd72dcc7b11c8cc280a377225aef56fea183c74bff1d88c0a05ebc60e0f3587e4cb066536cde57e5756793bbe25e
   languageName: node
   linkType: hard
 
 "puppeteer@npm:^24.0.0":
-  version: 24.40.0
-  resolution: "puppeteer@npm:24.40.0"
+  version: 24.41.0
+  resolution: "puppeteer@npm:24.41.0"
   dependencies:
     "@puppeteer/browsers": 2.13.0
     chromium-bidi: 14.0.0
     cosmiconfig: ^9.0.0
-    devtools-protocol: 0.0.1581282
-    puppeteer-core: 24.40.0
+    devtools-protocol: 0.0.1595872
+    puppeteer-core: 24.41.0
     typed-query-selector: ^2.12.1
   bin:
     puppeteer: lib/cjs/puppeteer/node/cli.js
-  checksum: bfbe37d4d330db77ee716493fbb0b85e126a4d931526c1abcefbfc0c2e6b9c2dbed92404ada96dbe6b3e0b66428bd1f87813d9d3a1a7ddf3498f6379e49e44ef
+  checksum: 13fd9fee693ea1399634134246c903c7ccf5df17538856424e0fc84eb18044a336762dc3308b57db170de3674264b120ff226400df57925a964d44bad114b0a9
   languageName: node
   linkType: hard
 
@@ -9966,11 +9973,11 @@ __metadata:
   linkType: hard
 
 "type-fest@npm:^5.2.0, type-fest@npm:^5.4.4":
-  version: 5.5.0
-  resolution: "type-fest@npm:5.5.0"
+  version: 5.6.0
+  resolution: "type-fest@npm:5.6.0"
   dependencies:
     tagged-tag: ^1.0.0
-  checksum: 52315b0646857e63e704783743629609458ce26c8e1208e096aa9f49c562f23c89263e75362173e017373e906a7e1418ce9b71c66d34ccbac972009e77978c95
+  checksum: af2a7c85698cdca84a9e29a8c16c8b6a82beaea6d5655dbe8553a11f9ba4f86352db0647c20b9c7dbdc3bc61330026fb043d3883a16249be8203fcfdb12e2c51
   languageName: node
   linkType: hard
 
@@ -10073,16 +10080,16 @@ __metadata:
   linkType: hard
 
 "undici@npm:^6.23.0":
-  version: 6.24.1
-  resolution: "undici@npm:6.24.1"
-  checksum: 0baa81ede2b0deb9002692c4d614cdffb2c8c27bb41e4ce7380f95b4468ebb6fd9745b7a6da32b0cdf05b1554bd5e5a47a80babb0e5ca9d59401efe372d975ed
+  version: 6.25.0
+  resolution: "undici@npm:6.25.0"
+  checksum: aed372e1b0f16045696c878e46b03e97dfd1c6dd650fb2355d48adeecc730c990ab15ab2de5a5855dbfe04c9af403a3d4f702234d3e25e72c475d1fb3a72fcfe
   languageName: node
   linkType: hard
 
 "undici@npm:^7.0.0":
-  version: 7.24.8
-  resolution: "undici@npm:7.24.8"
-  checksum: f691321cad3589e069bb0282b3862f581e4b692efde54857c4492f701380372fbd4f77f6a579674a133c5ca5c20efb44c3461803d16886beef489ac8690bbea4
+  version: 7.25.0
+  resolution: "undici@npm:7.25.0"
+  checksum: 502f855d69dd0f343a4b4999b995b99eab8764639983776bb5afd09b50671863244defe093e7fb97df767c948d6548c0c3d97f8dbb35fec16c1c8c1c15843f17
   languageName: node
   linkType: hard
 
@@ -10319,8 +10326,8 @@ __metadata:
   linkType: hard
 
 "webpack@npm:^5.23.0":
-  version: 5.106.1
-  resolution: "webpack@npm:5.106.1"
+  version: 5.106.2
+  resolution: "webpack@npm:5.106.2"
   dependencies:
     "@types/eslint-scope": ^3.7.7
     "@types/estree": ^1.0.8
@@ -10338,9 +10345,8 @@ __metadata:
     events: ^3.2.0
     glob-to-regexp: ^0.4.1
     graceful-fs: ^4.2.11
-    json-parse-even-better-errors: ^2.3.1
     loader-runner: ^4.3.1
-    mime-types: ^2.1.27
+    mime-db: ^1.54.0
     neo-async: ^2.6.2
     schema-utils: ^4.3.3
     tapable: ^2.3.0
@@ -10352,7 +10358,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 1a497a508c900424d52ed51669d20c8affd8349ce3803f540119c1bdfb4b62b40a2a2e46791cbf37dd17c96a35ac1e568a1289c71d89131c72917d4fa1242983
+  checksum: fd44725871b6777b62cdcbb32492b48740bbd575811c2c45e1c9c9413d0cbf4de7aa9931b3ccfd072d155f811de3584951264bfa30164a5e2f5db66cbf52b260
   languageName: node
   linkType: hard
 
